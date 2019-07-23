@@ -4,6 +4,26 @@
 ####################################
 #
 
+########################!!!!!!!!!!!!!!!!!!!!!!!!!DONT TOUCH##########################
+lsi: false
+safe: true
+source: [your repo's top level directory]
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+
+##################################	
+
+#######defaults########
+github: [metadata]
+encoding: UTF-8
+future: true
+jailed: false
+#theme: jekyll-theme-primer
+gfm_quirks: paragraph_end
+#############
+
 title: Shanewas Ahmed Nabil's Portfolio
 email: shanewasahmed@gmail.com
 phone: +880-1521108012
@@ -21,7 +41,6 @@ permalink:
 markdown: kramdown
 
 timezone: Asia/Dhaka
-highlighter: rouge
 excerpt_separator: <!--more-->     
 
 kramdown:
@@ -30,6 +49,11 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   enable_coderay: false
+  input: GFM
+  hard_wrap: false
+  #cant change
+  math_engine: mathjax
+  syntax_highlighter: rouge
 
 plugins:
   - jekyll-feed
