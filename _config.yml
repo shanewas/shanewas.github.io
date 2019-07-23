@@ -3,26 +3,11 @@
 # Site wide configuration
 ####################################
 #
-title: Shanewas Ahmed Portfolio
+title: Leonids
 email:
-description: I want to learn more.
+description: A simple and awesome blog theme powered by jekyll.
 url: # the base hostname & protocol for your site
 keywords: ["blog", "jekyll"]
-
-github: [metadata]
-encoding: UTF-8
-future: true
-jailed: false
-theme: jekyll-theme-primer
-gfm_quirks: paragraph_end
-
-lsi: false
-safe: true
-source: [your repo's top level directory]
-incremental: false
-gist:
-  noscript: false
-
 
 #
 ###################################
@@ -41,21 +26,18 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   enable_coderay: false
-  math_engine: mathjax
-  syntax_highlighter: rouge
-  input: GFM
-  hard_wrap: false
+
 #
 ###################################
 # Site Owner configuration
 ####################################
 #
 owner:
-  name: Shanewas
+  name: Leonids
   avatar: leonids-logo.png
-  job: "Researcher"
-  bio: "Im a developer"
-  email: shanewasahmed@gmail.com
+  job: "A jekyll theme"
+  bio: "A simple and awesome blog theme powered by jekyll."
+  email:
   disqus-shortname:
   twitter: #username
   facebook: #username
