@@ -1,4 +1,36 @@
-- name: leonids
-  descr: "Bacon ipsum dolor sit amet doner meatball jowl short ribs, chicken prosciutto salami frankfurter. Pig drumstick turducken short ribs, brisket meatloaf ham hock shankle andouille corned beef strip steak. Venison ham bresaola strip steak. Pork belly ribeye prosciutto t-bone."
-  image: pong.png
-  github: https://github.com/renyuanz/leonids
+- name: ERP Software for AG Communication ltd.
+  descr: "This was an exclusive ERP software for AG communication ltd. They needed it to manage there resourse, products 
+  along with employee information and payment system and all other logging information"
+  # image: pong.png
+  github: https://github.com/shanewas/agcommunication
+
+- name: Nemesis Proximity App
+  descr: "A android application to sell music records over online and manage libraries. This is a Demo link, actual app builded in private repo."
+  # image: pong.png
+  github: https://github.com/shanewas/nemesis_proximity
+
+- name: Neonsoft's Portal
+  descr: "This was a portal service for Neonsoft."
+  # image: pong.png
+  github: https://github.com/shanewas/NeonSofts_Portal
+
+- name: TP Link custom modification
+  descr: "Firmware modification of tp link home router farmware as custome mod builder for tp-link. Custome route path and DMZ and more."
+  # image: pong.png
+  github: https://github.com/shanewas/TP-LINK
+
+- name: Product selling website VidBasket
+  descr: "Firmware modification of tp link home router farmware as custome mod builder for tp-link. Custome route path and DMZ and more."
+  # image: pong.png
+  github: https://github.com/shanewas/vidBasket
+
+
+- name: Jetbrain Theme material
+  descr: "Community contributor of JetBrain and jetbrain theme. Jetbrain.com"
+  # image: pong.png
+  github: https://github.com/shanewas/material-theme-jetbrains
+
+- name: Product selling website VidBasket
+  descr: "Firmware modification of tp link home router farmware as custome mod builder for tp-link. Custome route path and DMZ and more."
+  # image: pong.png
+  github: https://github.com/shanewas/vidBasket
