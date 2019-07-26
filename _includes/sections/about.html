@@ -6,3 +6,22 @@
     along with working experience of 2 years, looking forward to work in cutting-edge competitive industry and challenging 
     work environment to keep up with the emerging trends in the IT sector and conduce the best of my ability.
 </div>
+<br>
+<div class="navy-line"></div>
+<h1><span data-i18n="skills.my_skills">Achievement</span></h1>
+
+<div class="archive">
+  <div class="timeline" id="timeline">
+    {% for career in site.data.index.achievement %}
+          <div class="archive-title bio">
+            <div class="archive-year">
+              <strong>{{ career.date }}</strong> 
+              <a href="{{ career.link }}">{{ career.name }}</a>
+              <p>{{ career.descr }}</p>
+            </div>
+          </div>
+    {% endfor %}
+  </div>
+</div>
+
+<br>
