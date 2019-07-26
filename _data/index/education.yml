@@ -1,8 +1,19 @@
-- name: Massachusets Instutite of Technology
-  link: http://web.mit.edu/
-  date: 2011 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
+- name: Brac University
+  link: https://www.bracu.ac.bd/
+  date: 2013 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
   descr: <br> (expected graduation in 2019)
 
-- name: Harvard
-  link: http://www.harvard.edu/
-  date: 2007 - 2011
+- name: Self - Education
+  # link: https://www.bracu.ac.bd/
+  date: 2011 - 2012
+  descr: Learned C & Cpp(C++) from online resources.
+
+- name: Shaheed Police Smrity College
+  link: https://www.spsc.edu.bd/
+  date: 2009 - 2011
+  descr: Higher Secondary School Certificate
+
+- name: Shaheed Police Smrity School
+  link: https://www.spsc.edu.bd/
+  date: 2007 - 2009
+  descr: Secondary School Certificate
