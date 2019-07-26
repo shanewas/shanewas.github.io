@@ -9,6 +9,9 @@ description: A simple and awesome blog theme powered by jekyll.
 url: https://shanewas.github.io
 keywords: ["blog", "jekyll"]
 
+gems:
+  - jekyll-redirect-from
+
 #
 ###################################
 # Jekyll configuration
