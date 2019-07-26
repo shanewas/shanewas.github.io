@@ -1,42 +1,71 @@
+#
+###################################
 # Site wide configuration
+####################################
+#
+title: Shanewas's Portfolio
+email: shanewasahmed@gmail.com
+description: A simple and awesome blog theme powered by jekyll.
+url: https://shanewas.github.io
+keywords: ["blog", "jekyll"]
 
-title: "Shanewas Portfolio"
-description: "Coming Soon"
-#if you modify locale please have a look at _data/messages.yml too
-locale: en
-#for meta name="author" :
-author: 
-
-#Target date in UTC / GMT
-countdown:
-  theme: red
-  year: 2019
-  month: 7
-  day: 27
-  hour: 0
-  minute: 0
-
-# Site owner
-owner:
-  name: Shanewas Ahmed Nabil
-  email: shanewasahmed@gmail.com
-  twitter:
-  google-plus:
-  instagramm:
-  #Aboutlink = German "Impressum", provide url and caption (eg "Impressum")
-  aboutlink:
-    url:
-    caption:
-
-
+#
+###################################
 # Jekyll configuration
-sass:
-  sass_dir: _sass
-  style: compressed
-permalink: /:categories/:title/
-kramdown:
-  toc_levels: 1..2
+####################################
+#
+timezone: Asia/Dhaka
+markdown: kramdown
 highlighter: rouge
+excerpt_separator: <!--more-->
+permalink: /articles/:year-:month/:title
 
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
 
-exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
+#
+###################################
+# Site Owner configuration
+####################################
+#
+owner:
+  name: Shanewas Ahmed nabil
+  avatar: leonids-logo.png
+  job: "Researcher"
+  bio: "A simple and awesome blog theme powered by jekyll."
+  email: shanewasahmed@gmail.com
+  disqus-shortname:
+  twitter: #username
+  facebook: #username
+  google:
+    plus: #username
+    analytics:
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: #username
+  gitlab: #username
+  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+  linkedin: #username
+  skype: #username
+  xing: #username
+  instagram: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: #username
+  soundcloud: #username
+  weibo: #username
+  flickr: #username
+  500px: #username
+  codepen: #username
+  reddit: #username
+  telegram: #username
