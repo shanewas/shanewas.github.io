@@ -1,6 +1,6 @@
-Thanks for downloading this template!
+Thanks for your interest 
 
-Template Name: iPortfolio
-Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Name: Shanewas Ahmed
+link: https://shanewas.github.io
+Email: Shanewas Ahmed Nabil
+Phone: +8801521108012
