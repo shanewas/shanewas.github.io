@@ -147,15 +147,46 @@
   
     /* Responsive adjustments */
     @media (max-width: 991px) {
-      /* Tablets and below: collapse sidebar */
+      /* Tablets and below: collapse sidebar into top bar */
       header {
         position: relative;
         width: 100%;
         height: auto;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
       }
+      header img {
+        width: 50px;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+      }
+      header h1 {
+        font-size: 1rem;
+        margin: 0;
+        flex: 1;
+      }
+      nav.nav-menu {
+        order: 2;
+        width: 100%;
+      }
+      .nav-menu ul {
+        flex-direction: row;
+        display: flex;
+        justify-content: center;
+        margin: 0.5rem 0;
+      }
+      .nav-menu li { margin: 0 .5rem; }
+      main {
+        margin-left: 0;
+        margin-top: 120px; /* Account for collapsed header height */
+        padding-top: 0;
+      }
+      #hero {
+        height: 50vh;
+      }
+    }
       main {
         margin-left: 0;
         padding-top: 0;
