@@ -319,6 +319,8 @@
       root.setAttribute('data-theme', isDark ? 'light' : 'dark');
       document.getElementById('theme-toggle').innerHTML = isDark ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
     });
+
+    // Simplified form submission: treat any 2xx as success, no JSON parsing
     const form = document.getElementById('contact-form');
     const loadingEl = document.querySelector('.loading');
     const sentEl = document.querySelector('.sent-message');
@@ -327,10 +329,16 @@
       e.preventDefault();
       loadingEl.style.display = 'block';
       sentEl.style.display = errEl.style.display = 'none';
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-      .then(res => { loadingEl.style.display = 'none'; if (!res.ok) throw new Error('Network response was not ok'); return res.json(); })
-      .then(data => { if (data.success) { sentEl.style.display = 'block'; } else { throw new Error('Submission failed'); } })
-      .catch(err => { errEl.textContent = `Error: ${err.message}`; errEl.style.display = 'block'; });
+      fetch(form.action, { method: 'POST', body: new FormData(form) })
+      .then(res => {
+        loadingEl.style.display = 'none';
+        if (res.ok) sentEl.style.display = 'block';
+        else throw new Error(`Server responded with status ${res.status}`);
+      })
+      .catch(err => {
+        errEl.textContent = `Error: ${err.message}`;
+        errEl.style.display = 'block';
+      });
     });
   </script>
 </body>
