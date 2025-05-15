@@ -225,7 +225,7 @@
     e.preventDefault();
     const form = e.target;
     const data = new FormData(form);
-    const messageBox = document.getElementById("form-message");
+    const messageBox = document.getElementById("sent-message");
 
     fetch("https://formsubmit.co/8c8a44677719ba4130aeeb1515e91012", {
       method: "POST",
@@ -237,8 +237,6 @@
       .then((response) => {
         if (response.ok) {
           messageBox.style.display = "block";
-          messageBox.style.color = "green";
-          messageBox.textContent = "✅ Message sent successfully!";
           form.reset();
         } else {
           return response.json().then((data) => {
