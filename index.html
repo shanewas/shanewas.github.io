@@ -144,6 +144,39 @@
       --bg-end: #222;
       --text-light: #e9ecef;
     }
+  
+    /* Responsive adjustments */
+    @media (max-width: 991px) {
+      /* Tablets and below: collapse sidebar */
+      header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+      }
+      main {
+        margin-left: 0;
+        padding-top: 0;
+      }
+      .nav-menu ul {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      .nav-menu li { margin: 0 .5rem; }
+    }
+    @media (max-width: 575px) {
+      /* Small phones: tighten paddings, font sizes */
+      header h1 { font-size: 1.25rem; }
+      #hero h1 { font-size: 2rem; }
+      #hero p { font-size: 1rem; }
+      .card-glass, main, .section-title h2 { padding: 1rem; }
+      .card-glass { margin-bottom: 1rem; }
+      .nav-menu a { padding: .5rem; font-size: .9rem; }
+    }
   </style>
 </head>
 <body data-theme="light">
@@ -319,8 +352,6 @@
       root.setAttribute('data-theme', isDark ? 'light' : 'dark');
       document.getElementById('theme-toggle').innerHTML = isDark ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
     });
-
-    // Simplified form submission: treat any 2xx as success, no JSON parsing
     const form = document.getElementById('contact-form');
     const loadingEl = document.querySelector('.loading');
     const sentEl = document.querySelector('.sent-message');
@@ -329,16 +360,10 @@
       e.preventDefault();
       loadingEl.style.display = 'block';
       sentEl.style.display = errEl.style.display = 'none';
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-      .then(res => {
-        loadingEl.style.display = 'none';
-        if (res.ok) sentEl.style.display = 'block';
-        else throw new Error(`Server responded with status ${res.status}`);
-      })
-      .catch(err => {
-        errEl.textContent = `Error: ${err.message}`;
-        errEl.style.display = 'block';
-      });
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+      .then(res => { loadingEl.style.display = 'none'; if (!res.ok) throw new Error('Network response was not ok'); return res.json(); })
+      .then(data => { if (data.success) { sentEl.style.display = 'block'; } else { throw new Error('Submission failed'); } })
+      .catch(err => { errEl.textContent = `Error: ${err.message}`; errEl.style.display = 'block'; });
     });
   </script>
 </body>
