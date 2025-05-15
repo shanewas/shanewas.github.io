@@ -167,9 +167,8 @@
               </div>
             </div>
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-              <form action="https://formsubmit.co/8c8a44677719ba4130aeeb1515e91012" method="POST" class="php-email-form">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://shanewas.github.io/#contact">
+            <form id="contact-form">
+              <input type="hidden" name="_captcha" value="false" />
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="name">Your Name</label>
@@ -221,5 +220,38 @@
     <script src="assets/vendor/typed.js/typed.min.js"></script>
     <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const messageBox = document.getElementById("form-message");
+
+    fetch("https://formsubmit.co/8c8a44677719ba4130aeeb1515e91012", {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          messageBox.style.display = "block";
+          messageBox.style.color = "green";
+          messageBox.textContent = "✅ Message sent successfully!";
+          form.reset();
+        } else {
+          return response.json().then((data) => {
+            throw new Error(data.message || "Something went wrong");
+          });
+        }
+      })
+      .catch((error) => {
+        messageBox.style.display = "block";
+        messageBox.style.color = "red";
+        messageBox.textContent = "❌ Error: " + error.message;
+      });
+  });
+</script>
   </body>
 </html>
