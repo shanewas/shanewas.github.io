@@ -144,69 +144,41 @@
       --bg-end: #222;
       --text-light: #e9ecef;
     }
-  
+    
     /* Responsive adjustments */
     @media (max-width: 991px) {
-      /* Tablets and below: collapse sidebar into top bar */
-      header {
-        position: relative;
+      /* Hide desktop sidebar */
+      header, nav.nav-menu { display: none; }
+      /* Mobile top nav bar (add .mobile-nav wrapper in HTML) */
+      .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(8px);
+        position: fixed;
+        top: 0;
         width: 100%;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0;
+        z-index: 1000;
       }
-      header img {
-        width: 50px;
-        margin-bottom: 0;
-        margin-right: 0.5rem;
-      }
-      header h1 {
-        font-size: 1rem;
-        margin: 0;
+      .mobile-nav a {
+        color: var(--accent);
         flex: 1;
+        text-align: center;
+        padding: 0.5rem;
       }
-      nav.nav-menu {
-        order: 2;
-        width: 100%;
-      }
-      .nav-menu ul {
-        flex-direction: row;
-        display: flex;
-        justify-content: center;
-        margin: 0.5rem 0;
-      }
-      .nav-menu li { margin: 0 .5rem; }
       main {
-        margin-left: 0;
-        margin-top: 120px; /* Account for collapsed header height */
-        padding-top: 0;
+        margin: 0;
+        padding: 1rem;
+        padding-top: 4rem; /* space for mobile-nav */
       }
-      #hero {
-        height: 50vh;
-      }
-    }
-      main {
-        margin-left: 0;
-        padding-top: 0;
-      }
-      .nav-menu ul {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        margin: 1rem 0;
-      }
-      .nav-menu li { margin: 0 .5rem; }
+      #hero { height: 50vh; }
     }
     @media (max-width: 575px) {
-      /* Small phones: tighten paddings, font sizes */
-      header h1 { font-size: 1.25rem; }
-      #hero h1 { font-size: 2rem; }
+      /* Small phones: tighten fonts */
+      #hero h1 { font-size: 1.75rem; }
       #hero p { font-size: 1rem; }
-      .card-glass, main, .section-title h2 { padding: 1rem; }
-      .card-glass { margin-bottom: 1rem; }
-      .nav-menu a { padding: .5rem; font-size: .9rem; }
+      .card-glass { padding: 1rem; }
     }
   </style>
 </head>
@@ -383,6 +355,8 @@
       root.setAttribute('data-theme', isDark ? 'light' : 'dark');
       document.getElementById('theme-toggle').innerHTML = isDark ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
     });
+
+    // Simplified form submission: treat any 2xx as success, no JSON parsing
     const form = document.getElementById('contact-form');
     const loadingEl = document.querySelector('.loading');
     const sentEl = document.querySelector('.sent-message');
@@ -392,15 +366,15 @@
       loadingEl.style.display = 'block';
       sentEl.style.display = errEl.style.display = 'none';
       fetch(form.action, { method: 'POST', body: new FormData(form) })
-      .then(res => {
-        loadingEl.style.display = 'none';
-        if (res.ok) sentEl.style.display = 'block';
-        else throw new Error(`Server responded with status ${res.status}`);
-      })
-      .catch(err => {
-        errEl.textContent = `Error: ${err.message}`;
-        errEl.style.display = 'block';
-      });
+        .then(res => {
+          loadingEl.style.display = 'none';
+          if (res.ok) sentEl.style.display = 'block';
+          else throw new Error(`Server responded with status ${res.status}`);
+        })
+        .catch(err => {
+          errEl.textContent = `Error: ${err.message}`;
+          errEl.style.display = 'block';
+        });
     });
   </script>
 </body>
