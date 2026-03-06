@@ -296,7 +296,7 @@
     <div class="social-links">
       <a href="https://github.com/shanewas" title="GitHub"><i class="bx bxl-github"></i></a>
       <a href="https://www.linkedin.com/in/ahmedshanewas/" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
-      <a href="/cdn-cgi/l/email-protection#6d1e050c03081a0c1e0c050008092d0a000c0401430e0200" title="Email"><i class="bx bx-envelope"></i></a>
+      <a href="#" id="sidebar-email-link" title="Email"><i class="bx bx-envelope"></i></a>
     </div>
     <a href="https://drive.google.com/uc?export=download&id=1IxiEHTS8ixUyPWD4inqCnfsUUtpjbrVb" target="_blank"
       style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;
@@ -732,14 +732,19 @@
     // Cloudflare-safe email render
     (function(){
       var u='shanewasahmed', d='gmail.com';
+      var email = u + '@' + d;
+      // Contact section
       var el = document.getElementById('cf-email');
       if(el) {
         var a = document.createElement('a');
-        a.href = 'mailto:' + u + '@' + d;
+        a.href = 'mailto:' + email;
         a.style.color = 'var(--accent)';
-        a.textContent = u + '@' + d;
+        a.textContent = email;
         el.appendChild(a);
       }
+      // Sidebar icon
+      var sl = document.getElementById('sidebar-email-link');
+      if(sl) { sl.href = 'mailto:' + email; }
     })();
   </script>
 </body>
