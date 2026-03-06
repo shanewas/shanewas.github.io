@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="ja"> <head>
+<html lang="ja">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shanewas Ahmed – バックエンドエンジニア</title>
-  <meta name="description" content="C++、C#、.NET Core、RHEL、スケーラブルなLinuxインフラストラクチャ、セキュアなドキュメント処理に精通した高度なバックエンドシステムエンジニア。">
+  <title>Shanewas Ahmed – バックエンドシステムエンジニア</title>
+  <meta name="description" content="C++・C#・.NET Core・RHEL Linuxを専門とするバックエンドシステムエンジニア。日本在住。特許取得者。IEEE論文著者。">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -15,328 +16,596 @@
 
   <style>
     :root {
-      --accent: #00bfa6;
-      --bg-start: #0f2027;
-      --bg-mid: #203a43;
-      --bg-end: #2c5364;
-      --text-light: #f8f9fa;
+      --accent: #00e5c3;
+      --accent-dim: #00bfa6;
+      --bg-dark: #0a0f1e;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-card-border: rgba(255,255,255,0.1);
+      --text: #e8eaf0;
+      --text-muted: #8892a4;
+      --sidebar-w: 260px;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
-      color: var(--text-light);
+      font-family: 'Inter', 'Hiragino Sans', 'Meiryo', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
       min-height: 100vh;
+      line-height: 1.8;
     }
     a { color: var(--accent); text-decoration: none; }
-
-    /* Sidebar */
+    a:hover { color: #fff; }
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 240px;
-      height: 100vh;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: fixed; top: 0; left: 0;
+      width: var(--sidebar-w); height: 100vh;
+      background: rgba(10,15,30,0.92);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid var(--bg-card-border);
+      padding: 2.5rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center;
       z-index: 1000;
     }
     header img {
-      width: 120px;
+      width: 110px; height: 110px;
       border-radius: 50%;
-      border: 4px solid var(--accent);
+      border: 3px solid var(--accent);
+      object-fit: cover;
       margin-bottom: 1rem;
     }
-    header h1 {
-      font-size: 1.5rem;
-      margin: 0 0 1rem;
-      text-align: center;
+    header h1 { font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: .25rem; }
+    header .tagline { font-size: .75rem; color: var(--text-muted); text-align: center; margin-bottom: 1rem; }
+    .social-links { display: flex; gap: .75rem; margin-bottom: 1.5rem; }
+    .social-links a { color: var(--text-muted); font-size: 1.2rem; transition: color .2s; }
+    .social-links a:hover { color: var(--accent); }
+    nav ul { list-style: none; width: 100%; }
+    nav ul li { margin-bottom: .25rem; }
+    nav ul a {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .6rem 1rem; border-radius: .5rem;
+      color: var(--text-muted); font-size: .85rem; font-weight: 500;
+      transition: all .2s;
     }
-    .social-links a { margin: 0 .5rem; color: var(--text-light); }
-    nav { width: 100%; }
-    .nav-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 2rem 0 0;
-      width: 100%;
-    }
-    .nav-menu li { margin-bottom: .5rem; }
-    .nav-menu a {
-      display: block;
-      padding: .75rem 1rem;
-      border-radius: .5rem;
-      transition: background .3s;
-      font-weight: 500;
-    }
-    .nav-menu a:hover,
-    .nav-menu a.active { background: rgba(255,255,255,0.1); }
-
-    main { margin-left: 240px; padding: 2rem; }
-    section { margin-bottom: 4rem; }
-    .section-title h2 {
+    nav ul a:hover, nav ul a.active {
+      background: rgba(0,229,195,0.1);
       color: var(--accent);
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
     }
-
-    /* Glass Card */
-    .card-glass {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 1rem;
-      backdrop-filter: blur(8px);
-      padding: 2rem;
-      margin-bottom: 1.5rem;
+    .badge-jp {
+      margin-top: auto;
+      font-size: .7rem;
+      background: rgba(0,229,195,0.1);
+      border: 1px solid var(--accent-dim);
+      color: var(--accent);
+      padding: .25rem .75rem;
+      border-radius: 2rem;
     }
-
-    /* Hero */
+    main { margin-left: var(--sidebar-w); }
+    section { padding: 4rem 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem; color: var(--accent);
+      letter-spacing: .15em; text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
     #hero {
-      height: 65vh;
-      background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=1950&q=80') center/cover fixed;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 4rem 3rem;
+      position: relative; overflow: hidden;
     }
-    #hero:before {
+    #hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(0,229,195,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,100,200,0.08) 0%, transparent 60%);
     }
-    #hero .hero-container { position: relative; z-index: 1; }
-    #hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin: 0; }
-    #hero p { font-size: 1.25rem; margin: 1rem 0; }
-
-    /* Form statuses */
-    .loading,
-    .sent-message,
-    .error-message {
-      display: none;
-      margin-top: 1rem;
-      font-size: .9rem;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+      width: 100%; max-width: 960px;
     }
-    .sent-message { color: var(--accent); }
-    .error-message { color: #e63946; }
-
-    /* Dark mode toggle */
-    #theme-toggle {
-      position: fixed;
-      top: 2.5rem;
-      right: 1rem;
-      z-index: 1100;
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem; color: var(--accent);
+      letter-spacing: .1em; margin-bottom: 1rem;
     }
-    [data-theme='dark'] {
-      --bg-start: #111;
-      --bg-mid: #111;
-      --bg-end: #222;
-      --text-light: #e9ecef;
+    #hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.3;
+      margin-bottom: 1rem;
     }
-    #language-toggle {
-      position: fixed;
-      top: 2.5rem;         /* Align with theme toggle */
-      right: 5rem;         /* Position it to the left of the theme toggle. Adjust as needed. */
-      z-index: 1100;       /* Same z-index */
-      min-width: 3rem;     /* Ensure it has some width for text */
-      text-align: center;  /* Center text in button */
+    #hero h1 span { color: var(--accent); }
+    #hero .sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 520px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+    .hero-badge {
+      font-size: .75rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: .3rem .8rem; border-radius: 2rem;
+      color: var(--text-muted);
     }
-    
-    /* Responsive adjustments */
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary-custom {
+      background: var(--accent); color: #0a0f1e;
+      padding: .7rem 1.75rem; border-radius: .5rem;
+      font-weight: 600; font-size: .9rem;
+      transition: all .2s; border: none; cursor: pointer;
+    }
+    .btn-primary-custom:hover { background: #fff; color: #0a0f1e; }
+    .btn-outline-custom {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text); padding: .7rem 1.75rem;
+      border-radius: .5rem; font-size: .9rem;
+      transition: all .2s;
+    }
+    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1rem; padding: 1.25rem 1.5rem;
+      text-align: center; min-width: 130px;
+    }
+    .stat-box .num { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .stat-box .lbl { font-size: .75rem; color: var(--text-muted); margin-top: .25rem; }
+    .card-glass {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1rem; padding: 1.75rem;
+      backdrop-filter: blur(8px);
+      transition: border-color .2s;
+    }
+    .card-glass:hover { border-color: rgba(0,229,195,0.3); }
+    .skill-group { margin-bottom: 1.5rem; }
+    .skill-group h5 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem; color: var(--accent);
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .skill-tag {
+      font-size: .8rem;
+      background: rgba(0,229,195,0.07);
+      border: 1px solid rgba(0,229,195,0.2);
+      color: var(--text);
+      padding: .3rem .85rem; border-radius: .4rem;
+    }
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: .5rem; bottom: 0;
+      width: 2px; background: rgba(0,229,195,0.2);
+    }
+    .timeline-item { position: relative; margin-bottom: 2rem; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -1.6rem; top: .45rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 3px rgba(0,229,195,0.2);
+    }
+    .timeline-item .period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; color: var(--accent); margin-bottom: .25rem;
+    }
+    .timeline-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: .15rem; }
+    .timeline-item .company { font-size: .85rem; color: var(--text-muted); margin-bottom: .75rem; }
+    .timeline-item ul { padding-left: 1.25rem; }
+    .timeline-item ul li { font-size: .875rem; color: var(--text-muted); margin-bottom: .4rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--bg-card-border);
+      border-radius: 1rem; padding: 1.5rem;
+      transition: all .2s; display: flex; flex-direction: column;
+    }
+    .project-card:hover { border-color: rgba(0,229,195,0.4); transform: translateY(-3px); }
+    .project-card h4 { font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
+    .project-card p { font-size: .83rem; color: var(--text-muted); flex: 1; margin-bottom: 1rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .project-tag {
+      font-size: .72rem;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: .2rem .6rem; border-radius: .3rem; color: var(--text-muted);
+    }
+    .form-control, .form-control:focus {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text); border-radius: .5rem;
+    }
+    .form-control:focus { box-shadow: 0 0 0 2px rgba(0,229,195,0.2); border-color: var(--accent); }
+    label { font-size: .85rem; color: var(--text-muted); margin-bottom: .35rem; display: block; }
+    .sent-message { display: none; color: var(--accent); margin-top: 1rem; font-size: .9rem; }
+    .error-message { display: none; color: #e63946; margin-top: 1rem; font-size: .9rem; }
+    .loading { display: none; color: var(--text-muted); margin-top: 1rem; font-size: .9rem; }
+    #theme-toggle, #language-toggle {
+      position: fixed; top: 1.25rem; z-index: 1100;
+      border-radius: .5rem; font-size: .82rem; padding: .4rem .9rem;
+    }
+    #theme-toggle { right: 1rem; }
+    #language-toggle { right: 6rem; }
+    .mobile-nav {
+      display: none; justify-content: space-around;
+      background: rgba(10,15,30,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: fixed; top: 0; width: 100%;
+      padding: .6rem 0; z-index: 1000;
+    }
+    .mobile-nav a { color: var(--text-muted); font-size: 1.25rem; flex: 1; text-align: center; padding: .4rem; }
+    .mobile-nav a:hover { color: var(--accent); }
     @media (max-width: 991px) {
-      /* Hide desktop sidebar */
-      header, nav.nav-menu { display: none; }
-      /* Mobile top nav bar (add .mobile-nav wrapper in HTML) */
-      .mobile-nav {
-        display: flex;
-        justify-content: space-around;
-        background: rgba(0,0,0,0.4);
-        backdrop-filter: blur(8px);
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 0.5rem 0;
-        z-index: 1000;
-      }
-      .mobile-nav a {
-        color: var(--accent);
-        flex: 1;
-        text-align: center;
-        padding: 0.5rem;
-      }
-      main {
-        margin: 0;
-        padding: 1rem;
-        padding-top: 4rem; /* space for mobile-nav */
-      }
-      #hero { height: 50vh; }
+      header { display: none; }
+      .mobile-nav { display: flex; }
+      main { margin-left: 0; }
+      section { padding: 3rem 1.25rem; padding-top: 5rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      #hero { min-height: auto; padding-top: 5rem; }
     }
     @media (max-width: 575px) {
-      /* Small phones: tighten fonts */
       #hero h1 { font-size: 1.75rem; }
-      #hero p { font-size: 1rem; }
-      .card-glass { padding: 1rem; }
+      .section-title { font-size: 1.5rem; }
     }
   </style>
 </head>
-<body data-theme="light">
+<body>
   <div class="mobile-nav d-lg-none">
-    <a href="#hero" class="active"><i class="bx bx-home"></i></a>
+    <a href="#hero"><i class="bx bx-home"></i></a>
     <a href="#about"><i class="bx bx-user"></i></a>
     <a href="#skills"><i class="bx bx-cog"></i></a>
     <a href="#resume"><i class="bx bx-file-blank"></i></a>
+    <a href="#projects"><i class="bx bx-code-alt"></i></a>
     <a href="#contact"><i class="bx bx-envelope"></i></a>
   </div>
+
   <a href="index.html" id="language-toggle" class="btn btn-outline-light" title="Switch to English">English</a>
   <button id="theme-toggle" class="btn btn-outline-light"><i class="bi bi-moon"></i></button>
 
   <header>
     <img src="assets/img/profile-img.jpg" alt="Shanewas Ahmed">
     <h1>Shanewas Ahmed</h1>
+    <div class="tagline">バックエンドシステムエンジニア</div>
     <div class="social-links">
-      <a href="https://github.com/shanewas"><i class="bx bxl-github"></i></a>
-      <a href="https://www.linkedin.com/in/ahmedshanewas/"><i class="bx bxl-linkedin"></i></a>
-      <a href="https://twitter.com/S_A_Nabil"><i class="bx bxl-twitter"></i></a>
-      <a href="https://www.facebook.com/ahmed.shanewas/"><i class="bx bxl-facebook"></i></a>
+      <a href="https://github.com/shanewas" title="GitHub"><i class="bx bxl-github"></i></a>
+      <a href="https://www.linkedin.com/in/ahmedshanewas/" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+      <a href="mailto:shanewasahmed@gmail.com" title="Email"><i class="bx bx-envelope"></i></a>
     </div>
-    <nav class="nav-menu">
+    <nav>
       <ul>
         <li><a href="#hero" class="active"><i class="bx bx-home"></i> ホーム</a></li>
         <li><a href="#about"><i class="bx bx-user"></i> 自己紹介</a></li>
         <li><a href="#skills"><i class="bx bx-cog"></i> スキル</a></li>
-        <li><a href="#resume"><i class="bx bx-file-blank"></i> 経歴</a></li>
+        <li><a href="#resume"><i class="bx bx-file-blank"></i> 職歴</a></li>
+        <li><a href="#projects"><i class="bx bx-code-alt"></i> プロジェクト</a></li>
         <li><a href="#contact"><i class="bx bx-envelope"></i> お問い合わせ</a></li>
       </ul>
     </nav>
+    <div class="badge-jp">🇯🇵 宮崎県在住</div>
   </header>
 
-  <section id="hero">
-    <div class="hero-container" data-aos="zoom-in">
-      <h1>Shanewas Ahmed</h1>
-      <p>私は <span class="typed" data-typed-items="高度なバックエンドエンジニア, APIアーキテクト, C++/.NETスペシャリスト, セキュアPDFプラットフォーム開発者"></span></p>
-      <a href="#contact" class="btn btn-outline-light mt-4">お問い合わせ</a>
-    </div>
-  </section>
-
   <main>
+    <!-- Hero -->
+    <section id="hero">
+      <div class="hero-grid" data-aos="fade-up">
+        <div>
+          <div class="hero-eyebrow">// バックエンドシステムエンジニア</div>
+          <h1>スケールし、<span>落ちない</span><br>システムを<span>構築する。</span></h1>
+          <p class="sub">バングラデシュと日本で10年以上のエンジニアリング経験。C++ · .NET · Linux。特許取得者。IEEE論文著者。現在SkyCom株式会社（宮崎）に在籍。</p>
+          <div class="hero-badges">
+            <span class="hero-badge">📜 特許取得 — 特許庁 2025</span>
+            <span class="hero-badge">🔬 IEEE論文 — 2019</span>
+            <span class="hero-badge">🇯🇵 エンジニアビザ保有</span>
+            <span class="hero-badge">🏦 5行以上に導入実績</span>
+          </div>
+          <div class="hero-cta">
+            <a href="#contact" class="btn-primary-custom">お問い合わせ</a>
+            <a href="#resume" class="btn-outline-custom">職歴を見る</a>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="num">10+</div>
+            <div class="lbl">年の経験</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">1</div>
+            <div class="lbl">取得特許</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">5+</div>
+            <div class="lbl">導入銀行数</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
     <section id="about">
-      <div class="container card-glass" data-aos="fade-up">
-        <div class="section-title"><h2>自己紹介</h2></div>
-        <p>私は日本を拠点とするバックエンドシステムエンジニアで、現在SkyCom株式会社でSkyPDF製品群を開発しています。C++、C#、.NET Coreを使用したセキュアでスケーラブルなPDFインフラソリューションの構築に注力しています。RESTful APIの設計、RPMおよびsystemdによるデプロイメントの自動化、コンプライアンスを確保するための署名検証メカニズムの統合を行っています。また、機械学習にも情熱を注いでおり、深層学習を用いたアルツハイマー病分類に関するIEEE論文を発表しました。</p>
+      <div data-aos="fade-up">
+        <div class="section-label">// 01</div>
+        <div class="section-title">自己紹介</div>
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="card-glass">
+              <p style="margin-bottom:1rem;">宮崎県にある<strong>SkyCom株式会社</strong>のバックエンドエンジニアとして、エンタープライズ向けPDFインフラの開発に従事しています。C++/C#による低レベルライブラリ、REST API、Linuxデプロイパイプライン、および暗号署名システムを構築しています。</p>
+              <p style="margin-bottom:1rem;">バングラデシュと日本で10年以上の開発経験を持ち、本番システムの構築・スタートアップの共同創業・チームリード・主要金融機関への業務自動化プラットフォーム導入を経験してきました。マイナンバーカードを活用した電子署名システムに関する特許を取得しています。</p>
+              <p>シドニー大学との共同研究として、深層学習によるアルツハイマー病分類に関するIEEE論文を共著。機械学習と実務開発の両面に強みを持っています。</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card-glass h-100">
+              <div class="section-label mb-3">// 主な実績</div>
+              <ul style="list-style:none; padding:0;">
+                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">📜 特許 — JP 2025-169170 A</li>
+                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🔬 IEEE論文 — シドニー大学との共同研究</li>
+                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🏦 5行以上の主要銀行に自動化システム導入</li>
+                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🥇 全国ハッカソン 1位（2014年）</li>
+                <li style="padding:.5rem 0; font-size:.875rem;">🎓 MSP — マイクロソフト学生パートナー 2013–2016</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title"><h2>技術スキル</h2></div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card-glass">
-              <ul>
-                <li><strong>言語:</strong> C++, C#, Python, Bash</li>
-                <li><strong>フレームワーク:</strong> .NET Core, .NET 6+, REST API設計</li>
-                <li><strong>PDFシステム:</strong> デジタル署名 & レンダリング</li>
-                <li><strong>Linux:</strong> RHEL, systemd, RPMパッケージング</li>
-              </ul>
+      <div data-aos="fade-up">
+        <div class="section-label">// 02</div>
+        <div class="section-title">技術スキル</div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card-glass h-100">
+              <div class="skill-group">
+                <h5>言語</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">C++</span>
+                  <span class="skill-tag">C#</span>
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">Bash</span>
+                  <span class="skill-tag">Java</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h5>フレームワーク</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">.NET Core</span>
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">ElectronJS</span>
+                  <span class="skill-tag">React</span>
+                  <span class="skill-tag">Express</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="card-glass">
-              <ul>
-                <li><strong>DevOps:</strong> シェルスクリプティング, CI/CD, Docker</li>
-                <li><strong>ツール:</strong> jq, JSON, Git, VS Code</li>
-                <li><strong>データベース:</strong> SQLite, PostgreSQL</li>
-                <li><strong>機械学習(ML):</strong> VGG19, Inception v3, 転移学習</li>
-              </ul>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-glass h-100">
+              <div class="skill-group">
+                <h5>インフラ</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">RHEL Linux</span>
+                  <span class="skill-tag">Docker</span>
+                  <span class="skill-tag">Kubernetes</span>
+                  <span class="skill-tag">Azure</span>
+                  <span class="skill-tag">RPMパッケージング</span>
+                  <span class="skill-tag">systemd</span>
+                  <span class="skill-tag">CI/CD</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h5>データベース</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">MySQL</span>
+                  <span class="skill-tag">MongoDB</span>
+                  <span class="skill-tag">PostgreSQL</span>
+                  <span class="skill-tag">SQLite</span>
+                  <span class="skill-tag">Redis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-glass h-100">
+              <div class="skill-group">
+                <h5>API・システム</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">REST API</span>
+                  <span class="skill-tag">OpenAPI</span>
+                  <span class="skill-tag">gRPC</span>
+                  <span class="skill-tag">PDFシステム</span>
+                  <span class="skill-tag">暗号署名</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h5>ML / AI</h5>
+                <div class="skill-tags">
+                  <span class="skill-tag">TensorFlow</span>
+                  <span class="skill-tag">scikit-learn</span>
+                  <span class="skill-tag">NLP</span>
+                  <span class="skill-tag">OCR</span>
+                  <span class="skill-tag">転移学習</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Resume -->
     <section id="resume">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title"><h2>経歴</h2></div>
-        <div class="row">
-          <div class="col-lg-6">
+      <div data-aos="fade-up">
+        <div class="section-label">// 03</div>
+        <div class="section-title">職歴・学歴</div>
+        <div class="row g-4">
+          <div class="col-lg-7">
             <div class="card-glass">
-              <h3>概要</h3>
-              <p><em>C++、.NET Core、Linuxを使用したエンタープライズ向けPDFプラットフォーム開発における3年以上の経験を持つ、高性能バックエンドシステムを専門としています。</em></p>
-              <ul>
-                <li>宮崎、日本 / ダッカ、バングラデシュ</li>
-                <li>+81 80-2619-7650</li>
-                <li>shanewasahmed@gmail.com</li>
-              </ul>
-
-              <h3>学歴</h3>
-              <p><strong>コンピュータサイエンス学士号</strong> (2013年–2019年)<br>BRAC大学 (ダッカ)</p>
-              <p>CNNと転移学習を用いたアルツハイマー病予測に関するIEEE論文を発表。</p>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="period">2022年4月 – 現在</div>
+                  <h4>ソフトウェアエンジニア</h4>
+                  <div class="company">SkyCom株式会社 · 宮崎県</div>
+                  <ul>
+                    <li>SkyPDFのコア開発者として、RHEL上でC++・C#を使用した低レベルPDFライブラリを開発・保守</li>
+                    <li>文書署名・レンダリング・変換向けCLIインターフェースおよびWeb APIを設計・構築</li>
+                    <li>RPMパッケージング・Bashスクリプト・依存関係管理によるデプロイ自動化を実現</li>
+                    <li>長年の課題だったAPIパフォーマンスのボトルネックを解消し、応答速度を大幅に改善</li>
+                    <li>マイナンバーカードを活用した電子署名システムに関する特許を取得（特許庁 2025年）</li>
+                  </ul>
+                </div>
+                <div class="timeline-item">
+                  <div class="period">2019年10月 – 2021年9月</div>
+                  <h4>ソフトウェアアーキテクト & プロジェクトマネージャー</h4>
+                  <div class="company">Ferntech Solutions · ダッカ、バングラデシュ</div>
+                  <ul>
+                    <li>AIW Coreを設計・開発。Bank Asia・City Bank・UCB Bank・Eastern Bankなどに導入</li>
+                    <li>共通エンジンでデスクトップ（ElectronJS）とWeb両対応の自動化スタジオを構築</li>
+                    <li>AI/NLPベースのインテリジェント文書自動化機能のR&Dをリード</li>
+                    <li>プロジェクトマネージャーに昇格（2020年1月）— 5名のチームを管理・採用・メンタリング</li>
+                  </ul>
+                </div>
+                <div class="timeline-item">
+                  <div class="period">2014年12月 – 2017年12月</div>
+                  <h4>共同創業者 & リード開発者</h4>
+                  <div class="company">Neonsofts · ダッカ、バングラデシュ</div>
+                  <ul>
+                    <li>BRAC大学在学中にソフトウェアスタートアップを共同創業</li>
+                    <li>小売・製造業クライアント向けにERPシステム2件を設計・納品</li>
+                    <li>C# / WinForms / SQLiteを使用したオフライン対応デスクトップアプリを開発</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-5">
+            <div class="card-glass mb-4">
+              <div class="section-label mb-3">// 学歴</div>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="period">2013年 – 2019年</div>
+                  <h4>コンピュータサイエンス学士</h4>
+                  <div class="company">BRAC大学 · ダッカ</div>
+                  <p style="font-size:.83rem; color:var(--text-muted);">在学中に共同創業・フリーランス経験（2014–2017年）。シドニー大学との共同研究でIEEE論文発表（2019年）。</p>
+                </div>
+                <div class="timeline-item">
+                  <div class="period">2021年10月 – 2022年6月</div>
+                  <h4>B-JETプログラム</h4>
+                  <div class="company">宮崎大学 · 宮崎県</div>
+                  <p style="font-size:.83rem; color:var(--text-muted);">JICA主催のICTエンジニア向け研修。宮崎大学認定修了。</p>
+                </div>
+              </div>
+            </div>
             <div class="card-glass">
-              <h3>職務経歴</h3>
-              <p><strong>ソフトウェアエンジニア</strong> (2022年–現在) SkyCom株式会社 (日本)</p>
-              <ul>
-                <li>C#およびBashを使用して、PDF署名および印刷用のセキュアなREST APIとCLIツールを構築。</li>
-                <li>systemd統合によるLinuxインストールとRPMパッケージングの自動化。</li>
-                <li>互換性のためにSDKバージョン間でPDFレンダリングを最適化。</li>
-              </ul>
-              <p><strong>ソフトウェアアーキテクト</strong> (2019年–2021年) Ferntech Solutions (ダッカ)</p>
-              <ul>
-                <li>Node.js、Python、ElectronJSを使用したERPおよび自動化プラットフォーム開発を主導。</li>
-                <li>スケーラブルなマイクロサービスとフルスタックシステムを設計。</li>
-                <li>ビジネスインサイトのためのMLパイプラインを統合。</li>
-              </ul>
+              <div class="section-label mb-3">// 特許・研究</div>
+              <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.07);">
+                <div style="font-size:.75rem; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-bottom:.25rem;">特許 · 特許庁 2025</div>
+                <div style="font-size:.875rem; font-weight:600; margin-bottom:.25rem;">JP 2025-169170 A</div>
+                <div style="font-size:.8rem; color:var(--text-muted);">マイナンバーカードを活用した電子署名システム</div>
+                <a href="https://www.j-platpat.inpit.go.jp/c1801/PU/JP-2025-169170/15/en" target="_blank" style="font-size:.78rem;">J-PlatPatで見る →</a>
+              </div>
+              <div>
+                <div style="font-size:.75rem; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-bottom:.25rem;">IEEE論文 · 2019年</div>
+                <div style="font-size:.875rem; font-weight:600; margin-bottom:.25rem;">深層学習によるアルツハイマー病予測</div>
+                <div style="font-size:.8rem; color:var(--text-muted); margin-bottom:.5rem;">シドニー大学との共同研究。VGG19・Inception v3使用。</div>
+                <a href="https://ieeexplore.ieee.org/document/9306649" target="_blank" style="font-size:.78rem;">IEEE Xploreで見る →</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Projects -->
+    <section id="projects">
+      <div data-aos="fade-up">
+        <div class="section-label">// 04</div>
+        <div class="section-title">プロジェクト</div>
+        <div class="project-grid">
+          <div class="project-card">
+            <h4>@shanewas/form-validation</h4>
+            <p>Node.jsおよびブラウザ向けのエンタープライズ対応フォームバリデーションエンジン。ルールベース・依存関係駆動・非同期対応・EN/JP i18nサポート。</p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">NPMパッケージ</span>
+              <span class="project-tag">i18n</span>
+            </div>
+            <a href="https://www.npmjs.com/package/@shanewas/form-validation" target="_blank" style="font-size:.82rem; color:var(--accent);">NPMで見る →</a>
+          </div>
+          <div class="project-card">
+            <h4>PayFlow — 決済統合システム</h4>
+            <p>Stripe API・JWT認証・SCA/3DS対応・Webフック署名検証・Swagger APIドキュメント・DockerによるCI/CDを含むフルスタック決済処理システム。</p>
+            <div class="project-tags">
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">React</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">Stripe</span>
+            </div>
+            <a href="https://github.com/shanewas/payflow" target="_blank" style="font-size:.82rem; color:var(--accent);">GitHubで見る →</a>
+          </div>
+          <div class="project-card">
+            <h4>AIW Core — 銀行業務自動化プラットフォーム</h4>
+            <p>業務プロセス自動化プラットフォーム。共通エンジンによるデスクトップ・Web両対応の自動化スタジオ、ML/NLPパイプライン。主要銀行5行以上に導入。</p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">MongoDB</span>
+              <span class="project-tag">ElectronJS</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">NLP</span>
+            </div>
+            <span style="font-size:.82rem; color:var(--text-muted);">非公開 — Ferntech Solutions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title"><h2>お問い合わせ</h2></div>
-        <div class="row">
+      <div data-aos="fade-up">
+        <div class="section-label">// 05</div>
+        <div class="section-title">お問い合わせ</div>
+        <div class="row g-4">
           <div class="col-lg-4">
             <div class="card-glass">
-              <p><i class="bi bi-geo-alt"></i> 宮崎、日本 / ダッカ、バングラデシュ</p>
-              <p><i class="bi bi-envelope"></i> shanewasahmed@gmail.com</p>
-              <p><i class="bi bi-phone"></i> +81 80-2619-7650</p>
+              <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">お仕事やコラボレーションのご相談はお気軽にどうぞ。</p>
+              <p style="margin-bottom:.75rem;"><i class="bi bi-geo-alt me-2" style="color:var(--accent)"></i>宮崎県、日本</p>
+              <p style="margin-bottom:.75rem;"><i class="bi bi-envelope me-2" style="color:var(--accent)"></i>shanewasahmed@gmail.com</p>
+              <p style="margin-bottom:.75rem;"><i class="bi bi-linkedin me-2" style="color:var(--accent)"></i><a href="https://linkedin.com/in/ahmedshanewas">ahmedshanewas</a></p>
+              <p><i class="bi bi-github me-2" style="color:var(--accent)"></i><a href="https://github.com/shanewas">shanewas</a></p>
             </div>
           </div>
           <div class="col-lg-8">
             <div class="card-glass">
               <form id="contact-form" action="https://formsubmit.co/8c8a44677719ba4130aeeb1515e91012" method="POST">
                 <input type="hidden" name="_captcha" value="false">
-                <div class="mb-3">
-                  <label for="name">お名前</label>
-                  <input type="text" id="name" name="name" class="form-control" required>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label>お名前</label>
+                    <input type="text" name="name" class="form-control" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label>メールアドレス</label>
+                    <input type="email" name="email" class="form-control" required>
+                  </div>
+                  <div class="col-12">
+                    <label>件名</label>
+                    <input type="text" name="subject" class="form-control" required>
+                  </div>
+                  <div class="col-12">
+                    <label>メッセージ</label>
+                    <textarea name="message" rows="5" class="form-control" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <div class="loading">送信中...</div>
+                    <div class="sent-message">✅ メッセージが送信されました。ありがとうございます！</div>
+                    <div class="error-message">送信中にエラーが発生しました。もう一度お試しください。</div>
+                    <button type="submit" class="btn-primary-custom mt-2">送信する</button>
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <label for="email">メールアドレス</label>
-                  <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                  <label for="subject">件名</label>
-                  <input type="text" id="subject" name="subject" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                  <label for="message">メッセージ</label>
-                  <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-                </div>
-                <div class="loading">送信中...</div>
-                <div class="sent-message">✅ ありがとうございます！メッセージは正常に送信されました。</div>
-                <div class="error-message">メッセージの送信エラー。もう一度お試しください。</div>
-                <button type="submit" class="btn btn-outline-light mt-3">メッセージを送信</button>
               </form>
             </div>
           </div>
@@ -344,48 +613,46 @@
       </div>
     </section>
 
-    <footer class="text-center py-4">
-      © <span id="year"></span> Shanewas Ahmed
+    <footer style="text-align:center; padding:2rem; color:var(--text-muted); font-size:.82rem; border-top:1px solid rgba(255,255,255,0.05);">
+      © <span id="year"></span> Shanewas Ahmed · 誠意を持って構築。
     </footer>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
   <script>
-    AOS.init({ duration: 800, once: true });
-    new Typed('.typed', {
-      strings: document.querySelector('.typed').dataset.typedItems.split(','),
-      typeSpeed: 60, backSpeed: 30, backDelay: 1500, loop: true
-    });
+    AOS.init({ duration: 700, once: true, offset: 60 });
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('theme-toggle').addEventListener('click', () => {
-      const root = document.documentElement;
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      const isDark = document.body.style.getPropertyValue('--bg-dark') === '#fff';
+      document.body.style.setProperty('--bg-dark', isDark ? '#0a0f1e' : '#fff');
       document.getElementById('theme-toggle').innerHTML = isDark ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
     });
-
-    // Simplified form submission: treat any 2xx as success, no JSON parsing
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav ul a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+    });
     const form = document.getElementById('contact-form');
-    const loadingEl = document.querySelector('.loading');
-    const sentEl = document.querySelector('.sent-message');
-    const errEl = document.querySelector('.error-message');
     form.addEventListener('submit', e => {
       e.preventDefault();
-      loadingEl.style.display = 'block';
-      sentEl.style.display = errEl.style.display = 'none';
+      document.querySelector('.loading').style.display = 'block';
+      document.querySelector('.sent-message').style.display = 'none';
+      document.querySelector('.error-message').style.display = 'none';
       fetch(form.action, { method: 'POST', body: new FormData(form) })
         .then(res => {
-          loadingEl.style.display = 'none';
-          if (res.ok) sentEl.style.display = 'block';
-          else throw new Error(`サーバーからの応答ステータス ${res.status}`); // Server responded with status
+          document.querySelector('.loading').style.display = 'none';
+          if (res.ok) { document.querySelector('.sent-message').style.display = 'block'; form.reset(); }
+          else throw new Error('Server error');
         })
-        .catch(err => {
-          // Ensure the base error message is in Japanese, then append the err.message which might be from the server
-          errEl.textContent = `エラー： ${err.message}`; // Error: 
-          errEl.style.display = 'block';
+        .catch(() => {
+          document.querySelector('.loading').style.display = 'none';
+          document.querySelector('.error-message').style.display = 'block';
         });
     });
   </script>
