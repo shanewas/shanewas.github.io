@@ -319,8 +319,25 @@
     }
     .mobile-nav a { color: var(--text-muted); font-size: 1.25rem; flex: 1; text-align: center; padding: .4rem; }
     .mobile-nav a:hover { color: var(--accent); }
+    /* Force language + theme buttons to look like nav icons */
+    .mobile-nav #mobile-theme-toggle,
+    .mobile-nav .mobile-lang-btn {
+      all: unset;
+      color: var(--text-muted);
+      font-size: 1rem;
+      flex: 1;
+      text-align: center;
+      padding: .4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-nav #mobile-theme-toggle:hover,
+    .mobile-nav .mobile-lang-btn:hover { color: var(--accent); }
 
     @media (max-width: 991px) {
+      #theme-toggle, #language-toggle { display: none; }
       header { display: none; }
       .mobile-nav { display: flex; }
       main { margin-left: 0; }
@@ -345,7 +362,7 @@
     <a href="#projects"><i class="bx bx-code-alt"></i></a>
     <a href="#contact"><i class="bx bx-envelope"></i></a>
     <a href="index_ja.html" title="日本語" style="font-size:.75rem;display:flex;align-items:center;justify-content:center;">JP</a>
-    <a href="#" id="mobile-theme-toggle" title="Theme"><i class="bi bi-moon"></i></a>
+    <a href="#" id="mobile-theme-toggle" title="Theme" id="mobile-theme-toggle"><i class="bi bi-moon"></i></a>
   </div>
 
   <!-- Toggle Buttons -->
