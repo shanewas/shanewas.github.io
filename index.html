@@ -37,6 +37,37 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { color: #fff; }
 
+
+    /* ── Light Mode ── */
+    body.light-mode {
+      --bg-dark: #f0f4f8;
+      --bg-card: rgba(0,0,0,0.04);
+      --bg-card-border: rgba(0,0,0,0.1);
+      --text: #1a202c;
+      --text-muted: #4a5568;
+    }
+    body.light-mode header {
+      background: rgba(240,244,248,0.95);
+      border-right-color: rgba(0,0,0,0.1);
+    }
+    body.light-mode #hero::before {
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(0,180,160,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,80,160,0.07) 0%, transparent 60%);
+    }
+    body.light-mode .skill-tag {
+      background: rgba(0,180,160,0.08);
+      border-color: rgba(0,180,160,0.25);
+      color: #1a202c;
+    }
+    body.light-mode .btn-outline-light {
+      border-color: rgba(0,0,0,0.2);
+      color: #1a202c;
+    }
+    body.light-mode footer {
+      border-top-color: rgba(0,0,0,0.08);
+    }
+
     /* ── Sidebar ── */
     header {
       position: fixed; top: 0; left: 0;
@@ -327,8 +358,15 @@
     <div class="social-links">
       <a href="https://github.com/shanewas" title="GitHub"><i class="bx bxl-github"></i></a>
       <a href="https://www.linkedin.com/in/ahmedshanewas/" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
-      <a href="mailto:shanewasahmed@gmail.com" title="Email"><i class="bx bx-envelope"></i></a>
+      <a href="/cdn-cgi/l/email-protection#73001b121d16041200121b1e161733141e121a1f5d101c1e" title="Email"><i class="bx bx-envelope"></i></a>
     </div>
+    <a href="https://drive.google.com/uc?export=download&id=1IxiEHTS8ixUyPWD4inqCnfsUUtpjbrVb" target="_blank" id="cv-download-btn"
+      style="display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;
+             background:rgba(0,229,195,0.1);border:1px solid var(--accent-dim);
+             color:var(--accent);padding:.5rem 1rem;border-radius:.5rem;
+             font-size:.82rem;font-weight:600;transition:all .2s;width:100%;justify-content:center;">
+      <i class="bx bx-download"></i> Download CV
+    </a>
     <nav>
       <ul>
         <li><a href="#hero" class="active"><i class="bx bx-home"></i> Home</a></li>
@@ -359,6 +397,7 @@
           <div class="hero-cta">
             <a href="#contact" class="btn-primary-custom">Get In Touch</a>
             <a href="#resume" class="btn-outline-custom">View Resume</a>
+            <a href="https://drive.google.com/uc?export=download&id=1IxiEHTS8ixUyPWD4inqCnfsUUtpjbrVb" target="_blank" class="btn-outline-custom" style="display:flex;align-items:center;gap:.4rem;"><i class="bx bx-download"></i> Download CV</a>
           </div>
         </div>
         <div class="hero-stats">
@@ -579,42 +618,28 @@
     <section id="projects">
       <div data-aos="fade-up">
         <div class="section-label">// 04</div>
-        <div class="section-title">Projects</div>
-        <div class="project-grid">
-          <div class="project-card">
-            <h4>@shanewas/form-validation</h4>
-            <p>Enterprise-ready form validation engine for Node.js and browsers. Rule-based, dependency-driven, async-capable with EN/JP i18n support and webhook integration.</p>
-            <div class="project-tags">
-              <span class="project-tag">JavaScript</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">NPM Package</span>
-              <span class="project-tag">i18n</span>
-            </div>
-            <a href="https://www.npmjs.com/package/@shanewas/form-validation" target="_blank" class="project-link">View on NPM →</a>
+        <div class="section-title">Projects
+          <a href="https://github.com/shanewas" target="_blank"
+            style="font-size:.85rem; font-weight:400; color:var(--accent); margin-left:1rem; vertical-align:middle;">
+            View all on GitHub →
+          </a>
+        </div>
+        <div id="projects-grid" class="project-grid">
+          <!-- Skeleton loaders -->
+          <div class="project-card skeleton-card" style="min-height:180px; animation: pulse 1.5s infinite;">
+            <div style="height:1rem; width:60%; background:rgba(255,255,255,0.08); border-radius:.3rem; margin-bottom:1rem;"></div>
+            <div style="height:.75rem; width:90%; background:rgba(255,255,255,0.05); border-radius:.3rem; margin-bottom:.5rem;"></div>
+            <div style="height:.75rem; width:70%; background:rgba(255,255,255,0.05); border-radius:.3rem;"></div>
           </div>
-          <div class="project-card">
-            <h4>PayFlow — Payment Integration System</h4>
-            <p>Full-stack payment processing system with Stripe API, JWT auth, SCA/3DS compliance, webhook signature verification, Swagger docs, and Dockerized CI/CD.</p>
-            <div class="project-tags">
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">React</span>
-              <span class="project-tag">Docker</span>
-              <span class="project-tag">Stripe</span>
-            </div>
-            <a href="https://github.com/shanewas/payflow" target="_blank" class="project-link">View on GitHub →</a>
+          <div class="project-card skeleton-card" style="min-height:180px; animation: pulse 1.5s infinite .2s;">
+            <div style="height:1rem; width:50%; background:rgba(255,255,255,0.08); border-radius:.3rem; margin-bottom:1rem;"></div>
+            <div style="height:.75rem; width:85%; background:rgba(255,255,255,0.05); border-radius:.3rem; margin-bottom:.5rem;"></div>
+            <div style="height:.75rem; width:65%; background:rgba(255,255,255,0.05); border-radius:.3rem;"></div>
           </div>
-          <div class="project-card">
-            <h4>AIW Core — Banking Automation Platform</h4>
-            <p>Hyper-automation platform for business process automation. Desktop + web automation studio with shared engine, ML/NLP pipelines, deployed to 5+ major banks.</p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">MongoDB</span>
-              <span class="project-tag">ElectronJS</span>
-              <span class="project-tag">Docker</span>
-              <span class="project-tag">NLP</span>
-            </div>
-            <span style="font-size:.82rem; color:var(--text-muted);">Private — Ferntech Solutions</span>
+          <div class="project-card skeleton-card" style="min-height:180px; animation: pulse 1.5s infinite .4s;">
+            <div style="height:1rem; width:55%; background:rgba(255,255,255,0.08); border-radius:.3rem; margin-bottom:1rem;"></div>
+            <div style="height:.75rem; width:80%; background:rgba(255,255,255,0.05); border-radius:.3rem; margin-bottom:.5rem;"></div>
+            <div style="height:.75rem; width:60%; background:rgba(255,255,255,0.05); border-radius:.3rem;"></div>
           </div>
         </div>
       </div>
@@ -630,7 +655,7 @@
             <div class="card-glass">
               <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">Feel free to reach out for opportunities or collaboration.</p>
               <p style="margin-bottom:.75rem;"><i class="bi bi-geo-alt me-2" style="color:var(--accent)"></i>Miyazaki, Japan</p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-envelope me-2" style="color:var(--accent)"></i>shanewasahmed@gmail.com</p>
+              <p style="margin-bottom:.75rem;"><i class="bi bi-envelope me-2" style="color:var(--accent)"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1c2d9d0dfd4c6d0c2d0d9dcd4d5f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></p>
               <p style="margin-bottom:.75rem;"><i class="bi bi-linkedin me-2" style="color:var(--accent)"></i><a href="https://linkedin.com/in/ahmedshanewas">ahmedshanewas</a></p>
               <p><i class="bi bi-github me-2" style="color:var(--accent)"></i><a href="https://github.com/shanewas">shanewas</a></p>
             </div>
@@ -675,7 +700,7 @@
     </footer>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 700, once: true, offset: 60 });
@@ -683,9 +708,10 @@
 
     // Theme toggle
     document.getElementById('theme-toggle').addEventListener('click', () => {
-      const isDark = document.body.style.getPropertyValue('--bg-dark') === '#fff';
-      document.body.style.setProperty('--bg-dark', isDark ? '#0a0f1e' : '#fff');
-      document.getElementById('theme-toggle').innerHTML = isDark ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
+      const isLight = document.body.classList.toggle('light-mode');
+      document.getElementById('theme-toggle').innerHTML = isLight
+        ? '<i class="bi bi-moon"></i>'
+        : '<i class="bi bi-sun"></i>';
     });
 
     // Active nav highlight
@@ -718,6 +744,70 @@
           document.querySelector('.error-message').style.display = 'block';
         });
     });
+
+    // ── GitHub Pinned Repos ──
+    const langColors = {
+      JavaScript: '#f1e05a', TypeScript: '#2b7489', Python: '#3572A5',
+      'C++': '#f34b7d', 'C#': '#178600', Java: '#b07219',
+      'Jupyter Notebook': '#DA5B0B', Shell: '#89e051', Go: '#00ADD8',
+      Kotlin: '#F18E33', default: '#8892a4'
+    };
+
+    async function loadPinnedRepos() {
+      const grid = document.getElementById('projects-grid');
+      try {
+        const res = await fetch('https://gh-pinned-repos.egoist.sh/?username=shanewas');
+        if (!res.ok) throw new Error('API error');
+        const repos = await res.json();
+        if (!repos || repos.length === 0) throw new Error('No repos');
+        grid.innerHTML = repos.map(repo => {
+          const color = langColors[repo.language] || langColors.default;
+          return `<div class="project-card">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+              <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
+              <h4 style="margin:0;">${repo.repo}</h4>
+              ${repo.stars > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${repo.stars}</span>` : ''}
+            </div>
+            <p>${repo.description || 'No description provided.'}</p>
+            <div class="project-tags" style="margin-bottom:auto;">
+              ${repo.language ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;"></span>${repo.language}</span>` : ''}
+            </div>
+            <a href="https://github.com/shanewas/${repo.repo}" target="_blank"
+              style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">
+              View on GitHub →
+            </a>
+          </div>`;
+        }).join('');
+      } catch {
+        // Fallback: REST API sorted by stars
+        try {
+          const res2 = await fetch('https://api.github.com/users/shanewas/repos?sort=updated&per_page=6');
+          const repos2 = await res2.json();
+          grid.innerHTML = repos2.map(repo => {
+            const color = langColors[repo.language] || langColors.default;
+            return `<div class="project-card">
+              <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+                <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
+                <h4 style="margin:0;">${repo.name}</h4>
+                ${repo.stargazers_count > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${repo.stargazers_count}</span>` : ''}
+              </div>
+              <p>${repo.description || 'No description.'}</p>
+              <div class="project-tags" style="margin-bottom:auto;">
+                ${repo.language ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;"></span>${repo.language}</span>` : ''}
+              </div>
+              <a href="${repo.html_url}" target="_blank"
+                style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">
+                View on GitHub →
+              </a>
+            </div>`;
+          }).join('');
+        } catch {
+          grid.innerHTML = `<p style="color:var(--text-muted);">Could not load projects. <a href="https://github.com/shanewas" target="_blank">View on GitHub →</a></p>`;
+        }
+      }
+    }
+
+    loadPinnedRepos();
   </script>
 </body>
 </html>
