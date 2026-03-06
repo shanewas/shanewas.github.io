@@ -795,6 +795,19 @@
     }
 
     loadPinnedRepos();
+
+    // Cloudflare-safe email render
+    (function(){
+      var u='shanewasahmed', d='gmail.com';
+      var el = document.getElementById('cf-email');
+      if(el) {
+        var a = document.createElement('a');
+        a.href = 'mailto:' + u + '@' + d;
+        a.style.color = 'var(--accent)';
+        a.textContent = u + '@' + d;
+        el.appendChild(a);
+      }
+    })();
   </script>
 </body>
 </html>
