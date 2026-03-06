@@ -594,7 +594,7 @@
             <div class="card-glass">
               <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">お仕事やコラボレーションのご相談はお気軽にどうぞ。</p>
               <p style="margin-bottom:.75rem;"><i class="bi bi-geo-alt me-2" style="color:var(--accent)"></i>宮崎県、日本</p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-envelope me-2" style="color:var(--accent)"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="73001b121d16041200121b1e161733141e121a1f5d101c1e">[email&#160;protected]</a></p>
+              <p style="margin-bottom:.75rem;"><i class="bi bi-envelope me-2" style="color:var(--accent)"></i><span id="cf-email"></span></p>
               <p style="margin-bottom:.75rem;"><i class="bi bi-linkedin me-2" style="color:var(--accent)"></i><a href="https://linkedin.com/in/ahmedshanewas">ahmedshanewas</a></p>
               <p><i class="bi bi-github me-2" style="color:var(--accent)"></i><a href="https://github.com/shanewas">shanewas</a></p>
             </div>
@@ -639,7 +639,7 @@
     </footer>
   </main>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 700, once: true, offset: 60 });
@@ -678,7 +678,7 @@
         });
     });
 
-    // ── GitHub Pinned Repos (hardcoded names, live details from API) ──
+    // ── GitHub Pinned Repos ──
     const PINNED = [
       'Optical-Coherence-Tomographic-Analysis',
       'process-automation',
@@ -687,46 +687,62 @@
       'posix-ipc-dotnet',
       'payflow'
     ];
-
+    const FALLBACK = [
+      { name: 'Optical-Coherence-Tomographic-Analysis', description: 'Alzheimer prediction and feature analysis from Optical Coherence Tomographic images using deep learning.', language: 'Jupyter Notebook', stars: 0, url: 'https://github.com/shanewas/Optical-Coherence-Tomographic-Analysis' },
+      { name: 'process-automation', description: 'Robotic process automation (RPA) solution for building, deploying, and managing software robots.', language: 'JavaScript', stars: 1, url: 'https://github.com/shanewas/process-automation' },
+      { name: 'StructProbe', description: 'A small C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets.', language: 'C++', stars: 0, url: 'https://github.com/shanewas/StructProbe' },
+      { name: 'ValidationEngine', description: '@shanewas/form-validation — powerful and flexible validation engine for Node.js and browsers.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/ValidationEngine' },
+      { name: 'posix-ipc-dotnet', description: 'A lightweight .NET library for System V shared memory and semaphores on Linux (x64, glibc).', language: 'C#', stars: 0, url: 'https://github.com/shanewas/posix-ipc-dotnet' },
+      { name: 'payflow', description: 'A full-stack payment integration system built with Node.js, Express, Stripe API, PostgreSQL and React.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/payflow' }
+    ];
     const langColors = {
       JavaScript: '#f1e05a', TypeScript: '#2b7489', Python: '#3572A5',
       'C++': '#f34b7d', 'C#': '#178600', Java: '#b07219',
       'Jupyter Notebook': '#DA5B0B', Shell: '#89e051', Go: '#00ADD8',
       HTML: '#e34c26', default: '#8892a4'
     };
-
-    async function loadPinnedRepos() {
+    function renderRepos(repos) {
       const grid = document.getElementById('projects-grid');
+      grid.innerHTML = repos.map(r => {
+        const name = r.name || r.repo;
+        const desc = r.description || 'No description provided.';
+        const lang = r.language;
+        const stars = r.stargazers_count || r.stars || 0;
+        const url = r.html_url || r.url || ('https://github.com/shanewas/' + name);
+        const color = langColors[lang] || langColors.default;
+        return `<div class="project-card">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+            <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
+            <h4 style="margin:0;">${name}</h4>
+            ${stars > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${stars}</span>` : ''}
+          </div>
+          <p>${desc}</p>
+          <div class="project-tags" style="margin-bottom:auto;">
+            ${lang ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;vertical-align:middle;"></span>${lang}</span>` : ''}
+          </div>
+          <a href="${url}" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
+        </div>`;
+      }).join('');
+    }
+    async function loadPinnedRepos() {
       try {
         const results = await Promise.all(
           PINNED.map(name =>
-            fetch(`https://api.github.com/repos/shanewas/${name}`)
-              .then(r => r.json())
+            fetch(`https://api.github.com/repos/shanewas/${name}`, {
+              headers: { 'Accept': 'application/vnd.github.v3+json' }
+            }).then(r => r.json())
           )
         );
-        grid.innerHTML = results.map(repo => {
-          const color = langColors[repo.language] || langColors.default;
-          return `<div class="project-card">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-              <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-              <h4 style="margin:0;">${repo.name}</h4>
-              ${repo.stargazers_count > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${repo.stargazers_count}</span>` : ''}
-            </div>
-            <p>${repo.description || '説明なし'}</p>
-            <div class="project-tags" style="margin-bottom:auto;">
-              ${repo.language ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;"></span>${repo.language}</span>` : ''}
-            </div>
-            <a href="${repo.html_url}" target="_blank"
-              style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">
-              GitHubで見る →
-            </a>
-          </div>`;
-        }).join('');
+        // Check if API returned valid data (not rate limit error)
+        if (results[0] && results[0].name) {
+          renderRepos(results);
+        } else {
+          renderRepos(FALLBACK);
+        }
       } catch {
-        grid.innerHTML = `<p style="color:var(--text-muted);">Could not load projects. <a href="https://github.com/shanewas" target="_blank">GitHubで見る →</a></p>`;
+        renderRepos(FALLBACK);
       }
     }
-
     loadPinnedRepos();
 
     // Cloudflare-safe email render
