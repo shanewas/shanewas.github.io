@@ -678,63 +678,52 @@
         });
     });
 
-    // ── GitHub Pinned Repos ──
+    // ── GitHub Pinned Repos (hardcoded names, live details from API) ──
+    const PINNED = [
+      'Optical-Coherence-Tomographic-Analysis',
+      'process-automation',
+      'StructProbe',
+      'ValidationEngine',
+      'posix-ipc-dotnet',
+      'payflow'
+    ];
+
     const langColors = {
       JavaScript: '#f1e05a', TypeScript: '#2b7489', Python: '#3572A5',
       'C++': '#f34b7d', 'C#': '#178600', Java: '#b07219',
       'Jupyter Notebook': '#DA5B0B', Shell: '#89e051', Go: '#00ADD8',
-      default: '#8892a4'
+      HTML: '#e34c26', default: '#8892a4'
     };
 
     async function loadPinnedRepos() {
       const grid = document.getElementById('projects-grid');
       try {
-        const res = await fetch('https://gh-pinned-repos.egoist.sh/?username=shanewas');
-        if (!res.ok) throw new Error('API error');
-        const repos = await res.json();
-        if (!repos || repos.length === 0) throw new Error('No repos');
-        grid.innerHTML = repos.map(repo => {
+        const results = await Promise.all(
+          PINNED.map(name =>
+            fetch(`https://api.github.com/repos/shanewas/${name}`)
+              .then(r => r.json())
+          )
+        );
+        grid.innerHTML = results.map(repo => {
           const color = langColors[repo.language] || langColors.default;
           return `<div class="project-card">
             <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
               <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-              <h4 style="margin:0;">${repo.repo}</h4>
-              ${repo.stars > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${repo.stars}</span>` : ''}
+              <h4 style="margin:0;">${repo.name}</h4>
+              ${repo.stargazers_count > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${repo.stargazers_count}</span>` : ''}
             </div>
             <p>${repo.description || '説明なし'}</p>
             <div class="project-tags" style="margin-bottom:auto;">
               ${repo.language ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;"></span>${repo.language}</span>` : ''}
             </div>
-            <a href="https://github.com/shanewas/${repo.repo}" target="_blank"
+            <a href="${repo.html_url}" target="_blank"
               style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">
               GitHubで見る →
             </a>
           </div>`;
         }).join('');
       } catch {
-        try {
-          const res2 = await fetch('https://api.github.com/users/shanewas/repos?sort=updated&per_page=6');
-          const repos2 = await res2.json();
-          grid.innerHTML = repos2.map(repo => {
-            const color = langColors[repo.language] || langColors.default;
-            return `<div class="project-card">
-              <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-                <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-                <h4 style="margin:0;">${repo.name}</h4>
-              </div>
-              <p>${repo.description || '説明なし'}</p>
-              <div class="project-tags" style="margin-bottom:auto;">
-                ${repo.language ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;"></span>${repo.language}</span>` : ''}
-              </div>
-              <a href="${repo.html_url}" target="_blank"
-                style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">
-                GitHubで見る →
-              </a>
-            </div>`;
-          }).join('');
-        } catch {
-          grid.innerHTML = `<p style="color:var(--text-muted);">プロジェクトを読み込めませんでした。<a href="https://github.com/shanewas" target="_blank">GitHubで見る →</a></p>`;
-        }
+        grid.innerHTML = `<p style="color:var(--text-muted);">Could not load projects. <a href="https://github.com/shanewas" target="_blank">GitHubで見る →</a></p>`;
       }
     }
 
