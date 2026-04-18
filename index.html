@@ -800,7 +800,6 @@
 
     // ── GitHub Pinned Repos ──
     const PINNED = [
-      'jlpt-pro',
       'ValidationEngine',
       'payflow',
       'StructProbe',
@@ -808,13 +807,11 @@
       'posix-ipc-dotnet'
     ];
     const FALLBACK = [
-      { name: 'process-automation', description: 'Robotic process automation (RPA) solution for building, deploying, and managing software robots.', language: 'JavaScript', stars: 1, url: 'https://github.com/shanewas/process-automation' },
-      { name: 'StructProbe', description: 'A small C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets.', language: 'C++', stars: 0, url: 'https://github.com/shanewas/StructProbe' },
-      { name: 'ValidationEngine', description: '@shanewas/form-validation — powerful and flexible validation engine for Node.js and browsers.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/ValidationEngine' },
-      { name: 'posix-ipc-dotnet', description: 'A lightweight .NET library for System V shared memory and semaphores on Linux (x64, glibc).', language: 'C#', stars: 0, url: 'https://github.com/shanewas/posix-ipc-dotnet' },
-      { name: 'payflow', description: 'A full-stack payment integration system built with Node.js, Express, Stripe API, PostgreSQL and React.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/payflow' },
-      { name: 'jlpt-pro', description: 'Full-stack JLPT prep platform (React, Vite, Node.js, Express, SQLite) with AI-powered quiz generation - deployed on Oracle Cloud ARM.', language: 'TypeScript', stars: 0, url: 'https://github.com/shanewas/jlpt-pro' },
-      { name: 'tunnelfox', description: 'A privacy-focused desktop browser that routes all traffic through an SSH SOCKS5 tunnel.', language: 'python', stars: 0, url: 'https://github.com/shanewas/tunnelfox' }
+      { name: 'ValidationEngine', description: '@shanewas/form-validation — powerful form validation engine for Node.js and browsers.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/ValidationEngine', stargazers_count: 0 },
+      { name: 'payflow', description: 'Full-stack payment system: Node.js, Express, Stripe API, PostgreSQL, React. JWT auth, webhooks, refunds, Docker.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/payflow', stargazers_count: 0 },
+      { name: 'StructProbe', description: 'C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets. Win32 SDK headers on Linux.', language: 'C++', stars: 0, url: 'https://github.com/shanewas/StructProbe', stargazers_count: 0 },
+      { name: 'tunnelfox', description: 'Privacy desktop browser routing all traffic through an SSH SOCKS5 tunnel. PyQt6 + Chromium, dark UI, tunnel health monitoring.', language: 'Python', stars: 0, url: 'https://github.com/shanewas/tunnelfox', stargazers_count: 0 },
+      { name: 'posix-ipc-dotnet', description: '.NET library for System V shared memory and semaphores on Linux (x64, glibc). Low-latency IPC between processes.', language: 'C#', stars: 0, url: 'https://github.com/shanewas/posix-ipc-dotnet', stargazers_count: 0 }
     ];
     const langColors = {
       JavaScript: '#f1e05a', TypeScript: '#2b7489', Python: '#3572A5',
@@ -845,6 +842,10 @@
         </div>`;
       }).join('');
     }
+    // Show FALLBACK immediately so projects are always visible
+    renderRepos(FALLBACK);
+
+    // Then try to fetch live GitHub data and upgrade if available
     async function loadPinnedRepos() {
       try {
         const controller = new AbortController();
@@ -863,11 +864,9 @@
         const valid = results.filter(r => r && r.id);
         if (valid.length > 0) {
           renderRepos(valid);
-        } else {
-          renderRepos(FALLBACK);
         }
       } catch {
-        renderRepos(FALLBACK);
+        // FALLBACK already rendered — silently keep it
       }
     }
     loadPinnedRepos();
