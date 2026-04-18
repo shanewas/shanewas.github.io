@@ -847,16 +847,22 @@
     }
     async function loadPinnedRepos() {
       try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
         const results = await Promise.all(
           PINNED.map(name =>
             fetch(`https://api.github.com/repos/shanewas/${name}`, {
-              headers: { 'Accept': 'application/vnd.github.v3+json' }
-            }).then(r => r.json())
+              headers: { 'Accept': 'application/vnd.github.v3+json' },
+              signal: controller.signal
+            })
+              .then(r => r.json())
+              .catch(() => ({ id: null }))
           )
         );
-        // Check if API returned valid data (not rate limit error)
-        if (results[0] && results[0].name) {
-          renderRepos(results);
+        clearTimeout(timeout);
+        const valid = results.filter(r => r && r.id);
+        if (valid.length > 0) {
+          renderRepos(valid);
         } else {
           renderRepos(FALLBACK);
         }
