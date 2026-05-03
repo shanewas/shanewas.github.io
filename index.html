@@ -95,7 +95,10 @@
     .tag-azure{ background: #0078D422; color: #0078D4; }
     .tag-ml   { background: #FF6F0022; color: #FF6F00; }
 
-    [data-lang="jp"] { display: none; }
+    html[data-lang="jp"] [data-lang-en] { display: none; }
+    html[data-lang="jp"] [data-lang-jp] { display: block; }
+    html:not([data-lang]) [data-lang-jp],
+    html[data-lang="en"] [data-lang-jp] { display: none; }
 
     /* ── Topbar ── */
     #topbar {
