@@ -61,7 +61,7 @@
       color: var(--text);
       line-height: 1.65;
       transition: background var(--transition), color var(--transition);
-      overflow-x: hidden;
+      overflow-x: clip;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -616,7 +616,7 @@
     <!-- ── Hero ── -->
     <section id="hero">
       <div class="container">
-        <p class="hero-tagline reveal" data-reveal>I write the code that doesn't apologize.</p>
+        <h1 class="hero-tagline reveal" data-reveal>I write the code that doesn't apologize.</h1>
         <p class="hero-sub reveal" data-reveal data-delay="80"
           data-lang-en="Senior software engineer based in Miyazaki, Japan. 10 years shipping low-level systems, APIs, and automation that banks actually rely on."
           data-lang-jp="宮崎在住のソフトウェアエンジニア。10年間、銀行が実際に依存する低レベルシステム、API、自動化を送り続けている。">
@@ -705,7 +705,7 @@
           <span data-lang-en>What I actually use</span><span data-lang-jp>実際に使っている技術</span>
         </h2>
         <div class="skills-accordion">
-          <div class="skill-group reveal" data-reveal data-delay="80">
+          <div class="skill-group open reveal" data-reveal data-delay="80">
             <div class="skill-group-header">
               <span data-lang-en>Languages</span><span data-lang-jp>言語</span>
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
@@ -866,7 +866,7 @@
           <div class="project-card reveal" data-reveal data-delay="120">
             <h3>payflow</h3>
             <p data-lang-en="Full-stack payment system — Node.js, Express, Stripe API, PostgreSQL, React. JWT auth, webhook handling, refund flows, Docker."
-              data-jp>フルスタック決済システム——Node.js、Express、Stripe API、PostgreSQL、React。JWT認証、 webhook処理、返金フロー、Docker。</p>
+              data-lang-jp>フルスタック決済システム——Node.js、Express、Stripe API、PostgreSQL、React。JWT認証、 webhook処理、返金フロー、Docker。</p>
             <div class="project-tags">
               <span class="tag tag-ts">TypeScript</span>
               <span class="tag">Node.js</span>
@@ -903,7 +903,7 @@
           <div class="project-card reveal" data-reveal data-delay="200">
             <h3>posix-ipc-dotnet</h3>
             <p data-lang-en=".NET library for System V shared memory and semaphores on Linux (x64, glibc). Low-latency IPC between processes — no native deps."
-              data-jp>Linux向けSystem V共有メモリとセマフォの.NETライブラリ（x64、glibc）。ネイティブ依存なしの低レイテンシIPC。</p>
+              data-lang-jp>Linux向けSystem V共有メモリとセマフォの.NETライブラリ（x64、glibc）。ネイティブ依存なしの低レイテンシIPC。</p>
             <div class="project-tags">
               <span class="tag tag-cs">C#</span>
               <span class="tag">.NET Core</span>
@@ -1042,6 +1042,16 @@
 
   /* ── Language toggle ── */
   const langBtns = document.querySelectorAll('[data-lang-btn]');
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang === 'jp') {
+    html.setAttribute('data-lang', 'jp');
+    langBtns.forEach(b => {
+      b.classList.remove('active');
+      if (b.getAttribute('data-lang-btn') === 'jp') b.classList.add('active');
+    });
+    document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = '');
+  }
   langBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       langBtns.forEach(b => b.classList.remove('active'));
@@ -1049,10 +1059,12 @@
       const lang = btn.getAttribute('data-lang-btn');
       if (lang === 'jp') {
         html.setAttribute('data-lang', 'jp');
+        localStorage.setItem('lang', 'jp');
         document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = 'none');
         document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = '');
       } else {
         html.removeAttribute('data-lang');
+        localStorage.setItem('lang', 'en');
         document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = '');
         document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = 'none');
       }
@@ -1106,7 +1118,7 @@
         setTimeout(() => el.classList.add('visible'), delay);
         revealObs.unobserve(el);
       });
-    }, { threshold: 0.08 });
+    }, { threshold: 0.15 });
     revealEls.forEach(el => revealObs.observe(el));
   }
 </script>
