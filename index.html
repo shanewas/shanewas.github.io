@@ -1,932 +1,1115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shanewas Ahmed – Senior Software Engineer</title>
-  <meta name="description" content="Senior Software Engineer with 10+ years of experience across C++, C#, .NET, Linux, APIs, and enterprise software delivery in Bangladesh and Japan. IEEE author and contributor to a patent publication.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.7/css/boxicons.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.6/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shanewas Ahmed — Senior Software Engineer</title>
+  <meta name="description" content="Senior software engineer based in Miyazaki, Japan. Systems code that ships and holds." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── Variables ── */
     :root {
-      --accent: #00e5c3;
-      --accent-dim: #00bfa6;
-      --bg-dark: #0a0f1e;
-      --bg-card: rgba(255,255,255,0.04);
-      --bg-card-border: rgba(255,255,255,0.1);
-      --text: #e8eaf0;
-      --text-muted: #8892a4;
-      --sidebar-w: 260px;
+      --primary:   #0F172A;
+      --secondary: #1E293B;
+      --accent:    #38BDF8;
+      --accent-warm: #F59E0B;
+      --bg:        #FAFBFC;
+      --surface:   #FFFFFF;
+      --text:      #1E293B;
+      --muted:     #64748B;
+      --border:    #E2E8F0;
+      --success:   #10B981;
+
+      --tag-cpp:   #00599C;
+      --tag-cs:    #68217A;
+      --tag-py:    #3776AB;
+      --tag-js:    #F7DF1E;
+      --tag-ts:    #3178C6;
+      --tag-rs:    #DEA584;
+
+      --max-w: 1100px;
+      --sidebar-w: 220px;
+      --section-pad: 100px 0;
+      --radius: 10px;
+      --transition: 250ms ease;
+
+      /* dark */
+      --d-bg:      #0F172A;
+      --d-surface: #1E293B;
+      --d-text:   #F1F5F9;
+      --d-muted:  #94A3B8;
+      --d-border: #334155;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    [data-theme="dark"] {
+      --bg:      var(--d-bg);
+      --surface: var(--d-surface);
+      --text:    var(--d-text);
+      --muted:   var(--d-muted);
+      --border:  var(--d-border);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-dark);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
-      line-height: 1.7;
+      line-height: 1.65;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
     }
     a { color: var(--accent); text-decoration: none; }
-    a:hover { color: #fff; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
 
+    /* ── Utilities ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      background: var(--border);
+      color: var(--muted);
+    }
+    .tag-cpp  { background: #00599C22; color: var(--tag-cpp); }
+    .tag-cs   { background: #68217A22; color: var(--tag-cs); }
+    .tag-py   { background: #3776AB22; color: var(--tag-py); }
+    .tag-js   { background: #F7DF1E33; color: #6b5a00; }
+    .tag-ts   { background: #3178C622; color: var(--tag-ts); }
+    .tag-rs   { background: #DEA58433; color: #b87333; }
+    .tag-go   { background: #00ADD822; color: #00ADD8; }
+    .tag-rust { background: #CE422B22; color: #CE422B; }
+    .tag-bash { background: #4EAA2522; color: #4EAA25; }
+    .tag-k8s  { background: #326CE522; color: #326CE5; }
+    .tag-docker{ background: #2496ED22; color: #2496ED; }
+    .tag-aws  { background: #FF990022; color: #FF9900; }
+    .tag-azure{ background: #0078D422; color: #0078D4; }
+    .tag-ml   { background: #FF6F0022; color: #FF6F00; }
 
-    /* ── Light Mode ── */
-    body.light-mode {
-      --bg-dark: #f0f4f8;
-      --bg-card: rgba(0,0,0,0.04);
-      --bg-card-border: rgba(0,0,0,0.1);
-      --text: #1a202c;
-      --text-muted: #4a5568;
+    [data-lang="jp"] { display: none; }
+
+    /* ── Topbar ── */
+    #topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      transition: background var(--transition);
     }
-    body.light-mode header {
-      background: rgba(240,244,248,0.95);
-      border-right-color: rgba(0,0,0,0.1);
+    #topbar-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-    body.light-mode #hero::before {
-      background:
-        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(0,180,160,0.1) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,80,160,0.07) 0%, transparent 60%);
+    .topbar-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      white-space: nowrap;
     }
-    body.light-mode .skill-tag {
-      background: rgba(0,180,160,0.08);
-      border-color: rgba(0,180,160,0.25);
-      color: #1a202c;
+    .topbar-spacer { flex: 1; }
+    #lang-toggle {
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px;
     }
-    body.light-mode .btn-outline-light {
-      border-color: rgba(0,0,0,0.2);
-      color: #1a202c;
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 16px;
+      color: var(--muted);
+      transition: all 150ms;
     }
-    body.light-mode footer {
-      border-top-color: rgba(0,0,0,0.08);
+    .lang-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    #theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text);
+      transition: all 150ms;
+    }
+    #theme-toggle:hover { background: var(--border); }
+    #mobile-nav-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    #mobile-nav-btn span {
+      display: block;
+      width: 16px;
+      height: 1.5px;
+      background: var(--text);
+      transition: all 200ms;
+    }
+    #mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 56px 0 0 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    #mobile-nav-overlay.open { display: flex; }
+    .mobile-nav-link {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* ── Layout ── */
+    #layout {
+      display: flex;
+      padding-top: 56px;
+      min-height: 100vh;
     }
 
     /* ── Sidebar ── */
-    header {
-      position: fixed; top: 0; left: 0;
-      width: var(--sidebar-w); height: 100vh;
-      background: rgba(10,15,30,0.92);
-      backdrop-filter: blur(12px);
-      border-right: 1px solid var(--bg-card-border);
-      padding: 2.5rem 1.5rem;
-      display: flex; flex-direction: column; align-items: center;
-      z-index: 1000;
+    #sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      padding: 40px 20px 40px 0;
+      border-right: 1px solid var(--border);
     }
-    header img {
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      object-fit: cover;
-      margin-bottom: 1rem;
+    #sidebar nav { display: flex; flex-direction: column; gap: 4px; }
+    .nav-link {
+      display: block;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 150ms;
+      position: relative;
     }
-    header h1 { font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: .25rem; }
-    header .tagline { font-size: .75rem; color: var(--text-muted); text-align: center; margin-bottom: 1rem; }
-    .social-links { display: flex; gap: .75rem; margin-bottom: 1.5rem; }
-    .social-links a { color: var(--text-muted); font-size: 1.2rem; transition: color .2s; }
-    .social-links a:hover { color: var(--accent); }
-    nav ul { list-style: none; width: 100%; }
-    nav ul li { margin-bottom: .25rem; }
-    nav ul a {
-      display: flex; align-items: center; gap: .75rem;
-      padding: .6rem 1rem; border-radius: .5rem;
-      color: var(--text-muted); font-size: .9rem; font-weight: 500;
-      transition: all .2s;
-    }
-    nav ul a:hover, nav ul a.active {
-      background: rgba(0,229,195,0.1);
-      color: var(--accent);
-    }
-    .badge-jp {
-      margin-top: auto;
-      font-size: .7rem;
-      background: rgba(0,229,195,0.1);
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-      padding: .25rem .75rem;
-      border-radius: 2rem;
+    .nav-link:hover { color: var(--text); background: var(--border); text-decoration: none; }
+    .nav-link.active { color: var(--accent); background: #38BDF822; font-weight: 600; }
+    .nav-link.active::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 3px; height: 60%;
+      background: var(--accent);
+      border-radius: 0 2px 2px 0;
     }
 
     /* ── Main ── */
-    main { margin-left: var(--sidebar-w); }
-    section { padding: 4rem 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    #main { flex: 1; min-width: 0; }
+
+    /* ── Sections ── */
+    section { padding: var(--section-pad); }
+    section + section { border-top: 1px solid var(--border); }
     .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem; color: var(--accent);
-      letter-spacing: .15em; text-transform: uppercase;
-      margin-bottom: .5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
     }
-    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+    [data-theme="dark"] .section-title { color: var(--d-text); }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
 
     /* ── Hero ── */
     #hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 4rem 3rem;
-      position: relative;
-      overflow: hidden;
+      padding: 100px 0 80px;
+      border: none !important;
     }
-    #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(0,229,195,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,100,200,0.08) 0%, transparent 60%);
+    .hero-tagline {
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--primary);
+      margin-bottom: 20px;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4rem;
+    [data-theme="dark"] .hero-tagline { color: var(--d-text); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
       align-items: center;
-      position: relative; z-index: 1;
-      width: 100%;
-      max-width: 960px;
-    }
-    .hero-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .85rem; color: var(--accent);
-      letter-spacing: .1em; margin-bottom: 1rem;
-    }
-    #hero h1 {
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 700; line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-    #hero h1 span { color: var(--accent); }
-    #hero .sub {
-      font-size: 1.1rem; color: var(--text-muted);
-      margin-bottom: 2rem; max-width: 520px;
-    }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
-    .hero-badge {
-      font-size: .75rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: .3rem .8rem; border-radius: 2rem;
-      color: var(--text-muted);
-    }
-    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary-custom {
-      background: var(--accent); color: #0a0f1e;
-      padding: .7rem 1.75rem; border-radius: .5rem;
-      font-weight: 600; font-size: .9rem;
-      transition: all .2s; border: none;
-    }
-    .btn-primary-custom:hover { background: #fff; color: #0a0f1e; }
-    .btn-outline-custom {
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--text); padding: .7rem 1.75rem;
-      border-radius: .5rem; font-size: .9rem;
-      transition: all .2s;
-    }
-    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-stats {
-      display: flex; flex-direction: column; gap: 1.5rem;
-    }
-    .stat-box {
-      background: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 1rem; padding: 1.25rem 1.5rem;
-      text-align: center; min-width: 130px;
-      backdrop-filter: blur(8px);
-    }
-    .stat-box .num { font-size: 2rem; font-weight: 700; color: var(--accent); }
-    .stat-box .lbl { font-size: .75rem; color: var(--text-muted); margin-top: .25rem; }
-
-    /* ── Cards ── */
-    .card-glass {
-      background: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 1rem;
-      padding: 1.75rem;
-      backdrop-filter: blur(8px);
-      transition: border-color .2s;
-    }
-    .card-glass:hover { border-color: rgba(0,229,195,0.3); }
-
-    /* ── Highlights ── */
-    .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-    .highlight-card {
-      background: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 1rem; padding: 1.5rem;
-      transition: all .2s;
-    }
-    .highlight-card:hover { border-color: rgba(0,229,195,0.4); transform: translateY(-2px); }
-    .highlight-card .icon { font-size: 1.75rem; margin-bottom: .75rem; }
-    .highlight-card h4 { font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
-    .highlight-card p { font-size: .82rem; color: var(--text-muted); line-height: 1.6; }
-
-    /* ── Skills ── */
-    .skill-group { margin-bottom: 1.5rem; }
-    .skill-group h5 {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem; color: var(--accent);
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: .75rem;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .skill-tag {
-      font-size: .8rem;
-      background: rgba(0,229,195,0.07);
-      border: 1px solid rgba(0,229,195,0.2);
-      color: var(--text);
-      padding: .3rem .85rem; border-radius: .4rem;
-    }
-
-    /* ── Timeline ── */
-    .timeline { position: relative; padding-left: 1.5rem; }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 0; top: .5rem; bottom: 0;
-      width: 2px; background: rgba(0,229,195,0.2);
-    }
-    .timeline-item { position: relative; margin-bottom: 2rem; }
-    .timeline-item::before {
-      content: '';
-      position: absolute; left: -1.6rem; top: .45rem;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0,229,195,0.2);
-    }
-    .timeline-item .period {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .72rem; color: var(--accent);
-      letter-spacing: .05em; margin-bottom: .25rem;
-    }
-    .timeline-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: .15rem; }
-    .timeline-item .company { font-size: .85rem; color: var(--text-muted); margin-bottom: .75rem; }
-    .timeline-item ul { padding-left: 1.25rem; }
-    .timeline-item ul li { font-size: .875rem; color: var(--text-muted); margin-bottom: .4rem; }
-
-    /* ── Projects ── */
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 1rem; padding: 1.5rem;
-      transition: all .2s; display: flex; flex-direction: column;
-    }
-    .project-card:hover { border-color: rgba(0,229,195,0.4); transform: translateY(-3px); }
-    .project-card h4 { font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
-    .project-card p { font-size: .83rem; color: var(--text-muted); flex: 1; margin-bottom: 1rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
-    .project-tag {
-      font-size: .72rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: .2rem .6rem; border-radius: .3rem;
-      color: var(--text-muted);
-    }
-    .project-link { font-size: .82rem; color: var(--accent); }
-
-    /* ── Form ── */
-    .form-control, .form-control:focus {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text); border-radius: .5rem;
-    }
-    .form-control:focus { box-shadow: 0 0 0 2px rgba(0,229,195,0.2); border-color: var(--accent); }
-    label { font-size: .85rem; color: var(--text-muted); margin-bottom: .35rem; display: block; }
-    .sent-message { display: none; color: var(--accent); margin-top: 1rem; font-size: .9rem; }
-    .error-message { display: none; color: #e63946; margin-top: 1rem; font-size: .9rem; }
-    .loading { display: none; color: var(--text-muted); margin-top: 1rem; font-size: .9rem; }
-
-    /* ── Floating buttons ── */
-    #theme-toggle, #language-toggle {
-      position: fixed; top: 1.25rem; z-index: 1100;
-      border-radius: .5rem; font-size: .82rem;
-      padding: .4rem .9rem;
-    }
-    #theme-toggle { right: 1rem; }
-    #language-toggle { right: 6rem; }
-
-    /* ── Mobile ── */
-    .mobile-nav {
-      display: none;
-      justify-content: space-around;
-      background: rgba(10,15,30,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      position: fixed; top: 0; width: 100%;
-      padding: .6rem 0; z-index: 1000;
-    }
-    .mobile-nav a { color: var(--text-muted); font-size: 1.25rem; flex: 1; text-align: center; padding: .4rem; }
-    .mobile-nav a:hover { color: var(--accent); }
-    /* Force language + theme buttons to look like nav icons */
-    .mobile-nav #mobile-theme-toggle,
-    .mobile-nav .mobile-lang-btn {
-      all: unset;
-      color: var(--text-muted);
-      font-size: 1rem;
-      flex: 1;
-      text-align: center;
-      padding: .4rem;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 150ms;
       cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #1e293b; text-decoration: none; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 280px;
+      border-radius: 16px;
+      background: var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 4rem;
+      color: var(--muted);
+      overflow: hidden;
     }
-    .mobile-nav #mobile-theme-toggle:hover,
-    .mobile-nav .mobile-lang-btn:hover { color: var(--accent); }
+    .about-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text { font-size: 1.05rem; line-height: 1.8; color: var(--text); }
+    .about-text p + p { margin-top: 16px; }
+    .about-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
 
-    @media (max-width: 991px) {
-      #theme-toggle, #language-toggle { display: none; }
-      header { display: none; }
-      .mobile-nav { display: flex; }
-      main { margin-left: 0; }
-      section { padding: 3rem 1.25rem; padding-top: 5rem; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-stats { flex-direction: row; flex-wrap: wrap; justify-content: flex-start; }
-      #hero { min-height: auto; padding-top: 5rem; }
+    /* ── Highlights ── */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
-    @media (max-width: 575px) {
-      #hero h1 { font-size: 2rem; }
-      .section-title { font-size: 1.5rem; }
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: all 200ms;
+    }
+    .highlight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    [data-theme="dark"] .highlight-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .highlight-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--primary); }
+    [data-theme="dark"] .highlight-card h3 { color: var(--d-text); }
+    .highlight-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Skills ── */
+    .skills-accordion { display: flex; flex-direction: column; gap: 8px; }
+    .skill-group {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .skill-group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      background: var(--surface);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 150ms;
+    }
+    .skill-group-header:hover { background: var(--border); }
+    .skill-group-header .arrow {
+      transition: transform 300ms;
+      color: var(--muted);
+    }
+    .skill-group.open .skill-group-header .arrow { transform: rotate(180deg); }
+    .skill-group-body {
+      display: none;
+      padding: 12px 20px 16px;
+      background: var(--bg);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-group.open .skill-group-body { display: flex; }
+
+    /* ── Experience ── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px; top: 8px; bottom: 8px;
+      width: 1.5px;
+      background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 48px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -29px; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .timeline-company {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    [data-theme="dark"] .timeline-company { color: var(--d-text); }
+    .timeline-role {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .timeline-dates {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 12px;
+    }
+    .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .timeline-bullets li {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.55;
+      padding-left: 16px;
+      position: relative;
+    }
+    .timeline-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 200ms;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    [data-theme="dark"] .project-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .project-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); }
+    [data-theme="dark"] .project-card h3 { color: var(--d-text); }
+    .project-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-links { display: flex; gap: 12px; margin-top: 4px; }
+    .project-links a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .project-links a:hover { text-decoration: underline; }
+
+    /* ── Education ── */
+    .edu-item {
+      border-left: 3px solid var(--accent);
+      padding: 16px 0 16px 20px;
+      margin-bottom: 28px;
+    }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-item h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    [data-theme="dark"] .edu-item h3 { color: var(--d-text); }
+    .edu-item .edu-meta { font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+    .edu-item p { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+    .patent-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+
+    /* ── Contact ── */
+    .contact-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 150ms;
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      #sidebar { display: none; }
+      #mobile-nav-btn { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-avatar { max-width: 200px; margin: 0 auto; }
+      section { padding: 72px 0; }
+      .hero-tagline { font-size: 2.2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
 </head>
 <body>
-  <!-- Mobile Nav -->
-  <div class="mobile-nav d-lg-none">
-    <a href="#hero"><i class="bx bx-home"></i></a>
-    <a href="#about"><i class="bx bx-user"></i></a>
-    <a href="#skills"><i class="bx bx-cog"></i></a>
-    <a href="#resume"><i class="bx bx-file-blank"></i></a>
-    <a href="#projects"><i class="bx bx-code-alt"></i></a>
-    <a href="#contact"><i class="bx bx-envelope"></i></a>
-    <a href="index_ja.html" title="日本語" style="font-size:.75rem;display:flex;align-items:center;justify-content:center;">JP</a>
-    <a href="#" id="mobile-theme-toggle" title="Theme" id="mobile-theme-toggle"><i class="bi bi-moon"></i></a>
-  </div>
 
-  <!-- Toggle Buttons -->
-  <a href="index_ja.html" id="language-toggle" class="btn btn-outline-light" title="日本語へ切り替え">日本語</a>
-  <button id="theme-toggle" class="btn btn-outline-light"><i class="bi bi-moon"></i></button>
+<!-- ── Topbar ── -->
+<header id="topbar">
+  <div id="topbar-inner">
+    <span class="topbar-name">Shanewas Ahmed</span>
+    <div class="topbar-spacer"></div>
+    <div id="lang-toggle">
+      <button class="lang-btn active" data-lang-btn="en">EN</button>
+      <button class="lang-btn" data-lang-btn="jp">JP</button>
+    </div>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+      <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button id="mobile-nav-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div id="mobile-nav-overlay">
+  <a class="mobile-nav-link" href="#about"      data-mobile-link>About</a>
+  <a class="mobile-nav-link" href="#highlights" data-mobile-link>Highlights</a>
+  <a class="mobile-nav-link" href="#skills"     data-mobile-link>Skills</a>
+  <a class="mobile-nav-link" href="#experience" data-mobile-link>Experience</a>
+  <a class="mobile-nav-link" href="#projects"   data-mobile-link>Projects</a>
+  <a class="mobile-nav-link" href="#education"  data-mobile-link>Education</a>
+  <a class="mobile-nav-link" href="#contact"    data-mobile-link>Contact</a>
+</div>
+
+<!-- ── Layout ── -->
+<div id="layout">
 
   <!-- Sidebar -->
-  <header>
-    <img src="assets/img/profile-img.jpg" alt="Shanewas Ahmed">
-    <h1>Shanewas Ahmed</h1>
-    <div class="tagline">Senior Software Engineer</div>
-    <div class="social-links">
-      <a href="https://github.com/shanewas" title="GitHub"><i class="bx bxl-github"></i></a>
-      <a href="https://www.linkedin.com/in/ahmedshanewas/" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
-      <a href="#" id="sidebar-email-link" title="Email"><i class="bx bx-envelope"></i></a>
-    </div>
-    <a href="https://drive.google.com/file/d/1AFuAlh5xzSvEIihegVmKJcsr8rH94jdv/view?usp=sharing" target="_blank" id="cv-download-btn"
-      style="display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;
-             background:rgba(0,229,195,0.1);border:1px solid var(--accent-dim);
-             color:var(--accent);padding:.5rem 1rem;border-radius:.5rem;
-             font-size:.82rem;font-weight:600;transition:all .2s;width:100%;justify-content:center;">
-      <i class="bx bx-download"></i> Download CV
-    </a>
+  <aside id="sidebar">
     <nav>
-      <ul>
-        <li><a href="#hero" class="active"><i class="bx bx-home"></i> Home</a></li>
-        <li><a href="#about"><i class="bx bx-user"></i> About</a></li>
-        <li><a href="#skills"><i class="bx bx-cog"></i> Skills</a></li>
-        <li><a href="#resume"><i class="bx bx-file-blank"></i> Resume</a></li>
-        <li><a href="#projects"><i class="bx bx-code-alt"></i> Projects</a></li>
-        <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
-      </ul>
+      <a class="nav-link" href="#hero"      data-nav>Hero</a>
+      <a class="nav-link" href="#about"     data-nav>About</a>
+      <a class="nav-link" href="#highlights" data-nav>Highlights</a>
+      <a class="nav-link" href="#skills"     data-nav>Skills</a>
+      <a class="nav-link" href="#experience" data-nav>Experience</a>
+      <a class="nav-link" href="#projects"   data-nav>Projects</a>
+      <a class="nav-link" href="#education"  data-nav>Education</a>
+      <a class="nav-link" href="#contact"    data-nav>Contact</a>
     </nav>
-    <div class="badge-jp">🇯🇵 Miyazaki, Japan</div>
-  </header>
+  </aside>
 
-  <main>
-    <!-- Hero -->
+  <!-- Main content -->
+  <main id="main">
+
+    <!-- ── Hero ── -->
     <section id="hero">
-      <div class="hero-grid" data-aos="fade-up">
-        <div>
-          <div class="hero-eyebrow">// Open to opportunities — Tokyo or remote</div>
-          <h1>10+ years building<br>systems that <span>scale</span><br>and don't break.</h1>
-          <p class="sub">Systems engineer with deep expertise in C++, C#, .NET, and Python on Linux. Built production APIs, PDF infrastructure, and automation deployed to 5+ banks across Bangladesh and Japan.</p>
-          <div class="hero-badges">
-            <span class="hero-badge">📜 Patent — Electronic Signature (JPO 2025)</span>
-            <span class="hero-badge">🔬 IEEE Deep Learning — 2019</span>
-            <span class="hero-badge">🇯🇵 Engineer Visa (Japan)</span>
-            <span class="hero-badge">🏦 Production at 5+ Banks</span>
-            <span class="hero-badge">💼 Open to Lead / Senior Roles</span>
-          </div>
-          <div class="hero-cta">
-            <a href="#contact" class="btn-primary-custom">Get In Touch</a>
-            <a href="#resume" class="btn-outline-custom">View Resume</a>
-            <a href="https://drive.google.com/file/d/1AFuAlh5xzSvEIihegVmKJcsr8rH94jdv/view?usp=sharing" target="_blank" class="btn-outline-custom" style="display:flex;align-items:center;gap:.4rem;"><i class="bx bx-download"></i> Download CV</a>
-          </div>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-box">
-            <div class="num">10+</div>
-            <div class="lbl">Years Experience</div>
-          </div>
-          <div class="stat-box">
-            <div class="num">1</div>
-            <div class="lbl">Patent Publication</div>
-          </div>
-          <div class="stat-box">
-            <img src="https://github-readme-stats.vercel.app/api?username=shanewas&theme=nord&count_private=true&show=repos,prs" width="160" alt="GitHub stats">
-            <div class="lbl">GitHub Repos</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div data-aos="fade-up">
-        <div class="section-label">// 01</div>
-        <div class="section-title">About Me</div>
-        <div class="row g-4">
-          <div class="col-lg-8">
-            <div class="card-glass">
-              <p style="margin-bottom:1rem;">I'm a senior software engineer at <strong>SkyCom Corporation</strong> in Miyazaki, Japan, building enterprise software across C++/C# libraries, REST APIs, Linux deployment pipelines, and digital signature-related systems used by organizations nationwide.</p>
-              <p style="margin-bottom:1rem;">Over 10 years across Bangladesh and Japan, I've shipped production systems at scale, co-founded a startup, led teams, and helped build automation software deployed to major financial institutions. I also contributed to a patent publication related to an electronic signature system using Japan's My Number Card.</p>
-              <p>I also co-authored an IEEE-published deep learning paper on Alzheimer's disease classification — joint research with the University of Sydney — bridging my interest in machine learning with real-world research.</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card-glass h-100">
-              <div class="section-label mb-3">// Highlights</div>
-              <ul style="list-style:none; padding:0;">
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">📜 Patent — JP 2025-169170 A — <a href="https://j-platpat.inpit.go.jp" target="_blank" style="color:var(--accent);">J-PlatPat</a></li>
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🔬 IEEE Paper — University of Sydney collaboration</li>
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🏦 Automation deployed to 5+ major banks</li>
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🥇 National Hackathon 1st Place (2014)</li>
-                <li style="padding:.5rem 0; font-size:.875rem;">🎓 MSP — Microsoft Student Partner 2013–2016</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <div data-aos="fade-up">
-        <div class="section-label">// 02</div>
-        <div class="section-title">Technical Skills</div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <div class="card-glass h-100">
-              <div class="skill-group">
-                <h5>Languages</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">C++</span>
-                  <span class="skill-tag">C#</span>
-                  <span class="skill-tag">Python</span>
-                  <span class="skill-tag">TypeScript</span>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">Bash</span>
-                  <span class="skill-tag">Java</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <h5>Frameworks</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">.NET Core</span>
-                  <span class="skill-tag">Node.js</span>
-                  <span class="skill-tag">ElectronJS</span>
-                  <span class="skill-tag">React</span>
-                  <span class="skill-tag">NestJS</span>
-                  <span class="skill-tag">Next.js</span>
-                  <span class="skill-tag">Express</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="card-glass h-100">
-              <div class="skill-group">
-                <h5>Infrastructure</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">RHEL Linux</span>
-                  <span class="skill-tag">Docker</span>
-                  <span class="skill-tag">Kubernetes</span>
-                  <span class="skill-tag">Azure</span>
-                  <span class="skill-tag">RPM Packaging</span>
-                  <span class="skill-tag">systemd</span>
-                  <span class="skill-tag">AWS (ECS, Lambda, SQS, RDS)</span>
-                  <span class="skill-tag">CI/CD</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <h5>Databases</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">MySQL</span>
-                  <span class="skill-tag">MongoDB</span>
-                  <span class="skill-tag">PostgreSQL</span>
-                  <span class="skill-tag">SQLite</span>
-                  <span class="skill-tag">Redis</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="card-glass h-100">
-              <div class="skill-group">
-                <h5>APIs & Systems</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">REST API</span>
-                  <span class="skill-tag">OpenAPI</span>
-                  <span class="skill-tag">gRPC</span>
-                  <span class="skill-tag">PDF Systems</span>
-                  <span class="skill-tag">Cryptographic Signing</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <h5>ML / AI</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">TensorFlow</span>
-                  <span class="skill-tag">scikit-learn</span>
-                  <span class="skill-tag">NLP</span>
-                  <span class="skill-tag">OCR</span>
-                  <span class="skill-tag">Transfer Learning</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Resume -->
-    <section id="resume">
-      <div data-aos="fade-up">
-        <div class="section-label">// 03</div>
-        <div class="section-title">Experience</div>
-        <div class="row g-4">
-          <div class="col-lg-7">
-            <div class="card-glass">
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="period">Apr 2022 – Present</div>
-                  <h4>Software Engineer</h4>
-                  <div class="company">SkyCom Corporation · Miyazaki, Japan</div>
-                  <ul>
-                    <li>Core developer on SkyPDF — low-level PDF libraries and tools in C++ and C# on RHEL</li>
-                    <li>Designed CLI interfaces and Web APIs for document signing, rendering, and conversion</li>
-                    <li>Automated deployment pipelines using RPM packaging, Bash scripting, and dependency management</li>
-                    <li>Resolved critical API performance bottleneck — reduced multi-process IPC overhead, improved response times by 2x for production workloads</li>
-                    <li>Contributed to a patent publication for an electronic signature system using Japan's My Number Card (JPO 2025)</li>
-                  </ul>
-                </div>
-                <div class="timeline-item">
-                  <div class="period">Oct 2019 – Sep 2021</div>
-                  <h4>Senior Software Engineer / Project Manager</h4>
-                  <div class="company">Ferntech Solutions · Dhaka, Bangladesh</div>
-                  <ul>
-                    <li>Architected AIW Core — hyper-automation platform deployed to Bank Asia, City Bank, UCB Bank, Eastern Bank</li>
-                    <li>Built automation studio for desktop (ElectronJS) and web with shared automation engine</li>
-                    <li>Led R&D for AI-assisted intelligent document automation features</li>
-                    <li>Promoted to PM (Jan 2020) — managed 5-person team, hiring, mentoring, delivery</li>
-                  </ul>
-                </div>
-                <div class="timeline-item">
-                  <div class="period">Dec 2014 – Dec 2017</div>
-                  <h4>Co-Founder & Lead Developer</h4>
-                  <div class="company">Neonsofts · Dhaka, Bangladesh</div>
-                  <ul>
-                    <li>Co-founded startup while completing undergraduate degree at BRAC University</li>
-                    <li>Delivered 2 complete ERP systems for retail and manufacturing clients</li>
-                    <li>Built desktop applications in C# / WinForms with SQLite</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="card-glass mb-4">
-              <div class="section-label mb-3">// Education</div>
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="period">2013 – 2019</div>
-                  <h4>BSc Computer Science</h4>
-                  <div class="company">BRAC University, Dhaka</div>
-                  <p style="font-size:.83rem; color:var(--text-muted);">Concurrent co-founder & freelancer 2014–2017. IEEE paper published 2019 via University of Sydney collaboration.</p>
-                </div>
-                <div class="timeline-item">
-                  <div class="period">Oct 2021 – Jun 2022</div>
-                  <h4>B-JET Program</h4>
-                  <div class="company">University of Miyazaki, Japan</div>
-                  <p style="font-size:.83rem; color:var(--text-muted);">JICA-sponsored ICT Engineers' Training. Certified by University of Miyazaki.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card-glass">
-              <div class="section-label mb-3">// Patent & Research</div>
-              <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.07);">
-                <div style="font-size:.75rem; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-bottom:.25rem;">PATENT · JPO 2025</div>
-                <div style="font-size:.875rem; font-weight:600; margin-bottom:.25rem;">JP 2025-169170 A</div>
-                <div style="font-size:.8rem; color:var(--text-muted);">Electronic Signature System Using My Number Card</div>
-                <a href="https://www.j-platpat.inpit.go.jp/c1801/PU/JP-2025-169170/15/en" target="_blank" style="font-size:.78rem;">View at J-PlatPat →</a>
-              </div>
-              <div>
-                <div style="font-size:.75rem; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-bottom:.25rem;">IEEE PUBLICATION · 2019</div>
-                <div style="font-size:.875rem; font-weight:600; margin-bottom:.25rem;">Alzheimer's Prediction via Deep Learning on OCT Images</div>
-                <div style="font-size:.8rem; color:var(--text-muted); margin-bottom:.5rem;">Joint research with University of Sydney. VGG19 & Inception v3.</div>
-                <a href="https://ieeexplore.ieee.org/document/9306649" target="_blank" style="font-size:.78rem;">View on IEEE Xplore →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <div data-aos="fade-up">
-        <div class="section-label">// 04</div>
-        <div class="section-title">Projects
-          <a href="https://github.com/shanewas" target="_blank"
-            style="font-size:.85rem; font-weight:400; color:var(--accent); margin-left:1rem; vertical-align:middle;">
-            View all on GitHub →
+      <div class="container">
+        <p class="hero-tagline reveal" data-reveal>I write the code that doesn't apologize.</p>
+        <p class="hero-sub reveal" data-reveal data-delay="80"
+          data-en="Senior software engineer based in Miyazaki, Japan. 10 years shipping low-level systems, APIs, and automation that banks actually rely on."
+          data-jp="宮崎在住のソフトウェアエンジニア。10年間、銀行が実際に依存する低レベルシステム、API、自動化を送り続けている。">
+        </p>
+        <div class="hero-ctas reveal" data-reveal data-delay="160">
+          <a class="btn btn-primary" href="https://github.com/shanewas" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12"/></svg>
+            <span data-lang-en>GitHub</span><span data-lang-jp>GitHub</span>
+          </a>
+          <a class="btn btn-outline" href="#contact">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-lang-en>Get in touch</span><span data-lang-jp>連絡する</span>
           </a>
         </div>
-        <div id="projects-grid" class="project-grid">
-          <div class="project-card">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-              <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-              <h4 style="margin:0;">ValidationEngine</h4>
-            </div>
-            <p>@shanewas/form-validation — powerful form validation engine for Node.js and browsers.</p>
-            <div class="project-tags" style="margin-bottom:auto;">
-              <span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#f1e05a;margin-right:.4rem;vertical-align:middle;"></span>JavaScript</span>
-            </div>
-            <a href="https://github.com/shanewas/ValidationEngine" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
+      </div>
+    </section>
+
+    <!-- ── About ── -->
+    <section id="about">
+      <div class="container">
+        <p class="section-label reveal" data-reveal data-lang-en>About</p><p class="section-label reveal" data-reveal data-lang-jp>自己紹介</p>
+        <h2 class="section-title reveal" data-reveal data-delay="60">
+          <span data-lang-en>The short version</span><span data-lang-jp>簡単な自己紹介</span>
+        </h2>
+        <div class="about-grid">
+          <div class="about-avatar reveal" data-reveal data-delay="80">
+            <!-- Photo: replace img src or remove and keep the icon -->
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
           </div>
-          <div class="project-card">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-              <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-              <h4 style="margin:0;">payflow</h4>
+          <div class="about-text">
+            <p class="reveal" data-reveal data-delay="100"
+              data-en="Right now I'm at SkyCom in Miyazaki, writing the guts of a PDF library in C++ and C#. I build signing APIs, deal with Linux deployment pipelines, and occasionally fight with RPM packaging. It's quiet until it isn't."
+              data-jp="現在、宮崎のSkyComでPDFライブラリのC++/C#コア部分を書いています。電子署名APIの構築、Linuxデプロイパイプライン、RPMパッケージングとの戦いも静かな職場ですが、バグが出ると話は別です。">
+            </p>
+            <p class="reveal" data-reveal data-delay="140"
+              data-en="Before that I ran a two-person startup that shipped two ERPs, then led automation work at Ferntech that ended up in four major banks in Bangladesh. I like building things that solve messy, real-world problems — not toy apps."
+              data-jp="その前は2人だけのスタートアップを運営し、ERPを2社に納入しました。その後Ferntechで自動化ツール主導し、バングラデシュの4つの主要銀行に導入されました。玩具のようなアプリではなく、実世界のややこしい問題を解決するものが好きです。">
+            </p>
+            <p class="reveal" data-reveal data-delay="180"
+              data-en="Outside of work: climbing indoors, keeping up with Japanese, and occasionally writing open-source tools that nobody asks for but occasionally helps someone."
+              data-jp="仕事以外：室内クライミング、日本語力の維持、たまにOSSツールを書く（誰かが喜んでくれるなら）。">
+            </p>
+            <div class="about-meta reveal" data-reveal data-delay="220">
+              <span class="tag">🇯🇵 Engineer Visa</span>
+              <span class="tag">📜 1 Patent (JPO 2025)</span>
+              <span class="tag">🔬 IEEE Paper 2019</span>
+              <span class="tag">🏦 5 Banks in production</span>
             </div>
-            <p>Full-stack payment system: Node.js, Express, Stripe API, PostgreSQL, React. JWT auth, webhooks, refunds, Docker.</p>
-            <div class="project-tags" style="margin-bottom:auto;">
-              <span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#f1e05a;margin-right:.4rem;vertical-align:middle;"></span>JavaScript</span>
-            </div>
-            <a href="https://github.com/shanewas/payflow" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
-          </div>
-          <div class="project-card">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-              <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-              <h4 style="margin:0;">StructProbe</h4>
-            </div>
-            <p>C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets. Win32 SDK headers on Linux.</p>
-            <div class="project-tags" style="margin-bottom:auto;">
-              <span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#f34b7d;margin-right:.4rem;vertical-align:middle;"></span>C++</span>
-            </div>
-            <a href="https://github.com/shanewas/StructProbe" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
-          </div>
-          <div class="project-card">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-              <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-              <h4 style="margin:0;">tunnelfox</h4>
-            </div>
-            <p>Privacy desktop browser routing all traffic through an SSH SOCKS5 tunnel. PyQt6 + Chromium, dark UI, tunnel health monitoring.</p>
-            <div class="project-tags" style="margin-bottom:auto;">
-              <span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#3572A5;margin-right:.4rem;vertical-align:middle;"></span>Python</span>
-            </div>
-            <a href="https://github.com/shanewas/tunnelfox" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
-          </div>
-          <div class="project-card">
-            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-              <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-              <h4 style="margin:0;">posix-ipc-dotnet</h4>
-            </div>
-            <p>.NET library for System V shared memory and semaphores on Linux (x64, glibc). Low-latency IPC between processes.</p>
-            <div class="project-tags" style="margin-bottom:auto;">
-              <span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#178600;margin-right:.4rem;vertical-align:middle;"></span>C#</span>
-            </div>
-            <a href="https://github.com/shanewas/posix-ipc-dotnet" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- ── Highlights ── -->
+    <section id="highlights">
+      <div class="container">
+        <p class="section-label reveal" data-reveal data-lang-en>Highlights</p><p class="section-label reveal" data-reveal data-lang-jp>主な実績</p>
+        <h2 class="section-title reveal" data-reveal data-delay="60">
+          <span data-lang-en>Things that actually happened</span><span data-lang-jp>実際にあったこと</span>
+        </h2>
+        <div class="highlights-grid">
+          <div class="highlight-card reveal" data-reveal data-delay="80">
+            <h3>📈 IPC bottleneck fixed</h3>
+            <p data-lang-en="Tracked down a multi-process IPC overhead issue in SkyPDF's rendering pipeline that was killing response times. Cut latency in half for a major bank's production workload."
+              data-jp="SkyPDFのレンダリングパイプラインにおけるマルチプロセスIPCオーバーヘッドの問題を特定し、メガバンクの本番環境でのレイテンシを半分に削減した。"></p>
+          </div>
+          <div class="highlight-card reveal" data-reveal data-delay="120">
+            <h3>🏦 Deployed to 5 banks</h3>
+            <p data-lang-en="Built the AIW hyper-automation platform at Ferntech — deployed in production at Bank Asia, City Bank, UCB, and Eastern Bank across Bangladesh."
+              data-jp="FerntechでAIW超自動化プラットフォームを構築——Bank Asia、City Bank、UCB、Eastern Bankなどバングラデシュの4行に本番導入された。"></p>
+          </div>
+          <div class="highlight-card reveal" data-reveal data-delay="160">
+            <h3>📜 Patent filed (JPO 2025)</h3>
+            <p data-lang-en="Co-authored a patent for an electronic signature system using Japan's My Number Card — from technical design through the filing process."
+              data-jp="日本のマイナンバー Card用の電子署名システムの特許を出願（JP 2025-169170 A）——技術設計から出願プロセスまで共同推進。"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills ── -->
+    <section id="skills">
+      <div class="container">
+        <p class="section-label reveal" data-reveal data-lang-en>Skills</p><p class="section-label reveal" data-reveal data-lang-jp>スキル</p>
+        <h2 class="section-title reveal" data-reveal data-delay="60">
+          <span data-lang-en>What I actually use</span><span data-lang-jp>実際に使っている技術</span>
+        </h2>
+        <div class="skills-accordion">
+          <div class="skill-group reveal" data-reveal data-delay="80">
+            <div class="skill-group-header">
+              <span data-lang-en>Languages</span><span data-lang-jp>言語</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="skill-group-body">
+              <span class="tag tag-cpp">C++</span>
+              <span class="tag tag-cs">C#</span>
+              <span class="tag tag-py">Python</span>
+              <span class="tag tag-ts">TypeScript</span>
+              <span class="tag tag-js">JavaScript</span>
+              <span class="tag tag-rs">Rust</span>
+              <span class="tag tag-go">Go</span>
+              <span class="tag tag-bash">Bash</span>
+              <span class="tag">Java</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+          <div class="skill-group reveal" data-reveal data-delay="100">
+            <div class="skill-group-header">
+              <span data-lang-en>Frameworks & Libraries</span><span data-lang-jp>フレームワーク・ライブラリ</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="skill-group-body">
+              <span class="tag">.NET Core</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">NestJS</span>
+              <span class="tag">ElectronJS</span>
+              <span class="tag">Express</span>
+              <span class="tag">REST API</span>
+              <span class="tag">gRPC</span>
+            </div>
+          </div>
+          <div class="skill-group reveal" data-reveal data-delay="120">
+            <div class="skill-group-header">
+              <span data-lang-en>Infrastructure</span><span data-lang-jp>インフラ</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="skill-group-body">
+              <span class="tag tag-docker">Docker</span>
+              <span class="tag tag-k8s">Kubernetes</span>
+              <span class="tag tag-aws">AWS</span>
+              <span class="tag tag-azure">Azure</span>
+              <span class="tag">RHEL / Linux</span>
+              <span class="tag">RPM Packaging</span>
+              <span class="tag">systemd</span>
+              <span class="tag">CI/CD</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Redis</span>
+            </div>
+          </div>
+          <div class="skill-group reveal" data-reveal data-delay="140">
+            <div class="skill-group-header">
+              <span data-lang-en>ML / Research</span><span data-lang-jp>ML・研究</span>
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="skill-group-body">
+              <span class="tag tag-ml">TensorFlow</span>
+              <span class="tag tag-ml">scikit-learn</span>
+              <span class="tag">NLP</span>
+              <span class="tag">OCR</span>
+              <span class="tag">Transfer Learning</span>
+              <span class="tag">VGG19</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Experience ── -->
+    <section id="experience">
+      <div class="container">
+        <p class="section-label reveal" data-reveal data-lang-en>Experience</p><p class="section-label reveal" data-reveal data-lang-jp>職歴</p>
+        <h2 class="section-title reveal" data-reveal data-delay="60">
+          <span data-lang-en>Where the time went</span><span data-lang-jp>時を経てきた場所</span>
+        </h2>
+        <div class="timeline">
+
+          <div class="timeline-item reveal" data-reveal data-delay="80">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">SkyCom Corporation</div>
+            <div class="timeline-role" data-lang-en>Software Engineer</div>
+                           <div class="timeline-role" data-lang-jp>ソフトウェアエンジニア</div>
+            <div class="timeline-dates">Apr 2022 – Present · Miyazaki, Japan</div>
+            <ul class="timeline-bullets">
+              <li data-lang-en="Core developer on SkyPDF — low-level C++/C# PDF libraries on RHEL used by banks nationwide"</li>
+              <li data-lang-jp="SkyPDFの中核開発者——銀行全国で使用されるRHEL上のC++/C#低レベルPDFライブラリ"></li>
+              <li data-lang-en="Fixed a gnarly IPC bottleneck that halved response times in a major bank's production environment"</li>
+              <li data-lang-jp="某メガバンクの本番環境でレイテンシを半分に短縮したIPCボトルネックを修正"></li>
+              <li data-lang-en="Automated RPM-based deployment pipelines — bash, systemd, dependency management"</li>
+              <li data-lang-jp>RPMベースデプロイパイプラインの自動化——bash、systemd、依存関係管理</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item reveal" data-reveal data-delay="120">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">Ferntech Solutions</div>
+            <div class="timeline-role" data-lang-en>Sr. Engineer / PM</div>
+                           <div class="timeline-role" data-lang-jp>シニアエンジニア / PM</div>
+            <div class="timeline-dates">Oct 2019 – Sep 2021 · Dhaka, Bangladesh</div>
+            <ul class="timeline-bullets">
+              <li data-lang-en="Architected and shipped AIW Core — hyper-automation platform for 4 banks in Bangladesh"</li>
+              <li data-lang-jp>AIW Coreの設計と導入——バングラデシュの4行向け超自動化プラットフォーム</li>
+              <li data-lang-en="Built an Electron + web automation studio with a shared engine across desktop and browser"</li>
+              <li data-lang-jp>デスクトップとブラウザで共有エンジンを使うElectron + Web自動化スタジオを構築</li>
+              <li data-lang-en="Managed a 5-person team through hiring, mentoring, and delivery"</li>
+              <li data-lang-jp>採用・メンタリング・納品を通じて5人チームを管理</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item reveal" data-reveal data-delay="160">
+            <div class="timeline-dot"></div>
+            <div class="timeline-company">Neonsofts (Co-Founder)</div>
+            <div class="timeline-role" data-lang-en>Lead Developer</div>
+                           <div class="timeline-role" data-lang-jp>リード開発者（共同創業）</div>
+            <div class="timeline-dates">Dec 2014 – Dec 2017 · Dhaka, Bangladesh</div>
+            <ul class="timeline-bullets">
+              <li data-lang-en="Co-founded a software startup while finishing university — delivered 2 full ERPs for real clients"</li>
+              <li data-lang-jp>大学に通いながらソフトウェアスタートアップを共同創業——実際のクライアントにERPを2本納入</li>
+              <li data-lang-en="C# / WinForms / SQLite for the desktop stack; managed the whole thing alone for the first year"</li>
+              <li data-lang-jp>C#/WinForms/SQLiteでデスクトップアプリを構築——最初の1年間は実質的に一人で全部担当</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Projects ── -->
+    <section id="projects">
+      <div class="container">
+        <p class="section-label reveal" data-reveal data-lang-en>Projects</p><p class="section-label reveal" data-reveal data-lang-jp>プロジェクト</p>
+        <h2 class="section-title reveal" data-reveal data-delay="60">
+          <span data-lang-en>Things I built that actually work</span><span data-lang-jp>実際に動いているもの</span>
+        </h2>
+        <div class="projects-grid">
+
+          <div class="project-card reveal" data-reveal data-delay="80">
+            <h3>ValidationEngine</h3>
+            <p data-lang-en="A form validation library for Node.js and browsers. Powers form inputs, API request validation, and React integrations."
+              data-jp="Node.jsとブラウザ向けのフォームバリデーションライブラリ。フォーム入力、APIリクエストバリデーション、React統合をサポートする。"></p>
+            <div class="project-tags">
+              <span class="tag tag-ts">TypeScript</span>
+              <span class="tag tag-js">JavaScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">React</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/shanewas/ValidationEngine" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12"/></svg>
+                Repo
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card reveal" data-reveal data-delay="120">
+            <h3>payflow</h3>
+            <p data-lang-en="Full-stack payment system — Node.js, Express, Stripe API, PostgreSQL, React. JWT auth, webhook handling, refund flows, Docker."
+              data-jp>フルスタック決済システム——Node.js、Express、Stripe API、PostgreSQL、React。JWT認証、 webhook処理、返金フロー、Docker。</p>
+            <div class="project-tags">
+              <span class="tag tag-ts">TypeScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">React</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Docker</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/shanewas/payflow" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12"/></svg>
+                Repo
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card reveal" data-reveal data-delay="160">
+            <h3>StructProbe</h3>
+            <p data-lang-en="C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets. Useful for FFI and interop work on Linux."
+              data-jp="C++/libclangユーティリティ——C/C++ヘッダを解析し、構造体サイズとフィールドオフセットを表示。FFIやLinuxでの相互運用作業に便利。"></p>
+            <div class="project-tags">
+              <span class="tag tag-cpp">C++</span>
+              <span class="tag tag-cs">C#</span>
+              <span class="tag tag-rs">Rust</span>
+              <span class="tag">libclang</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/shanewas/StructProbe" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12"/></svg>
+                Repo
+              </a>
+            </div>
+          </div>
+
+          <div class="project-card reveal" data-reveal data-delay="200">
+            <h3>posix-ipc-dotnet</h3>
+            <p data-lang-en=".NET library for System V shared memory and semaphores on Linux (x64, glibc). Low-latency IPC between processes — no native deps."
+              data-jp>Linux向けSystem V共有メモリとセマフォの.NETライブラリ（x64、glibc）。ネイティブ依存なしの低レイテンシIPC。</p>
+            <div class="project-tags">
+              <span class="tag tag-cs">C#</span>
+              <span class="tag">.NET Core</span>
+              <span class="tag">Linux</span>
+              <span class="tag">IPC</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/shanewas/posix-ipc-dotnet" target="_blank" rel="noopener">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12"/></svg>
+                Repo
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Education ── -->
+    <section id="education">
+      <div class="container">
+        <p class="section-label reveal" data-reveal data-lang-en>Education & Research</p><p class="section-label reveal" data-reveal data-lang-jp>学歴・研究</p>
+        <h2 class="section-title reveal" data-reveal data-delay="60">
+          <span data-lang-en>Where it started</span><span data-lang-jp>始まり</span>
+        </h2>
+
+        <div class="edu-item reveal" data-reveal data-delay="80">
+          <h3>BSc Computer Science</h3>
+          <p class="edu-meta">BRAC University, Dhaka · 2013 – 2019</p>
+          <p data-lang-en="Co-founded Neonsofts while studying. Published an IEEE paper on Alzheimer's prediction via OCT imaging with the University of Sydney."
+            data-jp="勉学中にNeonsoftsを共同創業。シドニー大学と共同研究で、OCT画像によるアルツハイマー予測に関するIEEE論文を発表した。"></p>
+        </div>
+
+        <div class="edu-item reveal" data-reveal data-delay="120">
+          <h3>IEEE Publication — Alzheimer's Prediction via Deep Learning</h3>
+          <p class="edu-meta">IEEE Xplore · 2019</p>
+          <p data-lang-en="Joint work with University of Sydney. Used VGG19 and Inception v3 on OCT images to classify Alzheimer's stages."
+            data-jp="シドニー大学との共同研究。VGG19とInception v3を用いてOCT画像でアルツハイマーの病期を分類した。"></p>
+        </div>
+
+        <div class="edu-item reveal" data-reveal data-delay="160">
+          <h3>B-JET Program</h3>
+          <p class="edu-meta">University of Miyazaki · Oct 2021 – Jun 2022</p>
+          <p data-lang-en="JICA-sponsored ICT training program. Certified by University of Miyazaki. This is how I ended up in Japan."
+            data-jp="JICA sponsored ICTエンジニア訓練プログラム。宮崎大学認定。このプログラムが日本のきっかけ。"></p>
+        </div>
+
+        <div class="edu-item reveal" data-reveal data-delay="200">
+          <h3>JP 2025-169170 A — Electronic Signature System Using My Number Card</h3>
+          <p class="edu-meta">Japan Patent Office · Filed 2025</p>
+          <p data-lang-en="Co-authored the technical design and filing for a My Number Card-based electronic signature system."
+            data-jp="マイナンバー Card用の電子署名システムの技術設計から特許出願まで共同推進した。"></p>
+          <a class="patent-link" href="https://j-platpat.inpit.go.jp" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View at J-PlatPat
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Contact ── -->
     <section id="contact">
-      <div data-aos="fade-up">
-        <div class="section-label">// 05</div>
-        <div class="section-title">Contact</div>
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="card-glass">
-              <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">Feel free to reach out for opportunities or collaboration.</p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-geo-alt me-2" style="color:var(--accent)"></i>Miyazaki, Japan</p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-envelope me-2" style="color:var(--accent)"></i><span id="cf-email"></span></p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-linkedin me-2" style="color:var(--accent)"></i><a href="https://linkedin.com/in/ahmedshanewas">ahmedshanewas</a></p>
-              <p><i class="bi bi-github me-2" style="color:var(--accent)"></i><a href="https://github.com/shanewas">shanewas</a></p>
-            </div>
-          </div>
-          <div class="col-lg-8">
-            <div class="card-glass">
-              <form id="contact-form" action="https://formsubmit.co/8c8a44677719ba4130aeeb1515e91012" method="POST">
-                <input type="hidden" name="_captcha" value="false">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label>Your Name</label>
-                    <input type="text" name="name" class="form-control" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label>Your Email</label>
-                    <input type="email" name="email" class="form-control" required>
-                  </div>
-                  <div class="col-12">
-                    <label>Subject</label>
-                    <input type="text" name="subject" class="form-control" required>
-                  </div>
-                  <div class="col-12">
-                    <label>Message</label>
-                    <textarea name="message" rows="5" class="form-control" required></textarea>
-                  </div>
-                  <div class="col-12">
-                    <div class="loading">Submitting...</div>
-                    <div class="sent-message">✅ Thank you! Your message was sent successfully.</div>
-                    <div class="error-message">Error sending message. Please try again.</div>
-                    <button type="submit" class="btn-primary-custom mt-2">Send Message</button>
-                  </div>
-                </div>
-              </form>
-              <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08);">
-                <p style="font-size:.82rem; color:var(--text-muted); margin-bottom:.75rem;">Or reach out directly:</p>
-                <a href="mailto:shanewasahmed@gmail.com" class="btn-outline-custom" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;">
-                  <i class="bx bx-envelope"></i> shanewasahmed@gmail.com
-                </a>
-                <a href="https://calendly.com/shanewas" target="_blank" class="btn-outline-custom" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;margin-left:.75rem;">
-                  <i class="bx bx-calendar"></i> Book a call
-                </a>
-              </div>
-            </div>
-          </div>
+      <div class="container">
+        <p class="section-label reveal" data-reveal data-lang-en>Contact</p><p class="section-label reveal" data-reveal data-lang-jp>連絡</p>
+        <h2 class="section-title reveal" data-reveal data-delay="60">
+          <span data-lang-en>Let's talk</span><span data-lang-jp>話は気軽に</span>
+        </h2>
+        <p class="reveal" data-reveal data-delay="100"
+          style="color: var(--muted); margin-bottom: 28px; font-size: 1rem;"
+          data-en="Open to senior / lead roles in Tokyo or remote. Not looking for freelance. Reach me here:"
+          data-jp="東京またはリモートのシニア/リード職に興味があります。フリーランスの依頼は不可。こちらまで：">
+        </p>
+        <div class="contact-links reveal" data-reveal data-delay="140">
+          <a class="contact-link" href="https://github.com/shanewas" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a class="contact-link" href="https://linkedin.com/in/shanewas" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a class="contact-link" href="mailto:shanewas@outlook.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>shanewas@outlook.com</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <footer style="text-align:center; padding:2rem; color:var(--text-muted); font-size:.82rem; border-top:1px solid rgba(255,255,255,0.05);">
-      © <span id="year"></span> Shanewas Ahmed · Built with intention.
+    <footer>
+      <div class="container">
+        <p data-lang-en="Built with plain HTML + CSS + JS. No frameworks, no templates." data-jp="HTML + CSS + JSで構築。フレームワークなし、テンプレートなし。"></p>
+      </div>
     </footer>
+
   </main>
+</div><!-- /layout -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.6/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 700, once: true, offset: 60 });
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  /* ── Dark mode ── */
+  const html = document.documentElement;
+  const themeToggle = document.getElementById('theme-toggle');
+  const iconSun  = document.getElementById('icon-sun');
+  const iconMoon = document.getElementById('icon-moon');
 
-    // Theme toggle
-    function applyTheme(isLight) {
-      document.body.classList.toggle('light-mode', isLight);
-      const icon = isLight ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
-      document.getElementById('theme-toggle').innerHTML = icon;
-      const m = document.getElementById('mobile-theme-toggle');
-      if (m) m.innerHTML = icon;
+  // Respect system preference
+  if (!localStorage.getItem('theme')) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.setAttribute('data-theme', 'dark');
+      iconSun.style.display  = 'none';
+      iconMoon.style.display = '';
     }
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      applyTheme(document.body.classList.toggle('light-mode'));
-      // sync icon
-      const isLight = document.body.classList.contains('light-mode');
-      const icon = isLight ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
-      document.getElementById('theme-toggle').innerHTML = icon;
-      const m = document.getElementById('mobile-theme-toggle');
-      if (m) m.innerHTML = icon;
-    });
-    const mobileTheme = document.getElementById('mobile-theme-toggle');
-    if (mobileTheme) {
-      mobileTheme.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isLight = document.body.classList.toggle('light-mode');
-        const icon = isLight ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
-        document.getElementById('theme-toggle').innerHTML = icon;
-        mobileTheme.innerHTML = icon;
-      });
+  } else {
+    html.setAttribute('data-theme', localStorage.getItem('theme'));
+    if (localStorage.getItem('theme') === 'dark') {
+      iconSun.style.display  = 'none';
+      iconMoon.style.display = '';
     }
+  }
 
-    // Active nav highlight
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav ul a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
-      navLinks.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-      });
-    });
-
-    // Contact form
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      document.querySelector('.loading').style.display = 'block';
-      document.querySelector('.sent-message').style.display = 'none';
-      document.querySelector('.error-message').style.display = 'none';
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-        .then(res => {
-          document.querySelector('.loading').style.display = 'none';
-          if (res.ok) { document.querySelector('.sent-message').style.display = 'block'; form.reset(); }
-          else throw new Error('Server error');
-        })
-        .catch(() => {
-          document.querySelector('.loading').style.display = 'none';
-          document.querySelector('.error-message').style.display = 'block';
-        });
-    });
-
-    // ── GitHub Pinned Repos ──
-    const PINNED = [
-      'ValidationEngine',
-      'payflow',
-      'StructProbe',
-      'tunnelfox',
-      'posix-ipc-dotnet'
-    ];
-    const FALLBACK = [
-      { name: 'ValidationEngine', description: '@shanewas/form-validation — powerful form validation engine for Node.js and browsers.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/ValidationEngine', stargazers_count: 0 },
-      { name: 'payflow', description: 'Full-stack payment system: Node.js, Express, Stripe API, PostgreSQL, React. JWT auth, webhooks, refunds, Docker.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/payflow', stargazers_count: 0 },
-      { name: 'StructProbe', description: 'C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets. Win32 SDK headers on Linux.', language: 'C++', stars: 0, url: 'https://github.com/shanewas/StructProbe', stargazers_count: 0 },
-      { name: 'tunnelfox', description: 'Privacy desktop browser routing all traffic through an SSH SOCKS5 tunnel. PyQt6 + Chromium, dark UI, tunnel health monitoring.', language: 'Python', stars: 0, url: 'https://github.com/shanewas/tunnelfox', stargazers_count: 0 },
-      { name: 'posix-ipc-dotnet', description: '.NET library for System V shared memory and semaphores on Linux (x64, glibc). Low-latency IPC between processes.', language: 'C#', stars: 0, url: 'https://github.com/shanewas/posix-ipc-dotnet', stargazers_count: 0 }
-    ];
-    const langColors = {
-      JavaScript: '#f1e05a', TypeScript: '#2b7489', Python: '#3572A5',
-      'C++': '#f34b7d', 'C#': '#178600', Java: '#b07219',
-      'Jupyter Notebook': '#DA5B0B', Shell: '#89e051', Go: '#00ADD8',
-      HTML: '#e34c26', default: '#8892a4'
-    };
-    function renderRepos(repos) {
-      const grid = document.getElementById('projects-grid');
-      grid.innerHTML = repos.map(r => {
-        const name = r.name || r.repo;
-        const desc = r.description || 'No description provided.';
-        const lang = r.language;
-        const stars = r.stargazers_count || r.stars || 0;
-        const url = r.html_url || r.url || ('https://github.com/shanewas/' + name);
-        const color = langColors[lang] || langColors.default;
-        return `<div class="project-card">
-          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-            <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-            <h4 style="margin:0;">${name}</h4>
-            ${stars > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${stars}</span>` : ''}
-          </div>
-          <p>${desc}</p>
-          <div class="project-tags" style="margin-bottom:auto;">
-            ${lang ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;vertical-align:middle;"></span>${lang}</span>` : ''}
-          </div>
-          <a href="${url}" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
-        </div>`;
-      }).join('');
+  themeToggle.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      iconSun.style.display  = '';
+      iconMoon.style.display = 'none';
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      iconSun.style.display  = 'none';
+      iconMoon.style.display = '';
     }
-    // Show FALLBACK immediately so projects are always visible
-    renderRepos(FALLBACK);
+  });
 
-    // Then try to fetch live GitHub data and upgrade if available
-    async function loadPinnedRepos() {
-      try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 8000);
-        const results = await Promise.all(
-          PINNED.map(name =>
-            fetch(`https://api.github.com/repos/shanewas/${name}`, {
-              headers: { 'Accept': 'application/vnd.github.v3+json' },
-              signal: controller.signal
-            })
-              .then(r => r.json())
-              .catch(() => ({ id: null }))
-          )
-        );
-        clearTimeout(timeout);
-        const valid = results.filter(r => r && r.id);
-        if (valid.length > 0) {
-          renderRepos(valid);
-        }
-      } catch {
-        // FALLBACK already rendered — silently keep it
+  /* ── Language toggle ── */
+  const langBtns = document.querySelectorAll('[data-lang-btn]');
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      langBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const lang = btn.getAttribute('data-lang-btn');
+      if (lang === 'jp') {
+        html.setAttribute('data-lang', 'jp');
+        document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = '');
+      } else {
+        html.removeAttribute('data-lang');
+        document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = '');
+        document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = 'none');
       }
-    }
-    loadPinnedRepos();
+    });
+  });
 
-    // Cloudflare-safe email render
-    (function(){
-      var u='shanewasahmed', d='gmail.com';
-      var email = u + '@' + d;
-      // Contact section
-      var el = document.getElementById('cf-email');
-      if(el) {
-        var a = document.createElement('a');
-        a.href = 'mailto:' + email;
-        a.style.color = 'var(--accent)';
-        a.textContent = email;
-        el.appendChild(a);
-      }
-      // Sidebar icon
-      var sl = document.getElementById('sidebar-email-link');
-      if(sl) { sl.href = 'mailto:' + email; }
-    })();
-  </script>
+  /* ── Mobile nav ── */
+  const mobileBtn  = document.getElementById('mobile-nav-btn');
+  const mobileNav  = document.getElementById('mobile-nav-overlay');
+  mobileBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  document.querySelectorAll('[data-mobile-link]').forEach(link => {
+    link.addEventListener('click', () => mobileNav.classList.remove('open'));
+  });
+
+  /* ── Sidebar nav active state ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('[data-nav]');
+
+  function onScroll() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 80;
+      if (scrollY >= top) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── Skills accordion ── */
+  document.querySelectorAll('.skill-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.parentElement;
+      group.classList.toggle('open');
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  if (prefersReduced) {
+    revealEls.forEach(el => el.classList.add('visible'));
+  } else {
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const delay = parseInt(el.getAttribute('data-delay') || '0');
+        setTimeout(() => el.classList.add('visible'), delay);
+        revealObs.unobserve(el);
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revealObs.observe(el));
+  }
+</script>
+
 </body>
 </html>
