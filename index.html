@@ -61,7 +61,7 @@
       color: var(--text);
       line-height: 1.65;
       transition: background var(--transition), color var(--transition);
-      overflow-x: clip;
+      overflow-x: hidden;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -95,10 +95,7 @@
     .tag-azure{ background: #0078D422; color: #0078D4; }
     .tag-ml   { background: #FF6F0022; color: #FF6F00; }
 
-    html[data-lang="jp"] [data-lang-en] { display: none; }
-    html[data-lang="jp"] [data-lang-jp] { display: block; }
-    html:not([data-lang]) [data-lang-jp],
-    html[data-lang="en"] [data-lang-jp] { display: none; }
+    [data-lang="jp"] { display: none; }
 
     /* ── Topbar ── */
     #topbar {
@@ -619,10 +616,10 @@
     <!-- ── Hero ── -->
     <section id="hero">
       <div class="container">
-        <h1 class="hero-tagline reveal" data-reveal>I write the code that doesn't apologize.</h1>
+        <p class="hero-tagline reveal" data-reveal>I write the code that doesn't apologize.</p>
         <p class="hero-sub reveal" data-reveal data-delay="80"
-          data-lang-en="Senior software engineer based in Miyazaki, Japan. 10 years shipping low-level systems, APIs, and automation that banks actually rely on."
-          data-lang-jp="宮崎在住のソフトウェアエンジニア。10年間、銀行が実際に依存する低レベルシステム、API、自動化を送り続けている。">
+          data-en="Senior software engineer based in Miyazaki, Japan. 10 years shipping low-level systems, APIs, and automation that banks actually rely on."
+          data-jp="宮崎在住のソフトウェアエンジニア。10年間、銀行が実際に依存する低レベルシステム、API、自動化を送り続けている。">
         </p>
         <div class="hero-ctas reveal" data-reveal data-delay="160">
           <a class="btn btn-primary" href="https://github.com/shanewas" target="_blank" rel="noopener">
@@ -651,16 +648,16 @@
           </div>
           <div class="about-text">
             <p class="reveal" data-reveal data-delay="100"
-              data-lang-en="Right now I'm at SkyCom in Miyazaki, writing the guts of a PDF library in C++ and C#. I build signing APIs, deal with Linux deployment pipelines, and occasionally fight with RPM packaging. It's quiet until it isn't."
-              data-lang-jp="現在、宮崎のSkyComでPDFライブラリのC++/C#コア部分を書いています。電子署名APIの構築、Linuxデプロイパイプライン、RPMパッケージングとの戦いも静かな職場ですが、バグが出ると話は別です。">
+              data-en="Right now I'm at SkyCom in Miyazaki, writing the guts of a PDF library in C++ and C#. I build signing APIs, deal with Linux deployment pipelines, and occasionally fight with RPM packaging. It's quiet until it isn't."
+              data-jp="現在、宮崎のSkyComでPDFライブラリのC++/C#コア部分を書いています。電子署名APIの構築、Linuxデプロイパイプライン、RPMパッケージングとの戦いも静かな職場ですが、バグが出ると話は別です。">
             </p>
             <p class="reveal" data-reveal data-delay="140"
-              data-lang-en="Before that I ran a two-person startup that shipped two ERPs, then led automation work at Ferntech that ended up in four major banks in Bangladesh. I like building things that solve messy, real-world problems — not toy apps."
-              data-lang-jp="その前は2人だけのスタートアップを運営し、ERPを2社に納入しました。その後Ferntechで自動化ツール主導し、バングラデシュの4つの主要銀行に導入されました。玩具のようなアプリではなく、実世界のややこしい問題を解決するものが好きです。">
+              data-en="Before that I ran a two-person startup that shipped two ERPs, then led automation work at Ferntech that ended up in four major banks in Bangladesh. I like building things that solve messy, real-world problems — not toy apps."
+              data-jp="その前は2人だけのスタートアップを運営し、ERPを2社に納入しました。その後Ferntechで自動化ツール主導し、バングラデシュの4つの主要銀行に導入されました。玩具のようなアプリではなく、実世界のややこしい問題を解決するものが好きです。">
             </p>
             <p class="reveal" data-reveal data-delay="180"
-              data-lang-en="Outside of work: climbing indoors, keeping up with Japanese, and occasionally writing open-source tools that nobody asks for but occasionally helps someone."
-              data-lang-jp="仕事以外：室内クライミング、日本語力の維持、たまにOSSツールを書く（誰かが喜んでくれるなら）。">
+              data-en="Outside of work: climbing indoors, keeping up with Japanese, and occasionally writing open-source tools that nobody asks for but occasionally helps someone."
+              data-jp="仕事以外：室内クライミング、日本語力の維持、たまにOSSツールを書く（誰かが喜んでくれるなら）。">
             </p>
             <div class="about-meta reveal" data-reveal data-delay="220">
               <span class="tag">🇯🇵 Engineer Visa</span>
@@ -684,17 +681,17 @@
           <div class="highlight-card reveal" data-reveal data-delay="80">
             <h3>📈 IPC bottleneck fixed</h3>
             <p data-lang-en="Tracked down a multi-process IPC overhead issue in SkyPDF's rendering pipeline that was killing response times. Cut latency in half for a major bank's production workload."
-              data-lang-jp="SkyPDFのレンダリングパイプラインにおけるマルチプロセスIPCオーバーヘッドの問題を特定し、メガバンクの本番環境でのレイテンシを半分に削減した。"></p>
+              data-jp="SkyPDFのレンダリングパイプラインにおけるマルチプロセスIPCオーバーヘッドの問題を特定し、メガバンクの本番環境でのレイテンシを半分に削減した。"></p>
           </div>
           <div class="highlight-card reveal" data-reveal data-delay="120">
             <h3>🏦 Deployed to 5 banks</h3>
             <p data-lang-en="Built the AIW hyper-automation platform at Ferntech — deployed in production at Bank Asia, City Bank, UCB, and Eastern Bank across Bangladesh."
-              data-lang-jp="FerntechでAIW超自動化プラットフォームを構築——Bank Asia、City Bank、UCB、Eastern Bankなどバングラデシュの4行に本番導入された。"></p>
+              data-jp="FerntechでAIW超自動化プラットフォームを構築——Bank Asia、City Bank、UCB、Eastern Bankなどバングラデシュの4行に本番導入された。"></p>
           </div>
           <div class="highlight-card reveal" data-reveal data-delay="160">
             <h3>📜 Patent filed (JPO 2025)</h3>
             <p data-lang-en="Co-authored a patent for an electronic signature system using Japan's My Number Card — from technical design through the filing process."
-              data-lang-jp="日本のマイナンバー Card用の電子署名システムの特許を出願（JP 2025-169170 A）——技術設計から出願プロセスまで共同推進。"></p>
+              data-jp="日本のマイナンバー Card用の電子署名システムの特許を出願（JP 2025-169170 A）——技術設計から出願プロセスまで共同推進。"></p>
           </div>
         </div>
       </div>
@@ -708,7 +705,7 @@
           <span data-lang-en>What I actually use</span><span data-lang-jp>実際に使っている技術</span>
         </h2>
         <div class="skills-accordion">
-          <div class="skill-group open reveal" data-reveal data-delay="80">
+          <div class="skill-group reveal" data-reveal data-delay="80">
             <div class="skill-group-header">
               <span data-lang-en>Languages</span><span data-lang-jp>言語</span>
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
@@ -851,7 +848,7 @@
           <div class="project-card reveal" data-reveal data-delay="80">
             <h3>ValidationEngine</h3>
             <p data-lang-en="A form validation library for Node.js and browsers. Powers form inputs, API request validation, and React integrations."
-              data-lang-jp="Node.jsとブラウザ向けのフォームバリデーションライブラリ。フォーム入力、APIリクエストバリデーション、React統合をサポートする。"></p>
+              data-jp="Node.jsとブラウザ向けのフォームバリデーションライブラリ。フォーム入力、APIリクエストバリデーション、React統合をサポートする。"></p>
             <div class="project-tags">
               <span class="tag tag-ts">TypeScript</span>
               <span class="tag tag-js">JavaScript</span>
@@ -869,7 +866,7 @@
           <div class="project-card reveal" data-reveal data-delay="120">
             <h3>payflow</h3>
             <p data-lang-en="Full-stack payment system — Node.js, Express, Stripe API, PostgreSQL, React. JWT auth, webhook handling, refund flows, Docker."
-              data-lang-jp>フルスタック決済システム——Node.js、Express、Stripe API、PostgreSQL、React。JWT認証、 webhook処理、返金フロー、Docker。</p>
+              data-lang-jp="フルスタック決済システム——Node.js、Express、Stripe API、PostgreSQL、React。JWT認証、 webhook処理、返金フロー、Docker。"></p>
             <div class="project-tags">
               <span class="tag tag-ts">TypeScript</span>
               <span class="tag">Node.js</span>
@@ -888,7 +885,7 @@
           <div class="project-card reveal" data-reveal data-delay="160">
             <h3>StructProbe</h3>
             <p data-lang-en="C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets. Useful for FFI and interop work on Linux."
-              data-lang-jp="C++/libclangユーティリティ——C/C++ヘッダを解析し、構造体サイズとフィールドオフセットを表示。FFIやLinuxでの相互運用作業に便利。"></p>
+              data-jp="C++/libclangユーティリティ——C/C++ヘッダを解析し、構造体サイズとフィールドオフセットを表示。FFIやLinuxでの相互運用作業に便利。"></p>
             <div class="project-tags">
               <span class="tag tag-cpp">C++</span>
               <span class="tag tag-cs">C#</span>
@@ -906,7 +903,7 @@
           <div class="project-card reveal" data-reveal data-delay="200">
             <h3>posix-ipc-dotnet</h3>
             <p data-lang-en=".NET library for System V shared memory and semaphores on Linux (x64, glibc). Low-latency IPC between processes — no native deps."
-              data-lang-jp>Linux向けSystem V共有メモリとセマフォの.NETライブラリ（x64、glibc）。ネイティブ依存なしの低レイテンシIPC。</p>
+              data-lang-jp="Linux向けSystem V共有メモリとセマフォの.NETライブラリ（x64、glibc）。ネイティブ依存なしの低レイテンシIPC。"></p>
             <div class="project-tags">
               <span class="tag tag-cs">C#</span>
               <span class="tag">.NET Core</span>
@@ -937,28 +934,28 @@
           <h3>BSc Computer Science</h3>
           <p class="edu-meta">BRAC University, Dhaka · 2013 – 2019</p>
           <p data-lang-en="Co-founded Neonsofts while studying. Published an IEEE paper on Alzheimer's prediction via OCT imaging with the University of Sydney."
-            data-lang-jp="勉学中にNeonsoftsを共同創業。シドニー大学と共同研究で、OCT画像によるアルツハイマー予測に関するIEEE論文を発表した。"></p>
+            data-jp="勉学中にNeonsoftsを共同創業。シドニー大学と共同研究で、OCT画像によるアルツハイマー予測に関するIEEE論文を発表した。"></p>
         </div>
 
         <div class="edu-item reveal" data-reveal data-delay="120">
           <h3>IEEE Publication — Alzheimer's Prediction via Deep Learning</h3>
           <p class="edu-meta">IEEE Xplore · 2019</p>
           <p data-lang-en="Joint work with University of Sydney. Used VGG19 and Inception v3 on OCT images to classify Alzheimer's stages."
-            data-lang-jp="シドニー大学との共同研究。VGG19とInception v3を用いてOCT画像でアルツハイマーの病期を分類した。"></p>
+            data-jp="シドニー大学との共同研究。VGG19とInception v3を用いてOCT画像でアルツハイマーの病期を分類した。"></p>
         </div>
 
         <div class="edu-item reveal" data-reveal data-delay="160">
           <h3>B-JET Program</h3>
           <p class="edu-meta">University of Miyazaki · Oct 2021 – Jun 2022</p>
           <p data-lang-en="JICA-sponsored ICT training program. Certified by University of Miyazaki. This is how I ended up in Japan."
-            data-lang-jp="JICA sponsored ICTエンジニア訓練プログラム。宮崎大学認定。このプログラムが日本のきっかけ。"></p>
+            data-jp="JICA sponsored ICTエンジニア訓練プログラム。宮崎大学認定。このプログラムが日本のきっかけ。"></p>
         </div>
 
         <div class="edu-item reveal" data-reveal data-delay="200">
           <h3>JP 2025-169170 A — Electronic Signature System Using My Number Card</h3>
           <p class="edu-meta">Japan Patent Office · Filed 2025</p>
           <p data-lang-en="Co-authored the technical design and filing for a My Number Card-based electronic signature system."
-            data-lang-jp="マイナンバー Card用の電子署名システムの技術設計から特許出願まで共同推進した。"></p>
+            data-jp="マイナンバー Card用の電子署名システムの技術設計から特許出願まで共同推進した。"></p>
           <a class="patent-link" href="https://j-platpat.inpit.go.jp" target="_blank" rel="noopener">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             View at J-PlatPat
@@ -977,8 +974,8 @@
         </h2>
         <p class="reveal" data-reveal data-delay="100"
           style="color: var(--muted); margin-bottom: 28px; font-size: 1rem;"
-          data-lang-en="Open to senior / lead roles in Tokyo or remote. Not looking for freelance. Reach me here:"
-          data-lang-jp="東京またはリモートのシニア/リード職に興味があります。フリーランスの依頼は不可。こちらまで：">
+          data-en="Open to senior / lead roles in Tokyo or remote. Not looking for freelance. Reach me here:"
+          data-jp="東京またはリモートのシニア/リード職に興味があります。フリーランスの依頼は不可。こちらまで：">
         </p>
         <div class="contact-links reveal" data-reveal data-delay="140">
           <a class="contact-link" href="https://github.com/shanewas" target="_blank" rel="noopener">
@@ -1045,16 +1042,6 @@
 
   /* ── Language toggle ── */
   const langBtns = document.querySelectorAll('[data-lang-btn]');
-  const savedLang = localStorage.getItem('lang');
-  if (savedLang === 'jp') {
-    html.setAttribute('data-lang', 'jp');
-    langBtns.forEach(b => {
-      b.classList.remove('active');
-      if (b.getAttribute('data-lang-btn') === 'jp') b.classList.add('active');
-    });
-    document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = '');
-  }
   langBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       langBtns.forEach(b => b.classList.remove('active'));
@@ -1062,12 +1049,10 @@
       const lang = btn.getAttribute('data-lang-btn');
       if (lang === 'jp') {
         html.setAttribute('data-lang', 'jp');
-        localStorage.setItem('lang', 'jp');
         document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = 'none');
         document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = '');
       } else {
         html.removeAttribute('data-lang');
-        localStorage.setItem('lang', 'en');
         document.querySelectorAll('[data-lang-en]').forEach(el => el.style.display = '');
         document.querySelectorAll('[data-lang-jp]').forEach(el => el.style.display = 'none');
       }
@@ -1121,7 +1106,7 @@
         setTimeout(() => el.classList.add('visible'), delay);
         revealObs.unobserve(el);
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.08 });
     revealEls.forEach(el => revealObs.observe(el));
   }
 </script>
