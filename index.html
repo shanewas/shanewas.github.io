@@ -559,7 +559,9 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
     }
-  </style>
+  
+    /*
+</style>
 </head>
 <body>
 
@@ -825,11 +827,11 @@
                            <div class="timeline-role" data-lang-jp>ソフトウェアエンジニア</div>
             <div class="timeline-dates">Apr 2022 – Present · Miyazaki, Japan</div>
             <ul class="timeline-bullets">
-              <li data-lang-en="Core developer on SkyPDF — low-level C++/C# PDF libraries on RHEL used by banks nationwide"</li>
-              <li data-lang-jp="SkyPDFの中核開発者——銀行全国で使用されるRHEL上のC++/C#低レベルPDFライブラリ"></li>
-              <li data-lang-en="Fixed a gnarly IPC bottleneck that halved response times in a major bank's production environment"</li>
-              <li data-lang-jp="某メガバンクの本番環境でレイテンシを半分に短縮したIPCボトルネックを修正"></li>
-              <li data-lang-en="Automated RPM-based deployment pipelines — bash, systemd, dependency management"</li>
+              <li data-lang-en>Core developer on SkyPDF — low-level C++/C# PDF libraries on RHEL used by banks nationwide</li>
+              <li data-lang-jp>SkyPDFの中核開発者——銀行全国で使用されるRHEL上のC++/C#低レベルPDFライブラリ</li>
+              <li data-lang-en>Fixed a gnarly IPC bottleneck that halved response times in a major bank's production environment</li>
+              <li data-lang-jp>某メガバンクの本番環境でレイテンシを半分に短縮したIPCボトルネックを修正</li>
+              <li data-lang-en>Automated RPM-based deployment pipelines — bash, systemd, dependency management</li>
               <li data-lang-jp>RPMベースデプロイパイプラインの自動化——bash、systemd、依存関係管理</li>
             </ul>
           </div>
@@ -841,11 +843,11 @@
                            <div class="timeline-role" data-lang-jp>シニアエンジニア / PM</div>
             <div class="timeline-dates">Oct 2019 – Sep 2021 · Dhaka, Bangladesh</div>
             <ul class="timeline-bullets">
-              <li data-lang-en="Architected and shipped AIW Core — hyper-automation platform for 4 banks in Bangladesh"</li>
+              <li data-lang-en>Architected and shipped AIW Core — hyper-automation platform for 4 banks in Bangladesh</li>
               <li data-lang-jp>AIW Coreの設計と導入——バングラデシュの4行向け超自動化プラットフォーム</li>
-              <li data-lang-en="Built an Electron + web automation studio with a shared engine across desktop and browser"</li>
+              <li data-lang-en>Built an Electron + web automation studio with a shared engine across desktop and browser</li>
               <li data-lang-jp>デスクトップとブラウザで共有エンジンを使うElectron + Web自動化スタジオを構築</li>
-              <li data-lang-en="Managed a 5-person team through hiring, mentoring, and delivery"</li>
+              <li data-lang-en>Managed a 5-person team through hiring, mentoring, and delivery</li>
               <li data-lang-jp>採用・メンタリング・納品を通じて5人チームを管理</li>
             </ul>
           </div>
@@ -857,9 +859,9 @@
                            <div class="timeline-role" data-lang-jp>リード開発者（共同創業）</div>
             <div class="timeline-dates">Dec 2014 – Dec 2017 · Dhaka, Bangladesh</div>
             <ul class="timeline-bullets">
-              <li data-lang-en="Co-founded a software startup while finishing university — delivered 2 full ERPs for real clients"</li>
+              <li data-lang-en>Co-founded a software startup while finishing university — delivered 2 full ERPs for real clients</li>
               <li data-lang-jp>大学に通いながらソフトウェアスタートアップを共同創業——実際のクライアントにERPを2本納入</li>
-              <li data-lang-en="C# / WinForms / SQLite for the desktop stack; managed the whole thing alone for the first year"</li>
+              <li data-lang-en>C# / WinForms / SQLite for the desktop stack; managed the whole thing alone for the first year</li>
               <li data-lang-jp>C#/WinForms/SQLiteでデスクトップアプリを構築——最初の1年間は実質的に一人で全部担当</li>
             </ul>
           </div>
@@ -1129,6 +1131,9 @@
       }
     });
   });
+
+  // Initialize language state on page load based on active button
+  document.querySelector('[data-lang-btn].active')?.click();
 
   /* ── Mobile nav ── */
   const mobileBtn  = document.getElementById('mobile-nav-btn');
