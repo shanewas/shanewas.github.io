@@ -63,6 +63,14 @@
       transition: background var(--transition), color var(--transition);
       overflow-x: hidden;
     }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+    /* Text selection */
+    ::selection { background: var(--accent); color: #fff; }
+    ::-moz-selection { background: var(--accent); color: #fff; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     img { max-width: 100%; display: block; }
@@ -213,6 +221,13 @@
       overflow-y: auto;
       padding: 40px 20px 40px 0;
       border-right: 1px solid var(--border);
+      /* Frosted glass effect */
+      background: rgba(var(--bg-rgb, 250, 251, 252), 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    [data-theme="dark"] #sidebar {
+      background: rgba(15, 23, 42, 0.75);
     }
     #sidebar nav { display: flex; flex-direction: column; gap: 4px; }
     .nav-link {
@@ -227,16 +242,14 @@
       position: relative;
     }
     .nav-link:hover { color: var(--text); background: var(--border); text-decoration: none; }
-    .nav-link.active { color: var(--accent); background: #38BDF822; font-weight: 600; }
-    .nav-link.active::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 50%;
-      transform: translateY(-50%);
-      width: 3px; height: 60%;
-      background: var(--accent);
-      border-radius: 0 2px 2px 0;
+    .nav-link.active {
+      color: var(--accent);
+      background: #38BDF822;
+      font-weight: 600;
+      /* Sliding underline indicator */
+      box-shadow: inset 0 -2px 0 var(--accent);
     }
+    .nav-link.active::before { display: none; }
 
     /* ── Main ── */
     #main { flex: 1; min-width: 0; }
@@ -274,7 +287,41 @@
     #hero {
       padding: 100px 0 80px;
       border: none !important;
+      position: relative;
+      overflow: hidden;
     }
+    /* Mesh gradient background */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, #1e3a5f44 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, #7c3aed33 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 80%, #0891b233 0%, transparent 50%),
+        radial-gradient(ellipse 70% 70% at 10% 90%, #06b6d422 0%, transparent 50%),
+        radial-gradient(ellipse 60% 60% at 90% 70%, #8b5cf622 0%, transparent 50%);
+      animation: meshShift 18s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes meshShift {
+      0%   { opacity: 0.7; transform: scale(1) translate(0, 0); }
+      33%  { opacity: 0.85; transform: scale(1.05) translate(10px, -8px); }
+      66%  { opacity: 0.75; transform: scale(1.02) translate(-8px, 6px); }
+      100% { opacity: 0.9; transform: scale(1.08) translate(5px, -10px); }
+    }
+    /* Grain texture overlay */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .hero-inner { position: relative; z-index: 2; }
     .hero-tagline {
       font-size: clamp(2.6rem, 6vw, 4rem);
       font-weight: 800;
@@ -284,6 +331,23 @@
       margin-bottom: 20px;
     }
     [data-theme="dark"] .hero-tagline { color: var(--d-text); }
+    /* Typewriter container */
+    .typewriter {
+      display: block;
+      min-height: 1.4em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     .hero-sub {
       font-size: 1.1rem;
       color: var(--muted);
@@ -350,23 +414,50 @@
     /* ── Highlights ── */
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
+    /* Large numbered stat cards */
     .highlight-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: all 200ms;
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #7c3aed);
+      opacity: 0;
+      transition: opacity 250ms;
     }
     .highlight-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.12), 0 8px 16px rgba(0,0,0,0.06);
+      border-color: transparent;
     }
-    [data-theme="dark"] .highlight-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-    .highlight-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--primary); }
-    [data-theme="dark"] .highlight-card h3 { color: var(--d-text); }
+    .highlight-card:hover::before { opacity: 1; }
+    [data-theme="dark"] .highlight-card:hover { box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15), 0 8px 16px rgba(0,0,0,0.3); }
+    .highlight-card .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+    .highlight-card .stat-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    [data-theme="dark"] .stat-label { color: var(--d-text); }
     .highlight-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
     /* ── Skills ── */
@@ -401,25 +492,89 @@
       gap: 8px;
     }
     .skill-group.open .skill-group-body { display: flex; }
+    /* Animated pill tags with pulse on hover */
+    .skill-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      background: var(--border);
+      color: var(--muted);
+      transition: all 200ms ease;
+      cursor: default;
+    }
+    .skill-tag:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.35);
+      animation: tagPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes tagPulse {
+      0%, 100% { box-shadow: 0 4px 12px rgba(56, 189, 248, 0.35); }
+      50% { box-shadow: 0 4px 20px rgba(56, 189, 248, 0.6); }
+    }
+    /* Skill group label */
+    .skill-group-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      width: 100%;
+      margin-bottom: 4px;
+      padding-left: 2px;
+    }
 
     /* ── Experience ── */
-    .timeline { position: relative; padding-left: 32px; }
-    .timeline::before {
+    #experience { position: relative; }
+    /* Vertical timeline line via ::before */
+    #experience::before {
       content: '';
       position: absolute;
-      left: 6px; top: 8px; bottom: 8px;
-      width: 1.5px;
-      background: var(--border);
+      left: 50px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent 90%);
+      opacity: 0.4;
     }
-    .timeline-item { position: relative; margin-bottom: 48px; }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-dot {
+    .timeline { position: relative; padding-left: 80px; }
+    .timeline::before { display: none; }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 56px;
+      /* Alternating cards on desktop */
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    /* Dot */
+    .timeline-item::before {
+      content: '';
       position: absolute;
-      left: -29px; top: 6px;
-      width: 12px; height: 12px;
+      left: -38px;
+      top: 6px;
+      width: 14px; height: 14px;
       border-radius: 50%;
       background: var(--accent);
-      border: 2px solid var(--bg);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      z-index: 2;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 200ms;
+    }
+    .timeline-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
+      transform: translateY(-2px);
     }
     .timeline-company {
       font-size: 1.15rem;
@@ -455,6 +610,11 @@
       color: var(--accent);
       font-weight: 700;
     }
+    @media (min-width: 900px) {
+      /* Alternating left/right on desktop */
+      .timeline-item:nth-child(odd) { margin-right: 25%; }
+      .timeline-item:nth-child(even) { margin-left: 25%; }
+    }
 
     /* ── Projects ── */
     .projects-grid {
@@ -470,13 +630,31 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      transition: all 200ms;
+      transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      /* backdrop-filter blur */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Gradient border on hover */
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--accent), #7c3aed, var(--accent-warm));
+      opacity: 0;
+      transition: opacity 300ms;
+      z-index: -1;
     }
     .project-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 16px 32px rgba(56, 189, 248, 0.15), 0 4px 8px rgba(0,0,0,0.08);
+      border-color: transparent;
     }
-    [data-theme="dark"] .project-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .project-card:hover::before { opacity: 1; }
+    [data-theme="dark"] .project-card:hover { box-shadow: 0 16px 32px rgba(56, 189, 248, 0.2), 0 4px 8px rgba(0,0,0,0.4); }
     .project-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); }
     [data-theme="dark"] .project-card h3 { color: var(--d-text); }
     .project-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; flex: 1; }
@@ -515,6 +693,94 @@
     }
 
     /* ── Contact ── */
+    .contact-form { max-width: 520px; }
+    .form-group {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 0;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid var(--border);
+      outline: none;
+      transition: border-color 250ms;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--accent);
+    }
+    .form-group label {
+      position: absolute;
+      left: 0;
+      top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      pointer-events: none;
+      transition: all 200ms ease;
+    }
+    /* Floating label effect */
+    .form-group input:focus ~ label,
+    .form-group input:not(:placeholder-shown) ~ label,
+    .form-group textarea:focus ~ label,
+    .form-group textarea:not(:placeholder-shown) ~ label {
+      top: -14px;
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .form-group textarea { min-height: 80px; }
+    .form-submit {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 200ms;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-submit:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
+    }
+    .form-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-submit .spinner {
+      display: none;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    .form-submit.loading .spinner { display: block; }
+    .form-submit.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .form-success {
+      display: none;
+      color: var(--success);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+    .form-success.show { display: block; }
     .contact-links { display: flex; gap: 16px; flex-wrap: wrap; }
     .contact-link {
       display: inline-flex;
@@ -617,8 +883,11 @@
 
     <!-- ── Hero ── -->
     <section id="hero">
-      <div class="container">
-        <p class="hero-tagline reveal" data-reveal>I write the code that doesn't apologize.</p>
+      <div class="container hero-inner">
+        <p class="hero-tagline reveal" data-reveal>
+          I write the code that doesn't apologize.
+          <span id="typewriter" class="typewriter"></span><span class="typewriter-cursor"></span>
+        </p>
         <p class="hero-sub reveal" data-reveal data-delay="80"
           data-lang-en="Senior software engineer based in Miyazaki, Japan. 7 years professional, 10 including freelance — building systems that ship and hold."
           data-lang-jp="宮崎在住のソフトウェアエンジニア。実務7年、IT歴10年——銀行が実際に依存する低レベルシステム、API、自動化を送り続けている。">
@@ -681,17 +950,20 @@
         </h2>
         <div class="highlights-grid">
           <div class="highlight-card reveal" data-reveal data-delay="80">
-            <h3>📈 IPC bottleneck fixed</h3>
+            <div class="stat-number">50%</div>
+            <div class="stat-label">Latency cut</div>
             <p data-lang-en="Tracked down a multi-process IPC overhead issue in SkyPDF's rendering pipeline that was killing response times. Cut latency in half for a major bank's production workload."
               data-lang-jp="SkyPDFのレンダリングパイプラインにおけるマルチプロセスIPCオーバーヘッドの問題を特定し、メガバンクの本番環境でのレイテンシを半分に削減した。"></p>
           </div>
           <div class="highlight-card reveal" data-reveal data-delay="120">
-            <h3>🏦 Deployed to 5 banks</h3>
+            <div class="stat-number">5</div>
+            <div class="stat-label">Banks in production</div>
             <p data-lang-en="Built the AIW hyper-automation platform at Ferntech — deployed in production at Bank Asia, City Bank, UCB, and Eastern Bank across Bangladesh."
               data-lang-jp="FerntechでAIW超自動化プラットフォームを構築——Bank Asia、City Bank、UCB、Eastern Bankなどバングラデシュの4行に本番導入された。"></p>
           </div>
           <div class="highlight-card reveal" data-reveal data-delay="160">
-            <h3>📜 Patent filed (JPO 2025)</h3>
+            <div class="stat-number">1</div>
+            <div class="stat-label">Patent filed (JPO 2025)</div>
             <p data-lang-en="Co-authored a patent for an electronic signature system using Japan's My Number Card — from technical design through the filing process."
               data-lang-jp="日本のマイナンバー Card用の電子署名システムの特許を出願（JP 2025-169170 A）——技術設計から出願プロセスまで共同推進。"></p>
           </div>
@@ -713,13 +985,14 @@
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="skill-group-body">
-              <span class="tag">OpenClaw</span>
-              <span class="tag">MiniMax API</span>
-              <span class="tag">Claude API</span>
-              <span class="tag">AI Agent Swarms</span>
-              <span class="tag">Belief Grounding</span>
-              <span class="tag">Playwright MCP</span>
-              <span class="tag">Sequential Thinking</span>
+              <span class="skill-group-label">AI & Agents</span>
+              <span class="skill-tag">OpenClaw</span>
+              <span class="skill-tag">MiniMax API</span>
+              <span class="skill-tag">Claude API</span>
+              <span class="skill-tag">AI Agent Swarms</span>
+              <span class="skill-tag">Belief Grounding</span>
+              <span class="skill-tag">Playwright MCP</span>
+              <span class="skill-tag">Sequential Thinking</span>
             </div>
           </div>
           <div class="skill-group reveal" data-reveal data-delay="100">
@@ -728,16 +1001,17 @@
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="skill-group-body">
-              <span class="tag tag-cpp">C++</span>
-              <span class="tag tag-cs">C#</span>
-              <span class="tag tag-py">Python</span>
-              <span class="tag tag-ts">TypeScript</span>
-              <span class="tag tag-js">JavaScript</span>
-              <span class="tag tag-rs">Rust</span>
-              <span class="tag tag-go">Go</span>
-              <span class="tag tag-bash">Bash</span>
-              <span class="tag">Java</span>
-              <span class="tag">SQL</span>
+              <span class="skill-group-label">Languages</span>
+              <span class="skill-tag tag-cpp">C++</span>
+              <span class="skill-tag tag-cs">C#</span>
+              <span class="skill-tag tag-py">Python</span>
+              <span class="skill-tag tag-ts">TypeScript</span>
+              <span class="skill-tag tag-js">JavaScript</span>
+              <span class="skill-tag tag-rs">Rust</span>
+              <span class="skill-tag tag-go">Go</span>
+              <span class="skill-tag tag-bash">Bash</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">SQL</span>
             </div>
           </div>
           <div class="skill-group reveal" data-reveal data-delay="120">
@@ -746,15 +1020,16 @@
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="skill-group-body">
-              <span class="tag">Tailscale</span>
-              <span class="tag">Pi-hole</span>
-              <span class="tag">WireGuard</span>
-              <span class="tag tag-docker">Docker</span>
-              <span class="tag tag-k8s">Kubernetes</span>
-              <span class="tag">Caddy</span>
-              <span class="tag">systemd</span>
-              <span class="tag">Nginx</span>
-              <span class="tag">DNS</span>
+              <span class="skill-group-label">DevOps & Infra</span>
+              <span class="skill-tag">Tailscale</span>
+              <span class="skill-tag">Pi-hole</span>
+              <span class="skill-tag">WireGuard</span>
+              <span class="skill-tag tag-docker">Docker</span>
+              <span class="skill-tag tag-k8s">Kubernetes</span>
+              <span class="skill-tag">Caddy</span>
+              <span class="skill-tag">systemd</span>
+              <span class="skill-tag">Nginx</span>
+              <span class="skill-tag">DNS</span>
             </div>
           </div>
           <div class="skill-group reveal" data-reveal data-delay="100">
@@ -763,15 +1038,16 @@
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="skill-group-body">
-              <span class="tag">.NET Core</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">React</span>
-              <span class="tag">Next.js</span>
-              <span class="tag">NestJS</span>
-              <span class="tag">ElectronJS</span>
-              <span class="tag">Express</span>
-              <span class="tag">REST API</span>
-              <span class="tag">gRPC</span>
+              <span class="skill-group-label">Frameworks</span>
+              <span class="skill-tag">.NET Core</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">NestJS</span>
+              <span class="skill-tag">ElectronJS</span>
+              <span class="skill-tag">Express</span>
+              <span class="skill-tag">REST API</span>
+              <span class="skill-tag">gRPC</span>
             </div>
           </div>
           <div class="skill-group reveal" data-reveal data-delay="120">
@@ -780,17 +1056,17 @@
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="skill-group-body">
-              <span class="tag tag-docker">Docker</span>
-              <span class="tag tag-k8s">Kubernetes</span>
-              <span class="tag tag-aws">AWS</span>
-              <span class="tag tag-azure">Azure</span>
-              <span class="tag">RHEL / Linux</span>
-              <span class="tag">RPM Packaging</span>
-              <span class="tag">systemd</span>
-              <span class="tag">CI/CD</span>
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">MongoDB</span>
-              <span class="tag">Redis</span>
+              <span class="skill-group-label">Cloud & Infra</span>
+              <span class="skill-tag tag-aws">AWS</span>
+              <span class="skill-tag tag-azure">Azure</span>
+              <span class="skill-tag tag-docker">Docker</span>
+              <span class="skill-tag tag-k8s">Kubernetes</span>
+              <span class="skill-tag">RHEL / Linux</span>
+              <span class="skill-tag">RPM Packaging</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Redis</span>
             </div>
           </div>
           <div class="skill-group reveal" data-reveal data-delay="140">
@@ -799,12 +1075,13 @@
               <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="skill-group-body">
-              <span class="tag tag-ml">TensorFlow</span>
-              <span class="tag tag-ml">scikit-learn</span>
-              <span class="tag">NLP</span>
-              <span class="tag">OCR</span>
-              <span class="tag">Transfer Learning</span>
-              <span class="tag">VGG19</span>
+              <span class="skill-group-label">ML & Research</span>
+              <span class="skill-tag tag-ml">TensorFlow</span>
+              <span class="skill-tag tag-ml">scikit-learn</span>
+              <span class="skill-tag">NLP</span>
+              <span class="skill-tag">OCR</span>
+              <span class="skill-tag">Transfer Learning</span>
+              <span class="skill-tag">VGG19</span>
             </div>
           </div>
         </div>
@@ -821,49 +1098,52 @@
         <div class="timeline">
 
           <div class="timeline-item reveal" data-reveal data-delay="80">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">SkyCom Corporation</div>
-            <div class="timeline-role" data-lang-en>Software Engineer</div>
-                           <div class="timeline-role" data-lang-jp>ソフトウェアエンジニア</div>
-            <div class="timeline-dates">Apr 2022 – Present · Miyazaki, Japan</div>
-            <ul class="timeline-bullets">
-              <li data-lang-en>Core developer on SkyPDF — low-level C++/C# PDF libraries on RHEL used by banks nationwide</li>
-              <li data-lang-jp>SkyPDFの中核開発者——銀行全国で使用されるRHEL上のC++/C#低レベルPDFライブラリ</li>
-              <li data-lang-en>Fixed a gnarly IPC bottleneck that halved response times in a major bank's production environment</li>
-              <li data-lang-jp>某メガバンクの本番環境でレイテンシを半分に短縮したIPCボトルネックを修正</li>
-              <li data-lang-en>Automated RPM-based deployment pipelines — bash, systemd, dependency management</li>
-              <li data-lang-jp>RPMベースデプロイパイプラインの自動化——bash、systemd、依存関係管理</li>
-            </ul>
+            <div class="timeline-card">
+              <div class="timeline-company">SkyCom Corporation</div>
+              <div class="timeline-role" data-lang-en>Software Engineer</div>
+              <div class="timeline-role" data-lang-jp>ソフトウェアエンジニア</div>
+              <div class="timeline-dates">Apr 2022 – Present · Miyazaki, Japan</div>
+              <ul class="timeline-bullets">
+                <li data-lang-en>Core developer on SkyPDF — low-level C++/C# PDF libraries on RHEL used by banks nationwide</li>
+                <li data-lang-jp>SkyPDFの中核開発者——銀行全国で使用されるRHEL上のC++/C#低レベルPDFライブラリ</li>
+                <li data-lang-en>Fixed a gnarly IPC bottleneck that halved response times in a major bank's production environment</li>
+                <li data-lang-jp>某メガバンクの本番環境でレイテンシを半分に短縮したIPCボトルネックを修正</li>
+                <li data-lang-en>Automated RPM-based deployment pipelines — bash, systemd, dependency management</li>
+                <li data-lang-jp>RPMベースデプロイパイプラインの自動化——bash、systemd、依存関係管理</li>
+              </ul>
+            </div>
           </div>
 
           <div class="timeline-item reveal" data-reveal data-delay="120">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">Ferntech Solutions</div>
-            <div class="timeline-role" data-lang-en>Sr. Engineer / PM</div>
-                           <div class="timeline-role" data-lang-jp>シニアエンジニア / PM</div>
-            <div class="timeline-dates">Oct 2019 – Sep 2021 · Dhaka, Bangladesh</div>
-            <ul class="timeline-bullets">
-              <li data-lang-en>Architected and shipped AIW Core — hyper-automation platform for 4 banks in Bangladesh</li>
-              <li data-lang-jp>AIW Coreの設計と導入——バングラデシュの4行向け超自動化プラットフォーム</li>
-              <li data-lang-en>Built an Electron + web automation studio with a shared engine across desktop and browser</li>
-              <li data-lang-jp>デスクトップとブラウザで共有エンジンを使うElectron + Web自動化スタジオを構築</li>
-              <li data-lang-en>Managed a 5-person team through hiring, mentoring, and delivery</li>
-              <li data-lang-jp>採用・メンタリング・納品を通じて5人チームを管理</li>
-            </ul>
+            <div class="timeline-card">
+              <div class="timeline-company">Ferntech Solutions</div>
+              <div class="timeline-role" data-lang-en>Sr. Engineer / PM</div>
+              <div class="timeline-role" data-lang-jp>シニアエンジニア / PM</div>
+              <div class="timeline-dates">Oct 2019 – Sep 2021 · Dhaka, Bangladesh</div>
+              <ul class="timeline-bullets">
+                <li data-lang-en>Architected and shipped AIW Core — hyper-automation platform for 4 banks in Bangladesh</li>
+                <li data-lang-jp>AIW Coreの設計と導入——バングラデシュの4行向け超自動化プラットフォーム</li>
+                <li data-lang-en>Built an Electron + web automation studio with a shared engine across desktop and browser</li>
+                <li data-lang-jp>デスクトップとブラウザで共有エンジンを使うElectron + Web自動化スタジオを構築</li>
+                <li data-lang-en>Managed a 5-person team through hiring, mentoring, and delivery</li>
+                <li data-lang-jp>採用・メンタリング・納品を通じて5人チームを管理</li>
+              </ul>
+            </div>
           </div>
 
           <div class="timeline-item reveal" data-reveal data-delay="160">
-            <div class="timeline-dot"></div>
-            <div class="timeline-company">Neonsofts (Co-Founder)</div>
-            <div class="timeline-role" data-lang-en>Lead Developer</div>
-                           <div class="timeline-role" data-lang-jp>リード開発者（共同創業）</div>
-            <div class="timeline-dates">Dec 2014 – Dec 2017 · Dhaka, Bangladesh</div>
-            <ul class="timeline-bullets">
-              <li data-lang-en>Co-founded a software startup while finishing university — delivered 2 full ERPs for real clients</li>
-              <li data-lang-jp>大学に通いながらソフトウェアスタートアップを共同創業——実際のクライアントにERPを2本納入</li>
-              <li data-lang-en>C# / WinForms / SQLite for the desktop stack; managed the whole thing alone for the first year</li>
-              <li data-lang-jp>C#/WinForms/SQLiteでデスクトップアプリを構築——最初の1年間は実質的に一人で全部担当</li>
-            </ul>
+            <div class="timeline-card">
+              <div class="timeline-company">Neonsofts (Co-Founder)</div>
+              <div class="timeline-role" data-lang-en>Lead Developer</div>
+              <div class="timeline-role" data-lang-jp>リード開発者（共同創業）</div>
+              <div class="timeline-dates">Dec 2014 – Dec 2017 · Dhaka, Bangladesh</div>
+              <ul class="timeline-bullets">
+                <li data-lang-en>Co-founded a software startup while finishing university — delivered 2 full ERPs for real clients</li>
+                <li data-lang-jp>大学に通いながらソフトウェアスタートアップを共同創業——実際のクライアントにERPを2本納入</li>
+                <li data-lang-en>C# / WinForms / SQLite for the desktop stack; managed the whole thing alone for the first year</li>
+                <li data-lang-jp>C#/WinForms/SQLiteでデスクトップアプリを構築——最初の1年間は実質的に一人で全部担当</li>
+              </ul>
+            </div>
           </div>
 
         </div>
@@ -1050,7 +1330,28 @@
           data-lang-en="Open to senior / lead roles in Tokyo or remote. Not looking for freelance. Reach me here:"
           data-lang-jp="東京またはリモートのシニア/リード職に興味があります。フリーランスの依頼は不可。こちらまで：">
         </p>
-        <div class="contact-links reveal" data-reveal data-delay="140">
+        <form class="contact-form reveal" data-reveal data-delay="120" id="contact-form" novalidate>
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder=" " required />
+            <label for="name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder=" " required />
+            <label for="email">Email Address</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Message</label>
+          </div>
+          <button type="submit" class="form-submit" id="submit-btn">
+            <span class="btn-text" data-lang-en>Send Message</span>
+            <span class="btn-text" data-lang-jp>送信</span>
+            <span class="spinner"></span>
+          </button>
+          <p class="form-success" id="form-success" data-lang-en>Message sent! I'll get back to you soon.</p>
+          <p class="form-success" id="form-success-jp" data-lang-jp style="display:none">メッセージを送信しました！すぐに返します。</p>
+        </form>
+        <div class="contact-links reveal" data-reveal data-delay="160">
           <a class="contact-link" href="https://github.com/shanewas" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12"/></svg>
             <span>GitHub</span>
@@ -1168,6 +1469,43 @@
     });
   });
 
+  /* ── Typewriter ── */
+  const typewriterPhrases = [
+    "Systems code that ships.",
+    "Low-level C++ engineer.",
+    "AI agent orchestrator.",
+    "Backend architect."
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typeSpeed = 80;
+
+  function typeWriter() {
+    const el = document.getElementById('typewriter');
+    if (!el) return;
+    const current = typewriterPhrases[phraseIndex];
+    if (isDeleting) {
+      el.textContent = current.substring(0, charIndex - 1);
+      charIndex--;
+      typeSpeed = 40;
+    } else {
+      el.textContent = current.substring(0, charIndex + 1);
+      charIndex++;
+      typeSpeed = 80;
+    }
+    if (!isDeleting && charIndex === current.length) {
+      typeSpeed = 2200;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % typewriterPhrases.length;
+      typeSpeed = 400;
+    }
+    setTimeout(typeWriter, typeSpeed);
+  }
+  setTimeout(typeWriter, 800);
+
   /* ── Scroll reveal ── */
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const revealEls = document.querySelectorAll('[data-reveal]');
@@ -1184,6 +1522,33 @@
       });
     }, { threshold: 0.08 });
     revealEls.forEach(el => revealObs.observe(el));
+  }
+
+  /* ── Contact form ── */
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formSuccess = document.getElementById('form-success');
+  const formSuccessJp = document.getElementById('form-success-jp');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameVal = document.getElementById('name').value.trim();
+      const emailVal = document.getElementById('email').value.trim();
+      const msgVal = document.getElementById('message').value.trim();
+      if (!nameVal || !emailVal || !msgVal) return;
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      // Simulate send (mailto fallback)
+      setTimeout(() => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        const isJp = html.getAttribute('data-lang') === 'jp';
+        formSuccess.style.display = isJp ? 'none' : 'block';
+        formSuccessJp.style.display = isJp ? 'block' : 'none';
+        form.reset();
+        setTimeout(() => { formSuccess.style.display = 'none'; formSuccessJp.style.display = 'none'; }, 5000);
+      }, 1500);
+    });
   }
 </script>
 
