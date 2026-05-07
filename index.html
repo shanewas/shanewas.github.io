@@ -826,9 +826,8 @@
       .reveal { opacity: 1; transform: none; transition: none; }
     }
   
-    /*
-</style>
-</head>
+    <link rel="stylesheet" href="effects.css" />
+  </head>
 <body>
 
 <!-- ── Topbar ── -->
@@ -849,6 +848,9 @@
     </button>
   </div>
 </header>
+
+<canvas id="hero-canvas"></canvas>
+<div id="scroll-progress"></div>
 
 <!-- Mobile nav overlay -->
 <div id="mobile-nav-overlay">
@@ -1551,6 +1553,217 @@
     });
   }
 </script>
+
+<div id="nav-dots">
+  <div class="nav-dot" data-target="about" data-label="About"></div>
+  <div class="nav-dot" data-target="highlights" data-label="Highlights"></div>
+  <div class="nav-dot" data-target="skills" data-label="Skills"></div>
+  <div class="nav-dot" data-target="experience" data-label="Experience"></div>
+  <div class="nav-dot" data-target="projects" data-label="Projects"></div>
+  <div class="nav-dot" data-target="education" data-label="Education"></div>
+  <div class="nav-dot" data-target="contact" data-label="Contact"></div>
+</div>
+  /* [1] Canvas particle constellation */
+  (function() {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W = 0, H = 0, mouseX = 0, mouseY = 0;
+    var PARTICLE_COUNT = 80;
+    var CONNECTION_DIST = 150;
+    var COLORS = ['#38BDF8','#0EA5E9','#06B6D4','#7C3AED'];
+    var particles = [];
+
+    function resize() {
+      var hero = document.getElementById('hero');
+      if (hero) { var r = hero.getBoundingClientRect(); W = canvas.width = r.width; H = canvas.height = r.height; }
+      else { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    }
+
+    function init() {
+      particles = [];
+      for (var i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({ x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4, r: Math.random()*2.5+1, color: COLORS[Math.floor(Math.random()*COLORS.length)] });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0,0,W,H);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.vx *= 0.99; p.vy *= 0.99;
+        var dx = mouseX - p.x, dy = mouseY - p.y;
+        if (Math.sqrt(dx*dx+dy*dy) < 150) { p.vx += dx*0.0003; p.vy += dy*0.0003; }
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = p.color; ctx.globalAlpha = 0.7; ctx.fill(); ctx.globalAlpha = 1;
+      }
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i+1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx*dx+dy*dy);
+          if (dist < CONNECTION_DIST) {
+            ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = particles[i].color; ctx.globalAlpha = (1-dist/CONNECTION_DIST)*0.4;
+            ctx.lineWidth = 0.8; ctx.stroke(); ctx.globalAlpha = 1;
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', function(e){ mouseX = e.clientX; mouseY = e.clientY; });
+    resize(); init(); draw();
+  })();
+
+  /* [5] Scroll progress bar */
+  (function() {
+    var bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    function update() { var pct = (document.body.scrollHeight - window.innerHeight > 0) ? (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) : 0; bar.style.width = pct + '%'; }
+    window.addEventListener('scroll', update, {passive:true}); update();
+  })();
+
+  /* [9] Custom cursor */
+  (function() {
+    var cursor = document.getElementById('custom-cursor');
+    if (!cursor) return;
+    var cx = -100, cy = -100, mx = -100, my = -100;
+    document.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; });
+    document.addEventListener('mouseover', function(e){ if (e.target.closest('a,button,.project-card,.highlight-card,.btn')) cursor.classList.add('hovered'); });
+    document.addEventListener('mouseout', function(e){ if (e.target.closest('a,button,.project-card,.highlight-card,.btn')) cursor.classList.remove('hovered'); });
+    function move() { cx += (mx-cx)*0.15; cy += (my-cy)*0.15; cursor.style.left = cx+'px'; cursor.style.top = cy+'px'; requestAnimationFrame(move); }
+    document.body.classList.add('cursor-hidden'); move();
+  })();
+
+  /* [7] Floating nav dots */
+  (function() {
+    var dots = document.querySelectorAll('.nav-dot');
+    dots.forEach(function(dot){ dot.addEventListener('click', function(){ var t = document.getElementById(dot.dataset.target); if(t) t.scrollIntoView({behavior:'smooth'}); }); });
+    var sections = ['about','highlights','skills','experience','projects','education','contact'];
+    function update() {
+      var scrollY = window.scrollY + window.innerHeight * 0.4;
+      var active = sections[0];
+      for (var i = 0; i < sections.length; i++) { var el = document.getElementById(sections[i]); if (el && el.offsetTop <= scrollY) active = sections[i]; }
+      dots.forEach(function(d){ d.classList.toggle('active', d.dataset.target === active); });
+    }
+    window.addEventListener('scroll', update, {passive:true}); update();
+  })();
+
+  /* [2] 3D card tilt on project cards */
+  (function() {
+    document.querySelectorAll('.project-card').forEach(function(card) {
+      var shine = card.querySelector('.shine') || (function() {
+        var s = document.createElement('div');
+        s.className = 'shine';
+        s.style.cssText = 'position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle 150px at 50% 50%,rgba(255,255,255,0.12),transparent);transition:opacity 0.2s;opacity:0;';
+        card.style.position = 'relative'; card.style.transformStyle = 'preserve-3d'; card.appendChild(s); return s;
+      })();
+      card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect();
+        var tiltX = ((e.clientY - r.top)/r.height - 0.5) * -16;
+        var tiltY = ((e.clientX - r.left)/r.width - 0.5) * 16;
+        card.style.transform = 'perspective(1000px) rotateX('+tiltX+'deg) rotateY('+tiltY+'deg) translateZ(8px)';
+        shine.style.background = 'radial-gradient(circle 180px at '+(((e.clientX-r.left)/r.width)*100)+'% '+(((e.clientY-r.top)/r.height)*100)+'%,rgba(255,255,255,0.18),transparent)';
+        shine.style.opacity = '1';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = ''; shine.style.opacity = '0';
+      });
+    });
+  })();
+
+  /* [15] Card flip */
+  (function() {
+    document.querySelectorAll('.project-card').forEach(function(card) {
+      card.addEventListener('click', function() { card.classList.toggle('flipped'); });
+    });
+  })();
+
+  /* [6] Magnetic buttons */
+  (function() {
+    document.querySelectorAll('.btn').forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var r = btn.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height/2);
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        if (dist < 60) btn.style.transform = 'translate('+(dx*0.25)+'px,'+(dy*0.25)+'px) scale(1.03)';
+      });
+      btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
+    });
+  })();
+
+  /* [13] Hero parallax */
+  (function() {
+    var hi = document.querySelector('#hero .hero-inner');
+    if (!hi) return;
+    function parallax() { hi.style.transform = 'translateY('+(window.scrollY*0.25)+'px)'; requestAnimationFrame(parallax); }
+    parallax();
+  })();
+
+  /* [10] Stats counter */
+  (function() {
+    var stats = document.querySelectorAll('.stat-number[data-target]');
+    if (!stats.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target, target = parseInt(el.dataset.target, 10), start = performance.now(), duration = 1500;
+          function tick(now) {
+            var p = Math.min((now-start)/duration, 1), eased = 1-Math.pow(1-p,3);
+            el.textContent = Math.round(eased*target);
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick); obs.unobserve(el);
+        }
+      });
+    }, {threshold: 0.5});
+    stats.forEach(function(el){ obs.observe(el); });
+  })();
+
+  /* [19] Ripple effect */
+  (function() {
+    var btn = document.querySelector('.form-submit');
+    if (!btn) return;
+    btn.addEventListener('click', function(e) {
+      var ripple = document.createElement('span'); ripple.className = 'ripple';
+      var r = btn.getBoundingClientRect(), size = Math.max(r.width, r.height);
+      ripple.style.cssText = 'position:absolute;width:'+size+'px;height:'+size+'px;border-radius:50%;background:rgba(255,255,255,0.25);left:'+(e.clientX-r.left-size/2)+'px;top:'+(e.clientY-r.top-size/2)+'px;transform:scale(0);animation:rippleOut 0.6s ease-out forwards;pointer-events:none;';
+      btn.style.position = 'relative'; btn.style.overflow = 'hidden'; btn.appendChild(ripple);
+    });
+  })();
+
+  /* Reveal orchestration */
+  (function() {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target, delay = parseInt(el.dataset.delay || '0', 10);
+          setTimeout(function(){ el.classList.add('visible'); }, delay);
+          obs.unobserve(el);
+        }
+      });
+    }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  })();
+
+
+<canvas id="hero-canvas"></canvas>
+<div id="scroll-progress"></div>
+<div id="custom-cursor"></div>
+<div id="nav-dots">
+  <div class="nav-dot" data-target="about" data-label="About"></div>
+  <div class="nav-dot" data-target="highlights" data-label="Highlights"></div>
+  <div class="nav-dot" data-target="skills" data-label="Skills"></div>
+  <div class="nav-dot" data-target="experience" data-label="Experience"></div>
+  <div class="nav-dot" data-target="projects" data-label="Projects"></div>
+  <div class="nav-dot" data-target="education" data-label="Education"></div>
+  <div class="nav-dot" data-target="contact" data-label="Contact"></div>
+</div>
 
 </body>
 </html>
