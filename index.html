@@ -3,45 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shanewas Ahmed — Senior Software Engineer</title>
-  <meta name="description" content="Senior software engineer based in Miyazaki, Japan. Systems code that ships and holds." />
+  <title>Shanewas Ahmed — Senior Software Engineer | Japan</title>
+  <meta name="description" content="Senior Software Engineer in Miyazaki, Japan. Building production systems for banks. Japan Patent holder (JP 2025-169170). IEEE author. Currently at SkyCom Japan." />
   
-  <!-- Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
-    
-    :root {
-      --accent: #0ea5e9;
-    }
-    
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-    
-    .mono {
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
-    }
-
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
     .section-header {
-      font-size: 0.75rem;
-      letter-spacing: 0.125em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: #64748b;
+      font-size: 0.75rem; letter-spacing: 0.125em; text-transform: uppercase;
+      font-weight: 600; color: #64748b;
     }
-
-    .nav-link {
-      transition: color 0.1s ease;
-    }
-    .nav-link:hover {
-      color: #e0f2fe;
-    }
-
+    .nav-link { transition: color 0.1s ease; }
+    .nav-link:hover { color: #e0f2fe; }
     .project-card {
       transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
                   box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1),
@@ -52,58 +30,25 @@
       box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
       border-color: #334155;
     }
-
-    .skill-card {
-      transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
-    .skill-card:hover {
-      background-color: #1f2937;
-      transform: translateY(-1px);
-    }
-
-    .stat-number {
-      font-feature-settings: "tnum";
-    }
-
-    .minimal-border {
-      border-color: #27251f;
-    }
-
-    .grok-accent {
-      color: #0ea5e9;
-    }
-
-    .content-max {
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .subtle-divider {
-      border-color: #27251f;
-    }
-
+    .skill-card { transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1); }
+    .skill-card:hover { background-color: #1f2937; transform: translateY(-1px); }
+    .stat-number { font-feature-settings: "tnum"; }
     .tech-pill {
-      background-color: #1f2937;
-      color: #94a3b8;
-      font-size: 0.75rem;
-      padding: 1px 10px;
-      border-radius: 9999px;
-      font-weight: 500;
+      background-color: #1f2937; color: #94a3b8; font-size: 0.75rem;
+      padding: 1px 10px; border-radius: 9999px; font-weight: 500;
     }
+    .grok-accent { color: #0ea5e9; }
   </style>
 </head>
 <body class="bg-[#0a0a0a] text-[#ededed] antialiased">
-  <!-- Top Navigation (X / Grok style) -->
+  <!-- Top Navigation -->
   <nav class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#27251f]">
     <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-14">
       <div class="flex items-center gap-x-3">
-        <div class="flex items-center gap-x-2">
-          <span class="font-semibold tracking-tight text-xl">shanewas</span>
-        </div>
+        <span class="font-semibold tracking-tight text-xl">shanewas</span>
+        <span class="px-2 py-0.5 text-[10px] rounded-full border border-[#27251f] text-[#64748b]">Japan</span>
       </div>
 
-      <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-x-8 text-sm">
         <a href="#about" class="nav-link text-[#a1a1aa] hover:text-white">About</a>
         <a href="#highlights" class="nav-link text-[#a1a1aa] hover:text-white">Highlights</a>
@@ -114,7 +59,6 @@
       </div>
 
       <div class="flex items-center gap-x-3">
-        <!-- Language Toggle -->
         <div class="flex items-center rounded-full border border-[#27251f] p-0.5 text-xs">
           <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">EN</a>
           <a href="index_ja.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">JP</a>
@@ -126,7 +70,7 @@
         </a>
         
         <a href="#contact" 
-           class="text-xs px-4 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[#ededed] transition-colors">
+           class="text-xs px-5 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[#ededed] transition-colors">
           Get in touch
         </a>
       </div>
@@ -138,15 +82,18 @@
     <div class="max-w-2xl">
       <div class="inline-flex items-center gap-x-2 px-3 py-1 rounded-full border border-[#27251f] mb-6">
         <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-        <span class="text-sm text-[#a1a1aa]">Based in Miyazaki, Japan</span>
+        <span class="text-sm text-[#a1a1aa]">Miyazaki, Japan — Engineer Visa</span>
       </div>
       
       <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
         Shanewas Ahmed
       </h1>
       
-      <p class="text-2xl text-[#a1a1aa] tracking-tight mb-8">
-        I write the code that doesn't apologize.
+      <p class="text-2xl text-[#a1a1aa] tracking-tight mb-2">
+        I build production systems that don't break.
+      </p>
+      <p class="text-lg text-[#64748b] mb-8">
+        Currently at SkyCom Japan. Japan Patent holder. IEEE author.
       </p>
       
       <div class="flex items-center gap-x-4">
@@ -156,7 +103,7 @@
         </a>
         <a href="#contact"
            class="inline-flex items-center px-6 py-3 rounded-full bg-white text-black hover:bg-[#ededed] font-medium text-sm transition-all">
-          Get in touch
+          Open to opportunities
         </a>
       </div>
     </div>
@@ -167,65 +114,33 @@
     <div class="grid md:grid-cols-12 gap-x-12 gap-y-8">
       <div class="md:col-span-3">
         <div class="section-header mb-3">About</div>
-        <h2 class="text-3xl font-semibold tracking-tight">The short version</h2>
+        <h2 class="text-3xl font-semibold tracking-tight">10+ years shipping real systems</h2>
       </div>
       <div class="md:col-span-9 text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
-        Senior Software Engineer with a focus on building reliable systems that scale. 
-        Currently at SkyCom Corporation (Miyazaki, Japan) on an Engineer Visa. 
-        Passionate about autonomous agents, low-level systems, and shipping production code that actually works.
-      </div>
-    </div>
-
-    <!-- Quick facts -->
-    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="flex items-center gap-x-3 border border-[#27251f] rounded-2xl px-5 py-4">
-        <span class="text-2xl">🇯🇵</span>
-        <div>
-          <div class="text-sm text-[#a1a1aa]">Engineer Visa</div>
-          <div class="font-medium">Japan</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-x-3 border border-[#27251f] rounded-2xl px-5 py-4">
-        <span class="text-2xl">📜</span>
-        <div>
-          <div class="text-sm text-[#a1a1aa]">Patent</div>
-          <div class="font-medium">JPO 2025</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-x-3 border border-[#27251f] rounded-2xl px-5 py-4">
-        <span class="text-2xl">🔬</span>
-        <div>
-          <div class="text-sm text-[#a1a1aa]">IEEE Paper</div>
-          <div class="font-medium">2019</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-x-3 border border-[#27251f] rounded-2xl px-5 py-4">
-        <span class="text-2xl">🏦</span>
-        <div>
-          <div class="text-sm text-[#a1a1aa]">Production</div>
-          <div class="font-medium">5 Banks</div>
-        </div>
+        Senior Software Engineer focused on reliable backend systems, document automation, 
+        and autonomous agents. Currently building enterprise solutions at SkyCom Japan. 
+        Previously led development for systems running in 5 major banks.
       </div>
     </div>
   </div>
 
   <!-- Highlights -->
   <div id="highlights" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">Highlights</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">Things that actually happened</h2>
+    <div class="section-header mb-3">Track Record</div>
+    <h2 class="text-3xl font-semibold tracking-tight mb-10">What actually shipped</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="border border-[#27251f] rounded-3xl p-8">
-        <div class="text-6xl font-semibold tracking-tighter stat-number">50%</div>
-        <div class="mt-2 text-[#a1a1aa]">Latency reduction in production systems</div>
-      </div>
-      <div class="border border-[#27251f] rounded-3xl p-8">
         <div class="text-6xl font-semibold tracking-tighter stat-number">5</div>
-        <div class="mt-2 text-[#a1a1aa]">Banks running my code in production</div>
+        <div class="mt-2 text-[#a1a1aa]">Banks running production systems I built</div>
       </div>
       <div class="border border-[#27251f] rounded-3xl p-8">
         <div class="text-6xl font-semibold tracking-tighter stat-number">1</div>
-        <div class="mt-2 text-[#a1a1aa]">Patent filed with Japan Patent Office (2025)</div>
+        <div class="mt-2 text-[#a1a1aa]">Japan Patent (JP 2025-169170 A) — Electronic Signature Infrastructure</div>
+      </div>
+      <div class="border border-[#27251f] rounded-3xl p-8">
+        <div class="text-6xl font-semibold tracking-tighter stat-number">50%</div>
+        <div class="mt-2 text-[#a1a1aa]">Latency reduction delivered in live systems</div>
       </div>
     </div>
   </div>
@@ -235,20 +150,18 @@
     <div class="flex items-end justify-between mb-8">
       <div>
         <div class="section-header mb-1">Skills</div>
-        <h2 class="text-3xl font-semibold tracking-tight">What I actually use</h2>
+        <h2 class="text-3xl font-semibold tracking-tight">What I use in production</h2>
       </div>
     </div>
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4 flex items-center gap-x-2">
-          <span>AI / Autonomous Agents</span>
-        </div>
+        <div class="font-semibold mb-4">AI &amp; Autonomous Agents</div>
         <div class="flex flex-wrap gap-2 text-sm">
           <span class="tech-pill">Hermes Agent</span>
-          <span class="tech-pill">Ollama</span>
-          <span class="tech-pill">Claude / GPT</span>
           <span class="tech-pill">Multi-agent systems</span>
+          <span class="tech-pill">Ollama / Claude</span>
+          <span class="tech-pill">Tool-use agents</span>
         </div>
       </div>
       
@@ -257,7 +170,6 @@
         <div class="flex flex-wrap gap-2 text-sm">
           <span class="tech-pill">Python</span>
           <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">JavaScript</span>
           <span class="tech-pill">C# / .NET</span>
           <span class="tech-pill">C++</span>
           <span class="tech-pill">Rust</span>
@@ -265,44 +177,13 @@
       </div>
       
       <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">Frameworks &amp; Libraries</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">Next.js</span>
-          <span class="tech-pill">Node.js</span>
-          <span class="tech-pill">Tailwind</span>
-          <span class="tech-pill">FastAPI</span>
-        </div>
-      </div>
-      
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">Infrastructure</div>
+        <div class="font-semibold mb-4">Infrastructure &amp; Backend</div>
         <div class="flex flex-wrap gap-2 text-sm">
           <span class="tech-pill">Docker</span>
           <span class="tech-pill">Linux</span>
+          <span class="tech-pill">PostgreSQL</span>
+          <span class="tech-pill">Node.js</span>
           <span class="tech-pill">Nginx</span>
-          <span class="tech-pill">Tailscale</span>
-          <span class="tech-pill">VPS / Contabo</span>
-        </div>
-      </div>
-      
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">Homelab / Sysadmin</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">Self-hosting</span>
-          <span class="tech-pill">Networking</span>
-          <span class="tech-pill">Automation</span>
-          <span class="tech-pill">Proxies</span>
-        </div>
-      </div>
-      
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">ML / Research</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">Deep Learning</span>
-          <span class="tech-pill">Computer Vision</span>
-          <span class="tech-pill">NLP</span>
-          <span class="tech-pill">IEEE Publications</span>
         </div>
       </div>
     </div>
@@ -311,10 +192,9 @@
   <!-- Experience -->
   <div id="experience" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
     <div class="section-header mb-3">Experience</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">Where the time went</h2>
+    <h2 class="text-3xl font-semibold tracking-tight mb-10">Current &amp; Past Roles</h2>
     
     <div class="space-y-12">
-      <!-- SkyCom -->
       <div class="flex flex-col md:flex-row md:gap-x-12">
         <div class="md:w-64 flex-shrink-0">
           <div class="font-semibold">SkyCom Corporation</div>
@@ -322,32 +202,30 @@
           <div class="text-xs text-[#64748b] mt-1">Apr 2022 – Present · Miyazaki, Japan</div>
         </div>
         <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          Building production systems for enterprise clients including multiple banks. 
-          Focus on reliable backend services, document automation, and AI-assisted workflows.
+          Building enterprise document automation, e-signature systems, and backend services 
+          for Japanese companies. Focus on reliable, production-grade code.
         </div>
       </div>
       
-      <!-- Ferntech -->
       <div class="flex flex-col md:flex-row md:gap-x-12">
         <div class="md:w-64 flex-shrink-0">
           <div class="font-semibold">Ferntech Solutions</div>
-          <div class="text-sm text-[#a1a1aa]">Sr. Engineer / PM</div>
-          <div class="text-xs text-[#64748b] mt-1">Oct 2019 – Sep 2021 · Dhaka, Bangladesh</div>
+          <div class="text-sm text-[#a1a1aa]">Senior Engineer / PM</div>
+          <div class="text-xs text-[#64748b] mt-1">2019 – 2021 · Dhaka</div>
         </div>
         <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          Led engineering and project management for fintech and enterprise projects.
+          Led development of banking automation systems deployed across multiple major banks.
         </div>
       </div>
       
-      <!-- Neonsofts -->
       <div class="flex flex-col md:flex-row md:gap-x-12">
         <div class="md:w-64 flex-shrink-0">
-          <div class="font-semibold">Neonsofts (Co-Founder)</div>
-          <div class="text-sm text-[#a1a1aa]">Lead Developer</div>
-          <div class="text-xs text-[#64748b] mt-1">Dec 2014 – Dec 2017 · Dhaka, Bangladesh</div>
+          <div class="font-semibold">Neonsofts</div>
+          <div class="text-sm text-[#a1a1aa]">Co-Founder &amp; Lead Developer</div>
+          <div class="text-xs text-[#64748b] mt-1">2014 – 2017</div>
         </div>
         <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          Co-founded and led development of multiple software products and services.
+          Built and shipped multiple production software products from the ground up.
         </div>
       </div>
     </div>
@@ -357,125 +235,51 @@
   <div id="projects" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
     <div class="flex items-end justify-between mb-8">
       <div>
-        <div class="section-header mb-1">Projects</div>
-        <h2 class="text-3xl font-semibold tracking-tight">Things I built that actually work</h2>
+        <div class="section-header mb-1">Selected Projects</div>
+        <h2 class="text-3xl font-semibold tracking-tight">Systems that run in production</h2>
       </div>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <!-- JLPT-Pro -->
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 group">
-        <div class="flex justify-between items-start">
-          <div>
-            <h3 class="font-semibold text-xl tracking-tight">JLPT-Pro</h3>
-            <p class="text-sm text-[#a1a1aa] mt-1">Modern JLPT study platform with spaced repetition and progress tracking.</p>
-          </div>
+      <div class="project-card border border-[#27251f] rounded-3xl p-7">
+        <h3 class="font-semibold text-xl tracking-tight">JLPT-Pro</h3>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Modern JLPT learning platform with spaced repetition and progress tracking. Built for serious learners.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-pill">TypeScript</span><span class="tech-pill">React</span><span class="tech-pill">Vite</span><span class="tech-pill">Node.js</span>
         </div>
-        <div class="flex flex-wrap gap-2 mt-6 mb-6">
-          <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">Vite</span>
-          <span class="tech-pill">Node.js</span>
-          <span class="tech-pill">SQLite</span>
-        </div>
-        <a href="#" class="text-sm text-[#0ea5e9] hover:underline inline-flex items-center gap-x-1">View repository →</a>
+        <a href="https://github.com/shanewas" class="text-sm grok-accent hover:underline">View repository →</a>
       </div>
       
-      <!-- Navi -->
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 group">
-        <div>
-          <h3 class="font-semibold text-xl tracking-tight">Navi — Autonomous Agent Swarm</h3>
-          <p class="text-sm text-[#a1a1aa] mt-1">Production-grade autonomous AI agent system with tool use, delegation, and persistent memory.</p>
+      <div class="project-card border border-[#27251f] rounded-3xl p-7">
+        <h3 class="font-semibold text-xl tracking-tight">Navi — Autonomous Agent System</h3>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Production-grade autonomous AI agent framework with tool calling, delegation, and persistent memory.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-pill">Python</span><span class="tech-pill">Docker</span><span class="tech-pill">Tailscale</span>
         </div>
-        <div class="flex flex-wrap gap-2 mt-6 mb-6">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">OpenClaw</span>
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">Tailscale</span>
-        </div>
-        <a href="#" class="text-sm text-[#0ea5e9] hover:underline inline-flex items-center gap-x-1">View repository →</a>
-      </div>
-      
-      <!-- ValidationEngine -->
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 group">
-        <div>
-          <h3 class="font-semibold text-xl tracking-tight">ValidationEngine</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 mt-6 mb-6">
-          <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">Node.js</span>
-        </div>
-        <a href="#" class="text-sm text-[#0ea5e9] hover:underline inline-flex items-center gap-x-1">View repository →</a>
-      </div>
-      
-      <!-- payflow -->
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 group">
-        <div>
-          <h3 class="font-semibold text-xl tracking-tight">payflow</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 mt-6 mb-6">
-          <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">PostgreSQL</span>
-          <span class="tech-pill">Docker</span>
-        </div>
-        <a href="#" class="text-sm text-[#0ea5e9] hover:underline inline-flex items-center gap-x-1">View repository →</a>
-      </div>
-      
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 group">
-        <div>
-          <h3 class="font-semibold text-xl tracking-tight">StructProbe</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 mt-6 mb-6">
-          <span class="tech-pill">C++</span>
-          <span class="tech-pill">C#</span>
-          <span class="tech-pill">Rust</span>
-          <span class="tech-pill">libclang</span>
-        </div>
-        <a href="#" class="text-sm text-[#0ea5e9] hover:underline inline-flex items-center gap-x-1">View repository →</a>
-      </div>
-      
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 group">
-        <div>
-          <h3 class="font-semibold text-xl tracking-tight">posix-ipc-dotnet</h3>
-        </div>
-        <div class="flex flex-wrap gap-2 mt-6 mb-6">
-          <span class="tech-pill">C#</span>
-          <span class="tech-pill">.NET Core</span>
-          <span class="tech-pill">Linux</span>
-          <span class="tech-pill">IPC</span>
-        </div>
-        <a href="#" class="text-sm text-[#0ea5e9] hover:underline inline-flex items-center gap-x-1">View repository →</a>
+        <a href="https://github.com/shanewas" class="text-sm grok-accent hover:underline">View repository →</a>
       </div>
     </div>
   </div>
 
-  <!-- Research & Education -->
+  <!-- Research & Patents -->
   <div id="research" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">Education &amp; Research</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">Where it started</h2>
+    <div class="section-header mb-3">Research &amp; Patents</div>
+    <h2 class="text-3xl font-semibold tracking-tight mb-10">Formal recognition</h2>
     
-    <div class="space-y-10">
+    <div class="space-y-8 text-[#a1a1aa]">
       <div>
-        <div class="font-semibold">BSc Computer Science</div>
-        <div class="text-[#a1a1aa]">BRAC University, Dhaka · 2013 – 2019</div>
+        <div class="font-semibold text-white">Japan Patent JP 2025-169170 A</div>
+        <div>Electronic Signature System Using My Number Card</div>
+        <div class="text-xs mt-1">Japan Patent Office • Filed 2025</div>
       </div>
-      
       <div>
-        <div class="font-semibold">IEEE Publication — Alzheimer's Prediction via Deep Learning</div>
-        <div class="text-[#a1a1aa]">IEEE Xplore · 2019</div>
+        <div class="font-semibold text-white">IEEE Publication</div>
+        <div>Alzheimer’s Prediction using Deep Learning</div>
+        <div class="text-xs mt-1">IEEE Xplore • 2019</div>
       </div>
-      
       <div>
-        <div class="font-semibold">B-JET Program</div>
-        <div class="text-[#a1a1aa]">University of Miyazaki · Oct 2021 – Jun 2022</div>
-      </div>
-      
-      <div>
-        <div class="font-semibold">JP 2025-169170 A — Electronic Signature System Using My Number Card</div>
-        <div class="text-[#a1a1aa]">Japan Patent Office · Filed 2025</div>
-        <a href="#" class="text-sm text-[#0ea5e9] hover:underline mt-1 inline-block">View at J-PlatPat →</a>
+        <div class="font-semibold text-white">BSc Computer Science</div>
+        <div>BRAC University, Dhaka • 2013–2019</div>
       </div>
     </div>
   </div>
@@ -484,21 +288,15 @@
   <div id="contact" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
     <div class="max-w-md">
       <div class="section-header mb-3">Contact</div>
-      <h2 class="text-3xl font-semibold tracking-tight mb-8">Let's talk</h2>
+      <h2 class="text-3xl font-semibold tracking-tight mb-8">Let’s talk about opportunities</h2>
       
       <form action="/forms/contact.php" method="POST" class="space-y-5">
-        <div>
-          <input type="text" name="name" placeholder="Your Name" required
-                 class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
-        </div>
-        <div>
-          <input type="email" name="email" placeholder="Email Address" required
-                 class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
-        </div>
-        <div>
-          <textarea name="message" rows="5" placeholder="Message" required
-                    class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-3xl px-5 py-4 text-sm placeholder:text-[#64748b] outline-none resize-y"></textarea>
-        </div>
+        <input type="text" name="name" placeholder="Your Name" required
+               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
+        <input type="email" name="email" placeholder="Email Address" required
+               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
+        <textarea name="message" rows="5" placeholder="Message or opportunity details" required
+                  class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-3xl px-5 py-4 text-sm placeholder:text-[#64748b] outline-none resize-y"></textarea>
         
         <button type="submit"
                 class="w-full py-3.5 rounded-2xl bg-white text-black font-medium hover:bg-[#ededed] active:bg-[#d1d5db] transition-colors">
@@ -515,25 +313,7 @@
   </div>
 
   <footer class="max-w-[1100px] mx-auto px-6 py-12 text-xs text-[#64748b]">
-    © Shanewas Ahmed — Systems that ship.
+    Based in Miyazaki, Japan • Open to roles in backend, ML platforms, and automation.
   </footer>
-
-  <script>
-    // Minimal Tailwind script for any dynamic needs (kept very light)
-    function initializeTailwind() {
-      // Already using CDN, this is just in case future interactivity is added
-    }
-    
-    // Keyboard shortcut hint (Grok style)
-    document.addEventListener('keydown', function(e) {
-      if (e.key === '/' && document.activeElement.tagName === 'BODY') {
-        e.preventDefault();
-        const contact = document.getElementById('contact');
-        if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-    
-    initializeTailwind();
-  </script>
 </body>
 </html>

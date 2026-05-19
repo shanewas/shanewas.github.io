@@ -1,808 +1,305 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shanewas Ahmed – シニアソフトウェアエンジニア</title>
-  <meta name="description" content="C++・C#・.NET・Linux・API開発・業務システム開発を中心に10年以上の経験を持つシニアソフトウェアエンジニア。IEEE論文著者・特許公報への貢献実績あり。">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shanewas Ahmed — シニアソフトウェアエンジニア | 日本</title>
+  <meta name="description" content="宮崎県在住のシニアソフトウェアエンジニア。銀行向け本番システムを構築。日本特許保有者（JP 2025-169170）。IEEE論文著者。現在SkyCom Japan勤務。" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {
-      --accent: #00e5c3;
-      --accent-dim: #00bfa6;
-      --bg-dark: #0a0f1e;
-      --bg-card: rgba(255,255,255,0.04);
-      --bg-card-border: rgba(255,255,255,0.1);
-      --text: #e8eaf0;
-      --text-muted: #8892a4;
-      --sidebar-w: 260px;
+    body { font-family: 'Inter', 'Hiragino Sans', 'Meiryo', system-ui, sans-serif; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .section-header {
+      font-size: 0.75rem; letter-spacing: 0.125em; text-transform: uppercase;
+      font-weight: 600; color: #64748b;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', 'Hiragino Sans', 'Meiryo', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.8;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: #fff; }
-    header {
-      position: fixed; top: 0; left: 0;
-      width: var(--sidebar-w); height: 100vh;
-      background: rgba(10,15,30,0.92);
-      backdrop-filter: blur(12px);
-      border-right: 1px solid var(--bg-card-border);
-      padding: 2.5rem 1.5rem;
-      display: flex; flex-direction: column; align-items: center;
-      z-index: 1000;
-    }
-    header img {
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    header h1 { font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: .25rem; }
-    header .tagline { font-size: .75rem; color: var(--text-muted); text-align: center; margin-bottom: 1rem; }
-    .social-links { display: flex; gap: .75rem; margin-bottom: 1.5rem; }
-    .social-links a { color: var(--text-muted); font-size: 1.2rem; transition: color .2s; }
-    .social-links a:hover { color: var(--accent); }
-    nav ul { list-style: none; width: 100%; }
-    nav ul li { margin-bottom: .25rem; }
-    nav ul a {
-      display: flex; align-items: center; gap: .75rem;
-      padding: .6rem 1rem; border-radius: .5rem;
-      color: var(--text-muted); font-size: .85rem; font-weight: 500;
-      transition: all .2s;
-    }
-    nav ul a:hover, nav ul a.active {
-      background: rgba(0,229,195,0.1);
-      color: var(--accent);
-    }
-    .badge-jp {
-      margin-top: auto;
-      font-size: .7rem;
-      background: rgba(0,229,195,0.1);
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-      padding: .25rem .75rem;
-      border-radius: 2rem;
-    }
-    main { margin-left: var(--sidebar-w); }
-    section { padding: 4rem 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem; color: var(--accent);
-      letter-spacing: .15em; text-transform: uppercase;
-      margin-bottom: .5rem;
-    }
-    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
-    #hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 4rem 3rem;
-      position: relative; overflow: hidden;
-    }
-    #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(0,229,195,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,100,200,0.08) 0%, transparent 60%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4rem; align-items: center;
-      position: relative; z-index: 1;
-      width: 100%; max-width: 960px;
-    }
-    .hero-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .85rem; color: var(--accent);
-      letter-spacing: .1em; margin-bottom: 1rem;
-    }
-    #hero h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700; line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-    #hero h1 span { color: var(--accent); }
-    #hero .sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 520px; }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
-    .hero-badge {
-      font-size: .75rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: .3rem .8rem; border-radius: 2rem;
-      color: var(--text-muted);
-    }
-    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary-custom {
-      background: var(--accent); color: #0a0f1e;
-      padding: .7rem 1.75rem; border-radius: .5rem;
-      font-weight: 600; font-size: .9rem;
-      transition: all .2s; border: none; cursor: pointer;
-    }
-    .btn-primary-custom:hover { background: #fff; color: #0a0f1e; }
-    .btn-outline-custom {
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--text); padding: .7rem 1.75rem;
-      border-radius: .5rem; font-size: .9rem;
-      transition: all .2s;
-    }
-    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; }
-    .stat-box {
-      background: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 1rem; padding: 1.25rem 1.5rem;
-      text-align: center; min-width: 130px;
-    }
-    .stat-box .num { font-size: 2rem; font-weight: 700; color: var(--accent); }
-    .stat-box .lbl { font-size: .75rem; color: var(--text-muted); margin-top: .25rem; }
-    .card-glass {
-      background: var(--bg-card);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 1rem; padding: 1.75rem;
-      backdrop-filter: blur(8px);
-      transition: border-color .2s;
-    }
-    .card-glass:hover { border-color: rgba(0,229,195,0.3); }
-    .skill-group { margin-bottom: 1.5rem; }
-    .skill-group h5 {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem; color: var(--accent);
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: .75rem;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .skill-tag {
-      font-size: .8rem;
-      background: rgba(0,229,195,0.07);
-      border: 1px solid rgba(0,229,195,0.2);
-      color: var(--text);
-      padding: .3rem .85rem; border-radius: .4rem;
-    }
-    .timeline { position: relative; padding-left: 1.5rem; }
-    .timeline::before {
-      content: ''; position: absolute; left: 0; top: .5rem; bottom: 0;
-      width: 2px; background: rgba(0,229,195,0.2);
-    }
-    .timeline-item { position: relative; margin-bottom: 2rem; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -1.6rem; top: .45rem;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 0 3px rgba(0,229,195,0.2);
-    }
-    .timeline-item .period {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .72rem; color: var(--accent); margin-bottom: .25rem;
-    }
-    .timeline-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: .15rem; }
-    .timeline-item .company { font-size: .85rem; color: var(--text-muted); margin-bottom: .75rem; }
-    .timeline-item ul { padding-left: 1.25rem; }
-    .timeline-item ul li { font-size: .875rem; color: var(--text-muted); margin-bottom: .4rem; }
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+    .nav-link { transition: color 0.1s ease; }
+    .nav-link:hover { color: #e0f2fe; }
     .project-card {
-      background: var(--bg-card); border: 1px solid var(--bg-card-border);
-      border-radius: 1rem; padding: 1.5rem;
-      transition: all .2s; display: flex; flex-direction: column;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                  box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1),
+                  border-color 0.2s ease;
     }
-    .project-card:hover { border-color: rgba(0,229,195,0.4); transform: translateY(-3px); }
-    .project-card h4 { font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
-    .project-card p { font-size: .83rem; color: var(--text-muted); flex: 1; margin-bottom: 1rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
-    .project-tag {
-      font-size: .72rem;
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      padding: .2rem .6rem; border-radius: .3rem; color: var(--text-muted);
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      border-color: #334155;
     }
-    .form-control, .form-control:focus {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text); border-radius: .5rem;
-    }
-    .form-control:focus { box-shadow: 0 0 0 2px rgba(0,229,195,0.2); border-color: var(--accent); }
-    label { font-size: .85rem; color: var(--text-muted); margin-bottom: .35rem; display: block; }
-    .sent-message { display: none; color: var(--accent); margin-top: 1rem; font-size: .9rem; }
-    .error-message { display: none; color: #e63946; margin-top: 1rem; font-size: .9rem; }
-    .loading { display: none; color: var(--text-muted); margin-top: 1rem; font-size: .9rem; }
-    #theme-toggle, #language-toggle {
-      position: fixed; top: 1.25rem; z-index: 1100;
-      border-radius: .5rem; font-size: .82rem; padding: .4rem .9rem;
-    }
-    #theme-toggle { right: 1rem; }
-    #language-toggle { right: 6rem; }
-    @media (max-width: 991px) {
-      #theme-toggle, #language-toggle { display: none; }
-    }
-    .mobile-nav {
-      display: none; justify-content: space-around;
-      background: rgba(10,15,30,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      position: fixed; top: 0; width: 100%;
-      padding: .6rem 0; z-index: 1000;
-    }
-    .mobile-nav a { color: var(--text-muted); font-size: 1.25rem; flex: 1; text-align: center; padding: .4rem; }
-    .mobile-nav a:hover { color: var(--accent); }
-    /* Force language + theme buttons to look like nav icons */
-    .mobile-nav #mobile-theme-toggle,
-    .mobile-nav .mobile-lang-btn {
-      all: unset;
-      color: var(--text-muted);
-      font-size: 1rem;
-      flex: 1;
-      text-align: center;
-      padding: .4rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mobile-nav #mobile-theme-toggle:hover,
-    .mobile-nav .mobile-lang-btn:hover { color: var(--accent); }
-
-    /* ── Light Mode ── */
-    body.light-mode {
-      --bg-dark: #f0f4f8;
-      --bg-card: rgba(0,0,0,0.04);
-      --bg-card-border: rgba(0,0,0,0.1);
-      --text: #1a202c;
-      --text-muted: #4a5568;
-    }
-    body.light-mode header {
-      background: rgba(240,244,248,0.95);
-      border-right-color: rgba(0,0,0,0.1);
-    }
-    body.light-mode .skill-tag {
-      background: rgba(0,180,160,0.08);
-      border-color: rgba(0,180,160,0.25);
-      color: #1a202c;
-    }
-    body.light-mode .btn-outline-light {
-      border-color: rgba(0,0,0,0.2);
-      color: #1a202c;
-    }
-    body.light-mode footer {
-      border-top-color: rgba(0,0,0,0.08);
-    }
-
-    @media (max-width: 991px) {
-      header { display: none; }
-      .mobile-nav { display: flex; }
-      main { margin-left: 0; }
-      section { padding: 3rem 1.25rem; padding-top: 5rem; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-stats { flex-direction: row; flex-wrap: wrap; }
-      #hero { min-height: auto; padding-top: 5rem; }
-    }
-    @media (max-width: 575px) {
-      #hero h1 { font-size: 1.75rem; }
-      .section-title { font-size: 1.5rem; }
+    .skill-card { transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1); }
+    .skill-card:hover { background-color: #1f2937; transform: translateY(-1px); }
+    .stat-number { font-feature-settings: "tnum"; }
+    .tech-pill {
+      background-color: #1f2937; color: #94a3b8; font-size: 0.75rem;
+      padding: 1px 10px; border-radius: 9999px; font-weight: 500;
     }
   </style>
 </head>
-<body>
-  <div class="mobile-nav d-lg-none">
-    <a href="#hero"><i class="bx bx-home"></i></a>
-    <a href="#about"><i class="bx bx-user"></i></a>
-    <a href="#skills"><i class="bx bx-cog"></i></a>
-    <a href="#resume"><i class="bx bx-file-blank"></i></a>
-    <a href="#projects"><i class="bx bx-code-alt"></i></a>
-    <a href="#contact"><i class="bx bx-envelope"></i></a>
-    <a href="index.html" title="English" class="mobile-lang-btn">EN</a>
-    <a href="#" id="mobile-theme-toggle" title="テーマ切替" id="mobile-theme-toggle"><i class="bi bi-moon"></i></a>
+<body class="bg-[#0a0a0a] text-[#ededed] antialiased">
+  <!-- Top Navigation -->
+  <nav class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#27251f]">
+    <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-14">
+      <div class="flex items-center gap-x-3">
+        <span class="font-semibold tracking-tight text-xl">shanewas</span>
+        <span class="px-2 py-0.5 text-[10px] rounded-full border border-[#27251f] text-[#64748b]">日本</span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-x-8 text-sm">
+        <a href="#about" class="nav-link text-[#a1a1aa] hover:text-white">自己紹介</a>
+        <a href="#highlights" class="nav-link text-[#a1a1aa] hover:text-white">実績</a>
+        <a href="#skills" class="nav-link text-[#a1a1aa] hover:text-white">スキル</a>
+        <a href="#experience" class="nav-link text-[#a1a1aa] hover:text-white">経歴</a>
+        <a href="#projects" class="nav-link text-[#a1a1aa] hover:text-white">プロジェクト</a>
+        <a href="#research" class="nav-link text-[#a1a1aa] hover:text-white">研究・特許</a>
+      </div>
+
+      <div class="flex items-center gap-x-3">
+        <div class="flex items-center rounded-full border border-[#27251f] p-0.5 text-xs">
+          <a href="index.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">EN</a>
+          <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">JP</a>
+        </div>
+
+        <a href="https://github.com/shanewas" target="_blank" 
+           class="text-xs px-4 py-1.5 rounded-full border border-[#27251f] hover:bg-[#1f2937] transition-colors text-[#a1a1aa] hover:text-white">
+          GitHub
+        </a>
+        
+        <a href="#contact" 
+           class="text-xs px-5 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[#ededed] transition-colors">
+          お問い合わせ
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="max-w-[1100px] mx-auto px-6 pt-20 pb-16">
+    <div class="max-w-2xl">
+      <div class="inline-flex items-center gap-x-2 px-3 py-1 rounded-full border border-[#27251f] mb-6">
+        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+        <span class="text-sm text-[#a1a1aa]">宮崎県在住 — 技術・人文知識・国際業務ビザ</span>
+      </div>
+      
+      <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
+        Shanewas Ahmed
+      </h1>
+      
+      <p class="text-2xl text-[#a1a1aa] tracking-tight mb-2">
+        本番環境で壊れないシステムを構築します。
+      </p>
+      <p class="text-lg text-[#64748b] mb-8">
+        現在 SkyCom Japan 勤務。日本特許保有者。IEEE論文著者。
+      </p>
+      
+      <div class="flex items-center gap-x-4">
+        <a href="https://github.com/shanewas" target="_blank"
+           class="inline-flex items-center px-6 py-3 rounded-full border border-[#27251f] hover:bg-[#111] transition-all text-sm font-medium">
+          GitHubを見る
+        </a>
+        <a href="#contact"
+           class="inline-flex items-center px-6 py-3 rounded-full bg-white text-black hover:bg-[#ededed] font-medium text-sm transition-all">
+          お話しましょう
+        </a>
+      </div>
+    </div>
   </div>
 
-  <a href="index.html" id="language-toggle" class="btn btn-outline-light" title="Switch to English">English</a>
-  <button id="theme-toggle" class="btn btn-outline-light"><i class="bi bi-moon"></i></button>
-
-  <header>
-    <img src="assets/img/profile-img.jpg" alt="Shanewas Ahmed">
-    <h1>Shanewas Ahmed</h1>
-    <div class="tagline">シニアソフトウェアエンジニア</div>
-    <div class="social-links">
-      <a href="https://github.com/shanewas" title="GitHub"><i class="bx bxl-github"></i></a>
-      <a href="https://www.linkedin.com/in/ahmedshanewas/" title="LinkedIn"><i class="bx bxl-linkedin"></i></a>
-      <a href="#" id="sidebar-email-link" title="Email"><i class="bx bx-envelope"></i></a>
+  <!-- About -->
+  <div id="about" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
+    <div class="grid md:grid-cols-12 gap-x-12 gap-y-8">
+      <div class="md:col-span-3">
+        <div class="section-header mb-3">自己紹介</div>
+        <h2 class="text-3xl font-semibold tracking-tight">10年以上、本番システムを届けてきました</h2>
+      </div>
+      <div class="md:col-span-9 text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
+        信頼性の高いバックエンドシステム、ドキュメント自動化、自律型エージェントの開発に注力しています。
+        現在はSkyCom Japanでエンタープライズ向けソリューションを構築中です。
+        過去には5つの主要銀行で稼働するシステムの開発をリードしました。
+      </div>
     </div>
-    <a href="https://drive.google.com/file/d/1zGDQIQ9KyOSJKSfuzzFEKy76dUgKskIy/view?usp=sharing" target="_blank"
-      style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;
-             background:rgba(0,229,195,0.1);border:1px solid var(--accent-dim);
-             color:var(--accent);padding:.5rem 1rem;border-radius:.5rem;
-             font-size:.82rem;font-weight:600;width:100%;justify-content:center;">
-      <i class="bx bx-download"></i> 履歴書
-    </a>
-    <a href="https://drive.google.com/file/d/1A9lx08IhqIKWxvQUEEoC4di7HBdqthqF/view?usp=sharing" target="_blank"
-      style="display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;
-             background:rgba(0,229,195,0.05);border:1px solid rgba(0,229,195,0.3);
-             color:var(--accent);padding:.5rem 1rem;border-radius:.5rem;
-             font-size:.82rem;font-weight:600;width:100%;justify-content:center;">
-      <i class="bx bx-download"></i> 職務経歴書
-    </a>
-    <nav>
-      <ul>
-        <li><a href="#hero" class="active"><i class="bx bx-home"></i> ホーム</a></li>
-        <li><a href="#about"><i class="bx bx-user"></i> 自己紹介</a></li>
-        <li><a href="#skills"><i class="bx bx-cog"></i> スキル</a></li>
-        <li><a href="#resume"><i class="bx bx-file-blank"></i> 職歴</a></li>
-        <li><a href="#projects"><i class="bx bx-code-alt"></i> プロジェクト</a></li>
-        <li><a href="#contact"><i class="bx bx-envelope"></i> お問い合わせ</a></li>
-      </ul>
-    </nav>
-    <div class="badge-jp">🇯🇵 宮崎県在住</div>
-  </header>
+  </div>
 
-  <main>
-    <!-- Hero -->
-    <section id="hero">
-      <div class="hero-grid" data-aos="fade-up">
-        <div>
-          <div class="hero-eyebrow">// シニアソフトウェアエンジニア</div>
-          <h1>スケールし、<span>落ちない</span><br>システムを<span>構築する。</span></h1>
-          <p class="sub">バングラデシュと日本で10年以上の開発経験。C++・C#・.NET・Linux・API開発・業務システム開発に従事。IEEE論文著者。現在SkyCom株式会社（宮崎）に在籍。</p>
-          <div class="hero-badges">
-            <span class="hero-badge">📜 特許公報への貢献 — 特許庁 2025</span>
-            <span class="hero-badge">🔬 IEEE論文 — 2019</span>
-            <span class="hero-badge">🇯🇵 エンジニアビザ保有</span>
-            <span class="hero-badge">🏦 5行以上に導入実績</span>
-          </div>
-          <div class="hero-cta">
-            <a href="#contact" class="btn-primary-custom">お問い合わせ</a>
-            <a href="#resume" class="btn-outline-custom">職歴を見る</a>
-            <a href="https://drive.google.com/file/d/1zGDQIQ9KyOSJKSfuzzFEKy76dUgKskIy/view?usp=sharing" target="_blank" class="btn-outline-custom" style="display:flex;align-items:center;gap:.4rem;"><i class="bx bx-download"></i> 履歴書</a><a href="https://drive.google.com/file/d/1A9lx08IhqIKWxvQUEEoC4di7HBdqthqF/view?usp=sharing" target="_blank" class="btn-outline-custom" style="display:flex;align-items:center;gap:.4rem;"><i class="bx bx-download"></i> 職務経歴書</a>
-          </div>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-box">
-            <div class="num">10+</div>
-            <div class="lbl">年の経験</div>
-          </div>
-          <div class="stat-box">
-            <div class="num">1</div>
-            <div class="lbl">特許公報</div>
-          </div>
-          <div class="stat-box">
-            <div class="num">5+</div>
-            <div class="lbl">導入銀行数</div>
-          </div>
+  <!-- Highlights -->
+  <div id="highlights" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
+    <div class="section-header mb-3">実績</div>
+    <h2 class="text-3xl font-semibold tracking-tight mb-10">実際に届けた成果</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="border border-[#27251f] rounded-3xl p-8">
+        <div class="text-6xl font-semibold tracking-tighter stat-number">5</div>
+        <div class="mt-2 text-[#a1a1aa]">主要銀行で稼働中の本番システム</div>
+      </div>
+      <div class="border border-[#27251f] rounded-3xl p-8">
+        <div class="text-6xl font-semibold tracking-tighter stat-number">1</div>
+        <div class="mt-2 text-[#a1a1aa]">日本特許（JP 2025-169170 A）<br>電子署名インフラ</div>
+      </div>
+      <div class="border border-[#27251f] rounded-3xl p-8">
+        <div class="text-6xl font-semibold tracking-tighter stat-number">50%</div>
+        <div class="mt-2 text-[#a1a1aa]">本番環境でのレイテンシ改善実績</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div id="skills" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <div class="section-header mb-1">スキル</div>
+        <h2 class="text-3xl font-semibold tracking-tight">本番で実際に使っている技術</h2>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
+        <div class="font-semibold mb-4">AI・自律型エージェント</div>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <span class="tech-pill">Hermes Agent</span>
+          <span class="tech-pill">Multi-agent systems</span>
+          <span class="tech-pill">Ollama / Claude</span>
         </div>
       </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div data-aos="fade-up">
-        <div class="section-label">// 01</div>
-        <div class="section-title">自己紹介</div>
-        <div class="row g-4">
-          <div class="col-lg-8">
-            <div class="card-glass">
-              <p style="margin-bottom:1rem;">宮崎県にある<strong>SkyCom株式会社</strong>のソフトウェアエンジニアとして、エンタープライズ向け業務システムおよびPDF関連製品の開発に従事しています。C++/C#によるライブラリ開発、REST API、Linuxデプロイパイプライン、および電子署名関連システムの開発を担当しています。</p>
-              <p style="margin-bottom:1rem;">バングラデシュと日本で10年以上の開発経験を持ち、本番システムの構築、スタートアップの共同創業、チームリード、主要金融機関への業務自動化プラットフォーム導入を経験してきました。また、マイナンバーカードを活用した電子署名システムに関する特許公報への貢献実績があります。</p>
-              <p>シドニー大学との共同研究として、深層学習によるアルツハイマー病分類に関するIEEE論文を共著。機械学習と実務開発の両面に強みを持っています。</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card-glass h-100">
-              <div class="section-label mb-3">// 主な実績</div>
-              <ul style="list-style:none; padding:0;">
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">📜 特許公報 — JP 2025-169170 A</li>
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🔬 IEEE論文 — シドニー大学との共同研究</li>
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🏦 5行以上の主要銀行に自動化システム導入</li>
-                <li style="padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.875rem;">🥇 全国ハッカソン 1位（2014年）</li>
-                <li style="padding:.5rem 0; font-size:.875rem;">🎓 MSP — マイクロソフト学生パートナー 2013–2016</li>
-              </ul>
-            </div>
-          </div>
+      
+      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
+        <div class="font-semibold mb-4">プログラミング言語</div>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">C# / .NET</span>
+          <span class="tech-pill">C++</span>
+          <span class="tech-pill">Rust</span>
         </div>
       </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <div data-aos="fade-up">
-        <div class="section-label">// 02</div>
-        <div class="section-title">技術スキル</div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <div class="card-glass h-100">
-              <div class="skill-group">
-                <h5>言語</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">C++</span>
-                  <span class="skill-tag">C#</span>
-                  <span class="skill-tag">Python</span>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">Bash</span>
-                  <span class="skill-tag">Java</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <h5>フレームワーク</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">.NET Core</span>
-                  <span class="skill-tag">Node.js</span>
-                  <span class="skill-tag">ElectronJS</span>
-                  <span class="skill-tag">React</span>
-                  <span class="skill-tag">Express</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="card-glass h-100">
-              <div class="skill-group">
-                <h5>インフラ</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">RHEL Linux</span>
-                  <span class="skill-tag">Docker</span>
-                  <span class="skill-tag">Kubernetes</span>
-                  <span class="skill-tag">Azure</span>
-                  <span class="skill-tag">RPMパッケージング</span>
-                  <span class="skill-tag">systemd</span>
-                  <span class="skill-tag">CI/CD</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <h5>データベース</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">MySQL</span>
-                  <span class="skill-tag">MongoDB</span>
-                  <span class="skill-tag">PostgreSQL</span>
-                  <span class="skill-tag">SQLite</span>
-                  <span class="skill-tag">Redis</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="card-glass h-100">
-              <div class="skill-group">
-                <h5>API・システム</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">REST API</span>
-                  <span class="skill-tag">OpenAPI</span>
-                  <span class="skill-tag">gRPC</span>
-                  <span class="skill-tag">PDFシステム</span>
-                  <span class="skill-tag">暗号署名</span>
-                </div>
-              </div>
-              <div class="skill-group">
-                <h5>ML / AI</h5>
-                <div class="skill-tags">
-                  <span class="skill-tag">TensorFlow</span>
-                  <span class="skill-tag">scikit-learn</span>
-                  <span class="skill-tag">NLP</span>
-                  <span class="skill-tag">OCR</span>
-                  <span class="skill-tag">転移学習</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      
+      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
+        <div class="font-semibold mb-4">インフラ・バックエンド</div>
+        <div class="flex flex-wrap gap-2 text-sm">
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">Linux</span>
+          <span class="tech-pill">PostgreSQL</span>
+          <span class="tech-pill">Node.js</span>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- Resume -->
-    <section id="resume">
-      <div data-aos="fade-up">
-        <div class="section-label">// 03</div>
-        <div class="section-title">職歴・学歴</div>
-        <div class="row g-4">
-          <div class="col-lg-7">
-            <div class="card-glass">
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="period">2022年4月 – 現在</div>
-                  <h4>ソフトウェアエンジニア</h4>
-                  <div class="company">SkyCom株式会社 · 宮崎県</div>
-                  <ul>
-                    <li>SkyPDFのコア開発者として、RHEL上でC++・C#を使用した低レベルPDFライブラリを開発・保守</li>
-                    <li>文書署名・レンダリング・変換向けCLIインターフェースおよびWeb APIを設計・構築</li>
-                    <li>RPMパッケージング・Bashスクリプト・依存関係管理によるデプロイ自動化を実現</li>
-                    <li>長年の課題だったAPIパフォーマンスのボトルネックを解消し、応答速度を大幅に改善</li>
-                    <li>マイナンバーカードを活用した電子署名システムに関する特許公報に貢献（特許庁 2025年）</li>
-                  </ul>
-                </div>
-                <div class="timeline-item">
-                  <div class="period">2019年10月 – 2021年9月</div>
-                  <h4>シニアソフトウェアエンジニア / プロジェクトマネージャー</h4>
-                  <div class="company">Ferntech Solutions · ダッカ、バングラデシュ</div>
-                  <ul>
-                    <li>AIW Coreを設計・開発。Bank Asia・City Bank・UCB Bank・Eastern Bankなどに導入</li>
-                    <li>共通エンジンでデスクトップ（ElectronJS）とWeb両対応の自動化スタジオを構築</li>
-                    <li>AI関連のインテリジェント文書自動化機能のR&Dをリード</li>
-                    <li>プロジェクトマネージャーに昇格（2020年1月）— 5名のチームを管理・採用・メンタリング</li>
-                  </ul>
-                </div>
-                <div class="timeline-item">
-                  <div class="period">2014年12月 – 2017年12月</div>
-                  <h4>共同創業者 & リード開発者</h4>
-                  <div class="company">Neonsofts · ダッカ、バングラデシュ</div>
-                  <ul>
-                    <li>BRAC大学在学中にソフトウェアスタートアップを共同創業</li>
-                    <li>小売・製造業クライアント向けにERPシステム2件を設計・納品</li>
-                    <li>C# / WinForms / SQLiteを使用したオフライン対応デスクトップアプリを開発</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="card-glass mb-4">
-              <div class="section-label mb-3">// 学歴</div>
-              <div class="timeline">
-                <div class="timeline-item">
-                  <div class="period">2013年 – 2019年</div>
-                  <h4>コンピュータサイエンス学士</h4>
-                  <div class="company">BRAC大学 · ダッカ</div>
-                  <p style="font-size:.83rem; color:var(--text-muted);">在学中に共同創業・フリーランス経験（2014–2017年）。シドニー大学との共同研究でIEEE論文発表（2019年）。</p>
-                </div>
-                <div class="timeline-item">
-                  <div class="period">2021年10月 – 2022年6月</div>
-                  <h4>B-JETプログラム</h4>
-                  <div class="company">宮崎大学 · 宮崎県</div>
-                  <p style="font-size:.83rem; color:var(--text-muted);">JICA主催のICTエンジニア向け研修。宮崎大学認定修了。</p>
-                </div>
-              </div>
-            </div>
-            <div class="card-glass">
-              <div class="section-label mb-3">// 特許・研究</div>
-              <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.07);">
-                <div style="font-size:.75rem; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-bottom:.25rem;">特許公報 · 特許庁 2025</div>
-                <div style="font-size:.875rem; font-weight:600; margin-bottom:.25rem;">JP 2025-169170 A</div>
-                <div style="font-size:.8rem; color:var(--text-muted);">マイナンバーカードを活用した電子署名システム</div>
-                <a href="https://www.j-platpat.inpit.go.jp/c1801/PU/JP-2025-169170/15/en" target="_blank" style="font-size:.78rem;">J-PlatPatで見る →</a>
-              </div>
-              <div>
-                <div style="font-size:.75rem; color:var(--accent); font-family:'JetBrains Mono',monospace; margin-bottom:.25rem;">IEEE論文 · 2019年</div>
-                <div style="font-size:.875rem; font-weight:600; margin-bottom:.25rem;">深層学習によるアルツハイマー病予測</div>
-                <div style="font-size:.8rem; color:var(--text-muted); margin-bottom:.5rem;">シドニー大学との共同研究。VGG19・Inception v3使用。</div>
-                <a href="https://ieeexplore.ieee.org/document/9306649" target="_blank" style="font-size:.78rem;">IEEE Xploreで見る →</a>
-              </div>
-            </div>
-          </div>
+  <!-- Experience -->
+  <div id="experience" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
+    <div class="section-header mb-3">経歴</div>
+    <h2 class="text-3xl font-semibold tracking-tight mb-10">現在の役割と過去の実績</h2>
+    
+    <div class="space-y-12">
+      <div class="flex flex-col md:flex-row md:gap-x-12">
+        <div class="md:w-64 flex-shrink-0">
+          <div class="font-semibold">SkyCom Corporation</div>
+          <div class="text-sm text-[#a1a1aa]">Software Engineer</div>
+          <div class="text-xs text-[#64748b] mt-1">2022年4月 ～ 現在 · 宮崎県</div>
+        </div>
+        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
+          企業向けドキュメント自動化、電子署名システム、バックエンドサービスの開発を担当。
+          信頼性が高く、本番環境で安定して稼働するコードを重視しています。
         </div>
       </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <div data-aos="fade-up">
-        <div class="section-label">// 04</div>
-        <div class="section-title">プロジェクト</div>
-        <div id="projects-grid" class="project-grid">
-          <div class="project-card skeleton-card" style="min-height:180px; animation: pulse 1.5s infinite;">
-            <div style="height:1rem; width:60%; background:rgba(255,255,255,0.08); border-radius:.3rem; margin-bottom:1rem;"></div>
-            <div style="height:.75rem; width:90%; background:rgba(255,255,255,0.05); border-radius:.3rem; margin-bottom:.5rem;"></div>
-            <div style="height:.75rem; width:70%; background:rgba(255,255,255,0.05); border-radius:.3rem;"></div>
-          </div>
-          <div class="project-card skeleton-card" style="min-height:180px; animation: pulse 1.5s infinite .2s;">
-            <div style="height:1rem; width:50%; background:rgba(255,255,255,0.08); border-radius:.3rem; margin-bottom:1rem;"></div>
-            <div style="height:.75rem; width:85%; background:rgba(255,255,255,0.05); border-radius:.3rem; margin-bottom:.5rem;"></div>
-            <div style="height:.75rem; width:65%; background:rgba(255,255,255,0.05); border-radius:.3rem;"></div>
-          </div>
-          <div class="project-card skeleton-card" style="min-height:180px; animation: pulse 1.5s infinite .4s;">
-            <div style="height:1rem; width:55%; background:rgba(255,255,255,0.08); border-radius:.3rem; margin-bottom:1rem;"></div>
-            <div style="height:.75rem; width:80%; background:rgba(255,255,255,0.05); border-radius:.3rem; margin-bottom:.5rem;"></div>
-            <div style="height:.75rem; width:60%; background:rgba(255,255,255,0.05); border-radius:.3rem;"></div>
-          </div>
+      
+      <div class="flex flex-col md:flex-row md:gap-x-12">
+        <div class="md:w-64 flex-shrink-0">
+          <div class="font-semibold">Ferntech Solutions</div>
+          <div class="text-sm text-[#a1a1aa]">Senior Engineer / PM</div>
+          <div class="text-xs text-[#64748b] mt-1">2019年 ～ 2021年 · ダッカ</div>
+        </div>
+        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
+          複数の主要銀行に導入された銀行業務自動化システムの開発をリード。
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- Contact -->
-    <section id="contact">
-      <div data-aos="fade-up">
-        <div class="section-label">// 05</div>
-        <div class="section-title">お問い合わせ</div>
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="card-glass">
-              <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">お仕事やコラボレーションのご相談はお気軽にどうぞ。</p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-geo-alt me-2" style="color:var(--accent)"></i>宮崎県、日本</p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-envelope me-2" style="color:var(--accent)"></i><span id="cf-email"></span></p>
-              <p style="margin-bottom:.75rem;"><i class="bi bi-linkedin me-2" style="color:var(--accent)"></i><a href="https://linkedin.com/in/ahmedshanewas">ahmedshanewas</a></p>
-              <p><i class="bi bi-github me-2" style="color:var(--accent)"></i><a href="https://github.com/shanewas">shanewas</a></p>
-            </div>
-          </div>
-          <div class="col-lg-8">
-            <div class="card-glass">
-              <form id="contact-form" action="https://formsubmit.co/8c8a44677719ba4130aeeb1515e91012" method="POST">
-                <input type="hidden" name="_captcha" value="false">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label>お名前</label>
-                    <input type="text" name="name" class="form-control" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label>メールアドレス</label>
-                    <input type="email" name="email" class="form-control" required>
-                  </div>
-                  <div class="col-12">
-                    <label>件名</label>
-                    <input type="text" name="subject" class="form-control" required>
-                  </div>
-                  <div class="col-12">
-                    <label>メッセージ</label>
-                    <textarea name="message" rows="5" class="form-control" required></textarea>
-                  </div>
-                  <div class="col-12">
-                    <div class="loading">送信中...</div>
-                    <div class="sent-message">✅ メッセージが送信されました。ありがとうございます！</div>
-                    <div class="error-message">送信中にエラーが発生しました。もう一度お試しください。</div>
-                    <button type="submit" class="btn-primary-custom mt-2">送信する</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+  <!-- Projects -->
+  <div id="projects" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <div class="section-header mb-1">主なプロジェクト</div>
+        <h2 class="text-3xl font-semibold tracking-tight">本番環境で実際に稼働しているシステム</h2>
       </div>
-    </section>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="project-card border border-[#27251f] rounded-3xl p-7">
+        <h3 class="font-semibold text-xl tracking-tight">JLPT-Pro</h3>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">間隔反復学習と進捗管理を備えた現代的なJLPT学習プラットフォーム。本気で学習する人のために構築。</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-pill">TypeScript</span><span class="tech-pill">React</span><span class="tech-pill">Vite</span>
+        </div>
+        <a href="https://github.com/shanewas" class="text-sm text-[#0ea5e9] hover:underline">リポジトリを見る →</a>
+      </div>
+      
+      <div class="project-card border border-[#27251f] rounded-3xl p-7">
+        <h3 class="font-semibold text-xl tracking-tight">Navi — 自律型エージェントシステム</h3>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">ツール呼び出し・委譲・永続メモリを備えた本番向け自律AIエージェントフレームワーク。</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-pill">Python</span><span class="tech-pill">Docker</span><span class="tech-pill">Tailscale</span>
+        </div>
+        <a href="https://github.com/shanewas" class="text-sm text-[#0ea5e9] hover:underline">リポジトリを見る →</a>
+      </div>
+    </div>
+  </div>
 
-    <footer style="text-align:center; padding:2rem; color:var(--text-muted); font-size:.82rem; border-top:1px solid rgba(255,255,255,0.05);">
-      © <span id="year"></span> Shanewas Ahmed · 誠意を持って構築。
-    </footer>
-  </main>
+  <!-- Research & Patents -->
+  <div id="research" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
+    <div class="section-header mb-3">研究・特許</div>
+    <h2 class="text-3xl font-semibold tracking-tight mb-10">公式な評価</h2>
+    
+    <div class="space-y-8 text-[#a1a1aa]">
+      <div>
+        <div class="font-semibold text-white">日本特許 JP 2025-169170 A</div>
+        <div>マイナンバーカードを用いた電子署名システム</div>
+        <div class="text-xs mt-1">日本特許庁 • 2025年出願</div>
+      </div>
+      <div>
+        <div class="font-semibold text-white">IEEE論文</div>
+        <div>深層学習によるアルツハイマー病予測</div>
+        <div class="text-xs mt-1">IEEE Xplore • 2019年</div>
+      </div>
+      <div>
+        <div class="font-semibold text-white">学士（コンピュータサイエンス）</div>
+        <div>BRAC University（ダッカ） • 2013–2019年</div>
+      </div>
+    </div>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 700, once: true, offset: 60 });
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function applyTheme(isLight) {
-      document.body.classList.toggle('light-mode', isLight);
-      const icon = isLight ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
-      document.getElementById('theme-toggle').innerHTML = icon;
-      const m = document.getElementById('mobile-theme-toggle');
-      if (m) m.innerHTML = icon;
-    }
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      applyTheme(document.body.classList.toggle('light-mode'));
-      // sync icon
-      const isLight = document.body.classList.contains('light-mode');
-      const icon = isLight ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
-      document.getElementById('theme-toggle').innerHTML = icon;
-      const m = document.getElementById('mobile-theme-toggle');
-      if (m) m.innerHTML = icon;
-    });
-    const mobileTheme = document.getElementById('mobile-theme-toggle');
-    if (mobileTheme) {
-      mobileTheme.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isLight = document.body.classList.toggle('light-mode');
-        const icon = isLight ? '<i class="bi bi-moon"></i>' : '<i class="bi bi-sun"></i>';
-        document.getElementById('theme-toggle').innerHTML = icon;
-        mobileTheme.innerHTML = icon;
-      });
-    }
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav ul a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
-      navLinks.forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-      });
-    });
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      document.querySelector('.loading').style.display = 'block';
-      document.querySelector('.sent-message').style.display = 'none';
-      document.querySelector('.error-message').style.display = 'none';
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-        .then(res => {
-          document.querySelector('.loading').style.display = 'none';
-          if (res.ok) { document.querySelector('.sent-message').style.display = 'block'; form.reset(); }
-          else throw new Error('Server error');
-        })
-        .catch(() => {
-          document.querySelector('.loading').style.display = 'none';
-          document.querySelector('.error-message').style.display = 'block';
-        });
-    });
+  <!-- Contact -->
+  <div id="contact" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
+    <div class="max-w-md">
+      <div class="section-header mb-3">お問い合わせ</div>
+      <h2 class="text-3xl font-semibold tracking-tight mb-8">機会についてお話しましょう</h2>
+      
+      <form action="/forms/contact.php" method="POST" class="space-y-5">
+        <input type="text" name="name" placeholder="お名前" required
+               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
+        <input type="email" name="email" placeholder="メールアドレス" required
+               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
+        <textarea name="message" rows="5" placeholder="メッセージまたはお話したい内容" required
+                  class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-3xl px-5 py-4 text-sm placeholder:text-[#64748b] outline-none resize-y"></textarea>
+        
+        <button type="submit"
+                class="w-full py-3.5 rounded-2xl bg-white text-black font-medium hover:bg-[#ededed] active:bg-[#d1d5db] transition-colors">
+          メッセージを送信
+        </button>
+      </form>
+      
+      <div class="mt-10 text-sm flex flex-col gap-y-2 text-[#a1a1aa]">
+        <a href="https://github.com/shanewas" class="hover:text-white">GitHub</a>
+        <a href="https://linkedin.com/in/ahmedshanewas" class="hover:text-white">LinkedIn</a>
+        <a href="mailto:shanewasahmed@gmail.com" class="hover:text-white">shanewasahmed@gmail.com</a>
+      </div>
+    </div>
+  </div>
 
-    // ── GitHub Pinned Repos ──
-    const PINNED = [
-      'process-automation',
-      'StructProbe',
-      'ValidationEngine',
-      'posix-ipc-dotnet',
-      'payflow',
-      'tunnelfox'
-    ];
-    const FALLBACK = [
-      { name: 'process-automation', description: 'Robotic process automation (RPA) solution for building, deploying, and managing software robots.', language: 'JavaScript', stars: 1, url: 'https://github.com/shanewas/process-automation' },
-      { name: 'StructProbe', description: 'A small C++ / libclang utility that parses C/C++ headers and prints struct sizes and field offsets.', language: 'C++', stars: 0, url: 'https://github.com/shanewas/StructProbe' },
-      { name: 'ValidationEngine', description: '@shanewas/form-validation — powerful and flexible validation engine for Node.js and browsers.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/ValidationEngine' },
-      { name: 'posix-ipc-dotnet', description: 'A lightweight .NET library for System V shared memory and semaphores on Linux (x64, glibc).', language: 'C#', stars: 0, url: 'https://github.com/shanewas/posix-ipc-dotnet' },
-      { name: 'payflow', description: 'A full-stack payment integration system built with Node.js, Express, Stripe API, PostgreSQL and React.', language: 'JavaScript', stars: 0, url: 'https://github.com/shanewas/payflow' },
-      { name: 'tunnelfox', description: 'A privacy-focused desktop browser that routes all traffic through an SSH SOCKS5 tunnel.', language: 'python', stars: 0, url: 'https://github.com/shanewas/tunnelfox' }
-    ];
-    const langColors = {
-      JavaScript: '#f1e05a', TypeScript: '#2b7489', Python: '#3572A5',
-      'C++': '#f34b7d', 'C#': '#178600', Java: '#b07219',
-      'Jupyter Notebook': '#DA5B0B', Shell: '#89e051', Go: '#00ADD8',
-      HTML: '#e34c26', default: '#8892a4'
-    };
-    function renderRepos(repos) {
-      const grid = document.getElementById('projects-grid');
-      grid.innerHTML = repos.map(r => {
-        const name = r.name || r.repo;
-        const desc = r.description || 'No description provided.';
-        const lang = r.language;
-        const stars = r.stargazers_count || r.stars || 0;
-        const url = r.html_url || r.url || ('https://github.com/shanewas/' + name);
-        const color = langColors[lang] || langColors.default;
-        return `<div class="project-card">
-          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
-            <i class="bx bx-git-repo-forked" style="color:var(--text-muted);"></i>
-            <h4 style="margin:0;">${name}</h4>
-            ${stars > 0 ? `<span style="font-size:.78rem;color:var(--text-muted);margin-left:auto;">⭐ ${stars}</span>` : ''}
-          </div>
-          <p>${desc}</p>
-          <div class="project-tags" style="margin-bottom:auto;">
-            ${lang ? `<span class="project-tag"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};margin-right:.4rem;vertical-align:middle;"></span>${lang}</span>` : ''}
-          </div>
-          <a href="${url}" target="_blank" style="font-size:.82rem;color:var(--accent);margin-top:1rem;display:inline-block;">View on GitHub →</a>
-        </div>`;
-      }).join('');
-    }
-    async function loadPinnedRepos() {
-      try {
-        const results = await Promise.all(
-          PINNED.map(name =>
-            fetch(`https://api.github.com/repos/shanewas/${name}`, {
-              headers: { 'Accept': 'application/vnd.github.v3+json' }
-            }).then(r => r.json())
-          )
-        );
-        // Check if API returned valid data (not rate limit error)
-        if (results[0] && results[0].name) {
-          renderRepos(results);
-        } else {
-          renderRepos(FALLBACK);
-        }
-      } catch {
-        renderRepos(FALLBACK);
-      }
-    }
-    loadPinnedRepos();
-
-    // Cloudflare-safe email render
-    (function(){
-      var u='shanewasahmed', d='gmail.com';
-      var email = u + '@' + d;
-      // Contact section
-      var el = document.getElementById('cf-email');
-      if(el) {
-        var a = document.createElement('a');
-        a.href = 'mailto:' + email;
-        a.style.color = 'var(--accent)';
-        a.textContent = email;
-        el.appendChild(a);
-      }
-      // Sidebar icon
-      var sl = document.getElementById('sidebar-email-link');
-      if(sl) { sl.href = 'mailto:' + email; }
-    })();
-  </script>
+  <footer class="max-w-[1100px] mx-auto px-6 py-12 text-xs text-[#64748b]">
+    宮崎県在住 • バックエンド、MLプラットフォーム、自動化領域のポジションを検討しています。
+  </footer>
 </body>
 </html>
