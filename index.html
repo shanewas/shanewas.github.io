@@ -38,17 +38,27 @@
       padding: 1px 10px; border-radius: 9999px; font-weight: 500;
     }
     .grok-accent { color: #0ea5e9; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+    }
+    .mobile-menu.open {
+      display: block;
+    }
   </style>
 </head>
 <body class="bg-[#0a0a0a] text-[#ededed] antialiased">
   <!-- Top Navigation -->
   <nav class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#27251f]">
     <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-14">
+      <!-- Logo -->
       <div class="flex items-center gap-x-3">
         <span class="font-semibold tracking-tight text-xl">shanewas</span>
         <span class="px-2 py-0.5 text-[10px] rounded-full border border-[#27251f] text-[#64748b]">Japan</span>
       </div>
 
+      <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-x-8 text-sm">
         <a href="#about" class="nav-link text-[#a1a1aa] hover:text-white">About</a>
         <a href="#highlights" class="nav-link text-[#a1a1aa] hover:text-white">Highlights</a>
@@ -58,21 +68,62 @@
         <a href="#opportunities" class="nav-link text-[#a1a1aa] hover:text-white">Opportunities</a>
       </div>
 
-      <div class="flex items-center gap-x-3">
-        <div class="flex items-center rounded-full border border-[#27251f] p-0.5 text-xs">
+      <!-- Right side actions -->
+      <div class="flex items-center gap-x-2">
+        <!-- Language Toggle -->
+        <div class="hidden md:flex items-center rounded-full border border-[#27251f] p-0.5 text-xs">
           <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">EN</a>
           <a href="index_ja.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">JP</a>
         </div>
 
         <a href="https://github.com/shanewas" target="_blank" 
-           class="text-xs px-4 py-1.5 rounded-full border border-[#27251f] hover:bg-[#1f2937] transition-colors text-[#a1a1aa] hover:text-white">
+           class="hidden md:block text-xs px-4 py-1.5 rounded-full border border-[#27251f] hover:bg-[#1f2937] transition-colors text-[#a1a1aa] hover:text-white">
           GitHub
         </a>
         
         <a href="#contact" 
-           class="text-xs px-5 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[#ededed] transition-colors">
+           class="hidden md:block text-xs px-5 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[#ededed] transition-colors">
           Get in touch
         </a>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" 
+                class="md:hidden p-2 text-[#a1a1aa] hover:text-white"
+                aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden border-t border-[#27251f] bg-[#0a0a0a]">
+      <div class="px-6 py-6 space-y-4 text-sm">
+        <a href="#about" class="block py-2 text-[#a1a1aa] hover:text-white">About</a>
+        <a href="#highlights" class="block py-2 text-[#a1a1aa] hover:text-white">Highlights</a>
+        <a href="#skills" class="block py-2 text-[#a1a1aa] hover:text-white">Skills</a>
+        <a href="#experience" class="block py-2 text-[#a1a1aa] hover:text-white">Experience</a>
+        <a href="#projects" class="block py-2 text-[#a1a1aa] hover:text-white">Projects</a>
+        <a href="#opportunities" class="block py-2 text-[#a1a1aa] hover:text-white">Opportunities</a>
+        
+        <div class="pt-4 border-t border-[#27251f]">
+          <div class="flex items-center gap-x-3 mb-4">
+            <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">EN</a>
+            <a href="index_ja.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">JP</a>
+          </div>
+          
+          <div class="flex flex-col gap-y-3">
+            <a href="https://github.com/shanewas" target="_blank" 
+               class="text-sm px-4 py-2.5 rounded-full border border-[#27251f] text-center text-[#a1a1aa] hover:text-white">
+              GitHub
+            </a>
+            <a href="#contact" 
+               class="text-sm px-4 py-2.5 rounded-full bg-white text-black font-medium text-center">
+              Get in touch
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -211,7 +262,7 @@
     </div>
   </div>
 
-  <!-- Projects (Curated & Impact-focused) -->
+  <!-- Projects -->
   <div id="projects" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
     <div class="flex items-end justify-between mb-8">
       <div>
@@ -221,7 +272,6 @@
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <!-- SkyPDF (Current) -->
       <div class="project-card border border-[#27251f] rounded-3xl p-7">
         <h3 class="font-semibold text-xl tracking-tight">SkyPDF — Low-level PDF Infrastructure</h3>
         <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Core low-level PDF library and cryptographic signing system in C++ / C# on RHEL. Powers enterprise document workflows at SkyCom Japan. Achieved 2× throughput improvement on critical APIs.</p>
@@ -235,7 +285,6 @@
         <span class="text-sm text-[#64748b]">Current production project at SkyCom Japan</span>
       </div>
       
-      <!-- Japan Patent -->
       <div class="project-card border border-[#27251f] rounded-3xl p-7">
         <h3 class="font-semibold text-xl tracking-tight">JP 2025-169170 A — My Number Card e-Signature</h3>
         <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Japan Patent for electronic signature infrastructure using Japan's My Number Card. Designed and implemented secure document signing system for enterprise use.</p>
@@ -247,7 +296,6 @@
         <a href="https://www.j-platpat.inpit.go.jp/" class="text-sm grok-accent hover:underline">View at J-PlatPat →</a>
       </div>
       
-      <!-- Navi -->
       <div class="project-card border border-[#27251f] rounded-3xl p-7">
         <h3 class="font-semibold text-xl tracking-tight">Navi — Autonomous Agent System</h3>
         <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Production-grade autonomous AI agent framework with tool calling, delegation, and persistent memory. Designed for internal automation and scalable agent workflows.</p>
@@ -259,7 +307,6 @@
         <a href="https://github.com/shanewas" class="text-sm grok-accent hover:underline">View repository →</a>
       </div>
       
-      <!-- JLPT-Pro -->
       <div class="project-card border border-[#27251f] rounded-3xl p-7">
         <h3 class="font-semibold text-xl tracking-tight">JLPT-Pro</h3>
         <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Modern JLPT study platform with spaced repetition and progress tracking. Built to serve serious Japanese language learners with production reliability.</p>
@@ -357,5 +404,31 @@
   <footer class="max-w-[1100px] mx-auto px-6 py-12 text-xs text-[#64748b]">
     Based in Miyazaki, Japan • Targeting Senior/Lead Backend, Platform, or ML roles • 7M+ JPY
   </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        
+        if (mobileMenu.classList.contains('open')) {
+          menuBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6h12v12" />
+            </svg>
+          `;
+        } else {
+          menuBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          `;
+        }
+      });
+    }
+  </script>
 </body>
 </html>
