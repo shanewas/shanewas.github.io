@@ -39,26 +39,19 @@
     }
     .grok-accent { color: #0ea5e9; }
 
-    /* Mobile menu */
-    .mobile-menu {
-      display: none;
-    }
-    .mobile-menu.open {
-      display: block;
-    }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: block; }
   </style>
 </head>
 <body class="bg-[#0a0a0a] text-[#ededed] antialiased">
   <!-- Top Navigation -->
   <nav class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#27251f]">
     <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-14">
-      <!-- Logo -->
       <div class="flex items-center gap-x-3">
         <span class="font-semibold tracking-tight text-xl">shanewas</span>
         <span class="px-2 py-0.5 text-[10px] rounded-full border border-[#27251f] text-[#64748b]">Japan</span>
       </div>
 
-      <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-x-8 text-sm">
         <a href="#about" class="nav-link text-[#a1a1aa] hover:text-white">About</a>
         <a href="#highlights" class="nav-link text-[#a1a1aa] hover:text-white">Highlights</a>
@@ -68,9 +61,7 @@
         <a href="#opportunities" class="nav-link text-[#a1a1aa] hover:text-white">Opportunities</a>
       </div>
 
-      <!-- Right side actions -->
       <div class="flex items-center gap-x-2">
-        <!-- Language Toggle -->
         <div class="hidden md:flex items-center rounded-full border border-[#27251f] p-0.5 text-xs">
           <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">EN</a>
           <a href="index_ja.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">JP</a>
@@ -87,9 +78,7 @@
         </a>
 
         <!-- Mobile Hamburger -->
-        <button id="mobile-menu-btn" 
-                class="md:hidden p-2 text-[#a1a1aa] hover:text-white"
-                aria-label="Open menu">
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-[#a1a1aa] hover:text-white" aria-label="Open menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -112,16 +101,9 @@
             <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">EN</a>
             <a href="index_ja.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">JP</a>
           </div>
-          
           <div class="flex flex-col gap-y-3">
-            <a href="https://github.com/shanewas" target="_blank" 
-               class="text-sm px-4 py-2.5 rounded-full border border-[#27251f] text-center text-[#a1a1aa] hover:text-white">
-              GitHub
-            </a>
-            <a href="#contact" 
-               class="text-sm px-4 py-2.5 rounded-full bg-white text-black font-medium text-center">
-              Get in touch
-            </a>
+            <a href="https://github.com/shanewas" target="_blank" class="text-sm px-4 py-2.5 rounded-full border border-[#27251f] text-center text-[#a1a1aa] hover:text-white">GitHub</a>
+            <a href="#contact" class="text-sm px-4 py-2.5 rounded-full bg-white text-black font-medium text-center">Get in touch</a>
           </div>
         </div>
       </div>
@@ -168,9 +150,8 @@
         <h2 class="text-3xl font-semibold tracking-tight">Building reliable systems at scale</h2>
       </div>
       <div class="md:col-span-9 text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
-        Senior Backend Systems Engineer with 7+ years of experience across Bangladesh and Japan. 
-        Currently developing low-level PDF infrastructure and cryptographic signing systems (SkyPDF) in C++ and C# on RHEL at SkyCom Japan. 
-        Patent holder and IEEE author with proven production impact in banking and enterprise environments.
+        Senior Backend Systems Engineer with 7+ years of experience. Currently developing low-level PDF infrastructure and cryptographic signing systems (SkyPDF) in C++ and C# on RHEL at SkyCom Japan. 
+        Patent holder and IEEE author with proven production impact. Strong focus on agentic workflows, AI automation, and design-driven development.
       </div>
     </div>
   </div>
@@ -213,7 +194,6 @@
           <span class="tech-pill">C# / .NET</span>
           <span class="tech-pill">Python</span>
           <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">Bash</span>
         </div>
       </div>
       
@@ -224,17 +204,16 @@
           <span class="tech-pill">RHEL / Linux</span>
           <span class="tech-pill">RPM packaging</span>
           <span class="tech-pill">CI/CD</span>
-          <span class="tech-pill">systemd</span>
         </div>
       </div>
       
       <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">AI &amp; Modern Tools</div>
+        <div class="font-semibold mb-4">AI &amp; Automation</div>
         <div class="flex flex-wrap gap-2 text-sm">
           <span class="tech-pill">Autonomous Agents</span>
+          <span class="tech-pill">Multi-agent Systems</span>
           <span class="tech-pill">TensorFlow / PyTorch</span>
           <span class="tech-pill">FastAPI</span>
-          <span class="tech-pill">React</span>
         </div>
       </div>
     </div>
@@ -262,61 +241,67 @@
     </div>
   </div>
 
-  <!-- Projects -->
+  <!-- Projects (Agentic + AI + Design-Driven) -->
   <div id="projects" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
     <div class="flex items-end justify-between mb-8">
       <div>
-        <div class="section-header mb-1">Key Projects</div>
-        <h2 class="text-3xl font-semibold tracking-tight">Production systems with real impact</h2>
+        <div class="section-header mb-1">Selected Projects</div>
+        <h2 class="text-3xl font-semibold tracking-tight">Agentic systems, automation &amp; design-driven work</h2>
       </div>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      
+      <!-- Hermes Agent -->
+      <div class="project-card border border-[#27251f] rounded-3xl p-7">
+        <h3 class="font-semibold text-xl tracking-tight">Hermes Agent</h3>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Production-grade autonomous AI agent system with tool use, delegation, persistent memory, and multi-agent orchestration. Designed for complex, long-running workflows with minimal human intervention.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Multi-agent</span>
+          <span class="tech-pill">Tool Use</span>
+          <span class="tech-pill">Docker</span>
+        </div>
+        <a href="https://github.com/shanewas/hermes-agent" class="text-sm grok-accent hover:underline">View repository →</a>
+      </div>
+
+      <!-- ATS Resume Analyzer -->
+      <div class="project-card border border-[#27251f] rounded-3xl p-7">
+        <h3 class="font-semibold text-xl tracking-tight">ATS Resume Analyzer</h3>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">ML-powered resume analysis system. Performs keyword matching, skill gap detection, and generates intelligent rewrite suggestions. Built to automate and improve recruitment workflows.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">ML / NLP</span>
+          <span class="tech-pill">Automation</span>
+        </div>
+        <a href="https://github.com/shanewas/ats-resume-analyzer" class="text-sm grok-accent hover:underline">View repository →</a>
+      </div>
+
+      <!-- Figma Design Generator -->
+      <div class="project-card border border-[#27251f] rounded-3xl p-7">
+        <h3 class="font-semibold text-xl tracking-tight">Figma Design Generator</h3>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Design-driven automation tool that generates professional portfolio and landing page designs in Figma from structured briefs. Focuses on translating requirements into high-quality visual systems.</p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Design Systems</span>
+          <span class="tech-pill">Automation</span>
+        </div>
+        <a href="https://github.com/shanewas/figma-design-generator" class="text-sm grok-accent hover:underline">View repository →</a>
+      </div>
+
+      <!-- SkyPDF (Current) -->
       <div class="project-card border border-[#27251f] rounded-3xl p-7">
         <h3 class="font-semibold text-xl tracking-tight">SkyPDF — Low-level PDF Infrastructure</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Core low-level PDF library and cryptographic signing system in C++ / C# on RHEL. Powers enterprise document workflows at SkyCom Japan. Achieved 2× throughput improvement on critical APIs.</p>
+        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Core low-level PDF library and cryptographic signing system in C++ / C# on RHEL. Powers enterprise document workflows. Achieved 2× throughput improvement on critical APIs through careful systems design.</p>
         <div class="flex flex-wrap gap-2 mb-5">
           <span class="tech-pill">C++</span>
           <span class="tech-pill">C#</span>
           <span class="tech-pill">RHEL</span>
-          <span class="tech-pill">RPM</span>
-          <span class="tech-pill">WebAPI</span>
+          <span class="tech-pill">Systems Design</span>
         </div>
         <span class="text-sm text-[#64748b]">Current production project at SkyCom Japan</span>
       </div>
-      
-      <div class="project-card border border-[#27251f] rounded-3xl p-7">
-        <h3 class="font-semibold text-xl tracking-tight">JP 2025-169170 A — My Number Card e-Signature</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Japan Patent for electronic signature infrastructure using Japan's My Number Card. Designed and implemented secure document signing system for enterprise use.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">C++</span>
-          <span class="tech-pill">Cryptography</span>
-          <span class="tech-pill">Enterprise</span>
-        </div>
-        <a href="https://www.j-platpat.inpit.go.jp/" class="text-sm grok-accent hover:underline">View at J-PlatPat →</a>
-      </div>
-      
-      <div class="project-card border border-[#27251f] rounded-3xl p-7">
-        <h3 class="font-semibold text-xl tracking-tight">Navi — Autonomous Agent System</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Production-grade autonomous AI agent framework with tool calling, delegation, and persistent memory. Designed for internal automation and scalable agent workflows.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">Tailscale</span>
-        </div>
-        <a href="https://github.com/shanewas" class="text-sm grok-accent hover:underline">View repository →</a>
-      </div>
-      
-      <div class="project-card border border-[#27251f] rounded-3xl p-7">
-        <h3 class="font-semibold text-xl tracking-tight">JLPT-Pro</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5">Modern JLPT study platform with spaced repetition and progress tracking. Built to serve serious Japanese language learners with production reliability.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">Node.js</span>
-        </div>
-        <a href="https://github.com/shanewas" class="text-sm grok-accent hover:underline">View repository →</a>
-      </div>
+
     </div>
   </div>
 
@@ -406,26 +391,16 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('open');
-        
         if (mobileMenu.classList.contains('open')) {
-          menuBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6h12v12" />
-            </svg>
-          `;
+          menuBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6h12v12" /></svg>`;
         } else {
-          menuBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          `;
+          menuBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>`;
         }
       });
     }
