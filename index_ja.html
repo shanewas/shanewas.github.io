@@ -1,645 +1,261 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shanewas Ahmed — シニアバックエンドエンジニア | 日本</title>
-  <meta name="description" content="宮崎県在住のシニアバックエンドシステムエンジニア。株式会社スカイコムでC++ / C#による低レベルPDF・暗号署名基盤（SkyPDF）を開発。日本特許保有者（JP 2025-169170 A）、IEEE論文著者、PyPI / npm / NuGet 公開パッケージの作者。東京またはリモートのシニア/リード職を希望。" />
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shanewas Ahmed | バックエンドシステムエンジニア（日本）</title>
+  <meta name="description" content="日本で働くバックエンドシステムエンジニア。C++ / C# でPDF・電子署名基盤を開発。日本特許 JP 2025-169170 A、IEEE論文著者、PyPI / npm / NuGet でOSSを公開。">
   <link rel="canonical" href="https://shanewas.com/index_ja.html">
   <link rel="alternate" hreflang="en" href="https://shanewas.com/">
   <link rel="alternate" hreflang="ja" href="https://shanewas.com/index_ja.html">
   <link rel="alternate" hreflang="x-default" href="https://shanewas.com/">
-  <meta name="author" content="Shanewas Ahmed" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="author" content="Shanewas Ahmed">
+  <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121a23" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <meta property="og:type" content="profile" />
-  <meta property="og:site_name" content="Shanewas Ahmed" />
-  <meta property="og:url" content="https://shanewas.com/index_ja.html" />
-  <meta property="og:title" content="Shanewas Ahmed — シニアバックエンドエンジニア | 日本" />
-  <meta property="og:description" content="宮崎県在住のシニアバックエンドシステムエンジニア。株式会社スカイコムでC++ / C#による低レベルPDF・暗号署名基盤（SkyPDF）を開発。日本特許保有者（JP 2025-169170 A）、IEEE論文著者、PyPI / npm / NuGet 公開パッケージの作者。東京またはリモートのシニア/リード職を希望。" />
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:image" content="https://shanewas.com/assets/img/og-cover.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Shanewas Ahmed — バックエンドシステムエンジニア（宮崎県）" />
-  <meta property="profile:first_name" content="Shanewas" />
-  <meta property="profile:last_name" content="Ahmed" />
-  <meta property="profile:username" content="shanewas" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@S_A_Nabil" />
-  <meta name="twitter:creator" content="@S_A_Nabil" />
-  <meta name="twitter:title" content="Shanewas Ahmed — シニアバックエンドエンジニア | 日本" />
-  <meta name="twitter:description" content="宮崎県在住のシニアバックエンドシステムエンジニア。株式会社スカイコムでC++ / C#による低レベルPDF・暗号署名基盤（SkyPDF）を開発。日本特許保有者（JP 2025-169170 A）、IEEE論文著者、PyPI / npm / NuGet 公開パッケージの作者。東京またはリモートのシニア/リード職を希望。" />
-  <meta name="twitter:image" content="https://shanewas.com/assets/img/og-cover.png" />
-  <meta name="twitter:image:alt" content="Shanewas Ahmed — バックエンドシステムエンジニア（宮崎県）" />
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Shanewas Ahmed">
+  <meta property="og:url" content="https://shanewas.com/index_ja.html">
+  <meta property="og:title" content="Shanewas Ahmed | バックエンドシステムエンジニア（日本）">
+  <meta property="og:description" content="C++ / C# でPDF・電子署名基盤を開発。日本特許保有、IEEE論文著者、PyPI / npm / NuGet でOSSを公開。">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://shanewas.com/assets/img/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Shanewas Ahmed、日本のバックエンドシステムエンジニア">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@S_A_Nabil">
 
   <link rel="icon" href="assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/plex-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Inter', 'Hiragino Sans', 'Meiryo', system-ui, sans-serif; }
-    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-    .section-header {
-      font-size: 0.75rem; letter-spacing: 0.125em; text-transform: uppercase;
-      font-weight: 600; color: #64748b;
-    }
-    .nav-link { transition: color 0.1s ease; }
-    .nav-link:hover { color: #e0f2fe; }
-    .project-card {
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                  box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1),
-                  border-color 0.2s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-      border-color: #334155;
-    }
-    .skill-card { transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1); }
-    .skill-card:hover { background-color: #1f2937; transform: translateY(-1px); }
-    .stat-number { font-feature-settings: "tnum"; }
-    .tech-pill {
-      background-color: #1f2937; color: #94a3b8; font-size: 0.75rem;
-      padding: 1px 10px; border-radius: 9999px; font-weight: 500;
-    }
-
-    .mobile-menu {
-      display: none;
-    }
-    .mobile-menu.open {
-      display: block;
-    }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Shanewas Ahmed",
-    "alternateName": "Shanewas Ahmed Nabil",
     "url": "https://shanewas.com/",
-    "image": "https://shanewas.com/assets/img/og-cover.png",
-    "email": "mailto:shanewasahmed@gmail.com",
     "jobTitle": "Backend Systems Engineer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "SkyCom Corporation",
-      "alternateName": "\u682a\u5f0f\u4f1a\u793e\u30b9\u30ab\u30a4\u30b3\u30e0"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Miyazaki",
-      "addressCountry": "JP"
-    },
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "BRAC University"
-    },
+    "worksFor": { "@type": "Organization", "name": "SkyCom Corporation", "alternateName": "株式会社スカイコム" },
+    "address": { "@type": "PostalAddress", "addressCountry": "JP" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "BRAC University" },
     "knowsLanguage": ["en", "ja", "bn"],
-    "knowsAbout": [
-      "C++", "C#", ".NET", "Linux", "RHEL", "PDF", "Digital Signatures",
-      "Cryptography", "Distributed Systems", "Browser Automation", "AI Agents"
-    ],
     "sameAs": [
       "https://github.com/shanewas",
       "https://linkedin.com/in/ahmedshanewas",
       "https://x.com/S_A_Nabil",
-      "https://pypi.org/project/agentic-stealth-browser/",
-      "https://pypi.org/project/edge-agent-bridge/",
-      "https://www.npmjs.com/package/@shanewas/form-validation",
-      "https://www.nuget.org/packages/Shanewas.PosixIpc/",
       "https://ieeexplore.ieee.org/document/9306649"
     ]
   }
   </script>
 </head>
-<body class="bg-[#0a0a0a] text-[#ededed] antialiased">
-  <a href="#about" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-full focus:bg-white focus:text-black focus:text-sm">本文へスキップ</a>
-  <!-- Top Navigation -->
-  <nav class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#27251f]">
-    <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-14">
-      <!-- Logo -->
-      <div class="flex items-center gap-x-3">
-        <span class="font-semibold tracking-tight text-xl">shanewas</span>
-        <span class="hidden 2xl:inline-block px-2 py-0.5 text-[10px] rounded-full border border-[#27251f] text-[#64748b]">日本</span>
+<body>
+  <a class="skip" href="#main">本文へスキップ</a>
+
+  <div class="shell layout">
+    <header class="rail">
+      <a class="rail__name" href="#top">Shanewas Ahmed</a>
+      <nav class="rail__index" aria-label="セクション">
+        <a href="#work">経歴</a>
+        <a href="#projects">プロジェクト</a>
+        <a href="#research">研究・特許</a>
+        <a href="#roles">希望する役割</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+      <div class="rail__actions">
+        <a class="lang" href="./" hreflang="en" lang="en">English</a>
+        <button class="button" type="button" data-email data-subject="shanewas.com からのお問い合わせ" hidden>メールする</button>
+        <a class="button" href="#contact" data-email-fallback>お問い合わせ</a>
       </div>
+    </header>
 
-      <!-- Desktop Nav -->
-      <div class="hidden lg:flex items-center gap-x-6 xl:gap-x-8 text-sm lg:ml-10">
-        <a href="#about" class="nav-link text-[#a1a1aa] hover:text-white">自己紹介</a>
-        <a href="#highlights" class="nav-link text-[#a1a1aa] hover:text-white">実績</a>
-        <a href="#skills" class="nav-link text-[#a1a1aa] hover:text-white">スキル</a>
-        <a href="#experience" class="nav-link text-[#a1a1aa] hover:text-white">経歴</a>
-        <a href="#projects" class="nav-link text-[#a1a1aa] hover:text-white">プロジェクト</a>
-        <a href="#research" class="nav-link text-[#a1a1aa] hover:text-white">研究・特許</a>
-        <a href="#opportunities" class="nav-link text-[#a1a1aa] hover:text-white">希望する役割</a>
-      </div>
+    <main id="main" class="doc">
+      <div class="hero" id="top">
+        <h1>Shanewas Ahmed</h1>
+        <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="名前の印：シャネワス">
+          <rect x="5" y="5" width="90" height="90" rx="9" fill="none" stroke="currentColor" stroke-width="5"/>
+          <line x1="50" y1="14" x2="50" y2="86" stroke="currentColor" stroke-width="2"/>
+          <text x="70" y="36" font-size="25" text-anchor="middle">シ</text>
+          <text x="72" y="56" font-size="17" text-anchor="middle">ャ</text>
+          <text x="70" y="82" font-size="25" text-anchor="middle">ネ</text>
+          <text x="30" y="45" font-size="27" text-anchor="middle">ワ</text>
+          <text x="30" y="77" font-size="27" text-anchor="middle">ス</text>
+        </svg>
+        <p class="hero__role">日本で働くバックエンドシステムエンジニア。1バイトの誤りも許されない、PDFと電子署名の基盤を開発しています。</p>
 
-      <!-- Right side actions -->
-      <div class="flex items-center gap-x-2 lg:ml-6">
-        <!-- Language Toggle -->
-        <div class="hidden lg:flex items-center rounded-full border border-[#27251f] p-0.5 text-xs">
-          <a href="index.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">EN</a>
-          <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">JP</a>
-        </div>
+        <ul class="proof">
+          <li><strong>日本特許 JP 2025-169170 A</strong>（マイナンバーカードを用いた電子署名）</li>
+          <li>設計した自動化基盤 <strong>AIW Core</strong> が、大手銀行5行の本番環境で稼働</li>
+          <li><strong>OSSパッケージ5件</strong>を PyPI / npm / NuGet で公開</li>
+        </ul>
 
-        <a href="https://github.com/shanewas" target="_blank" 
-           class="hidden xl:block whitespace-nowrap text-xs px-4 py-1.5 rounded-full border border-[#27251f] hover:bg-[#1f2937] transition-colors text-[#a1a1aa] hover:text-white">
-          GitHub
-        </a>
-        
-        <a href="#contact" 
-           class="hidden lg:block whitespace-nowrap text-xs px-5 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[#ededed] transition-colors">
-          お問い合わせ
-        </a>
+        <p class="lede hero__status">東京またはリモートのシニアバックエンド・プラットフォーム職を検討中。日本での就労資格あり。</p>
 
-        <!-- Mobile Hamburger -->
-        <button id="mobile-menu-btn" type="button"
-                class="lg:hidden p-2 text-[#a1a1aa] hover:text-white"
-                aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu lg:hidden border-t border-[#27251f] bg-[#0a0a0a]">
-      <div class="px-6 py-6 space-y-4 text-sm">
-        <a href="#about" class="block py-2 text-[#a1a1aa] hover:text-white">自己紹介</a>
-        <a href="#highlights" class="block py-2 text-[#a1a1aa] hover:text-white">実績</a>
-        <a href="#skills" class="block py-2 text-[#a1a1aa] hover:text-white">スキル</a>
-        <a href="#experience" class="block py-2 text-[#a1a1aa] hover:text-white">経歴</a>
-        <a href="#projects" class="block py-2 text-[#a1a1aa] hover:text-white">プロジェクト</a>
-        <a href="#research" class="block py-2 text-[#a1a1aa] hover:text-white">研究・特許</a>
-        <a href="#opportunities" class="block py-2 text-[#a1a1aa] hover:text-white">希望する役割</a>
-        
-        <div class="pt-4 border-t border-[#27251f]">
-          <div class="flex items-center gap-x-3 mb-4">
-            <a href="index.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">EN</a>
-            <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">JP</a>
-          </div>
-          
-          <div class="flex flex-col gap-y-3">
-            <a href="https://github.com/shanewas" target="_blank" 
-               class="text-sm px-4 py-2.5 rounded-full border border-[#27251f] text-center text-[#a1a1aa] hover:text-white">
-              GitHub
-            </a>
-            <a href="#contact" 
-               class="text-sm px-4 py-2.5 rounded-full bg-white text-black font-medium text-center">
-              お問い合わせ
-            </a>
-          </div>
+        <div class="hero__actions">
+          <button class="button" type="button" data-email data-subject="shanewas.com からのお問い合わせ" hidden>メールする</button>
+          <a class="button" href="#contact" data-email-fallback>お問い合わせ</a>
+          <a class="button button--quiet" href="https://github.com/shanewas" rel="noopener">GitHub</a>
         </div>
       </div>
-    </div>
-  </nav>
 
-  <!-- Hero -->
-  <div class="max-w-[1100px] mx-auto px-6 pt-20 pb-16">
-    <div class="max-w-2xl">
-      <div class="inline-flex items-center gap-x-2 px-3 py-1 rounded-full border border-[#27251f] mb-6">
-        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-        <span class="text-sm text-[#a1a1aa]">宮崎県在住 — 技術・人文知識・国際業務ビザ</span>
-      </div>
-      
-      <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
-        Shanewas Ahmed
-      </h1>
-      
-      <p class="text-2xl text-[#a1a1aa] tracking-tight mb-2">
-        本番環境で壊れないシステムを構築します。
-      </p>
-      <p class="text-lg text-[#64748b] mb-8">
-        株式会社スカイコムで低レベルPDF基盤を開発。日本特許保有者・IEEE論文著者。OSSはPyPI / npm / NuGetで公開。
-      </p>
-      
-      <div class="flex items-center gap-x-4">
-        <a href="https://github.com/shanewas" target="_blank"
-           class="inline-flex items-center px-6 py-3 rounded-full border border-[#27251f] hover:bg-[#111] transition-all text-sm font-medium">
-          GitHubを見る
-        </a>
-        <a href="#opportunities"
-           class="inline-flex items-center px-6 py-3 rounded-full bg-white text-black hover:bg-[#ededed] font-medium text-sm transition-all">
-          希望する役割
-        </a>
-      </div>
-    </div>
+      <section id="work" aria-labelledby="work-h">
+        <h2 id="work-h">経歴</h2>
+        <ol class="timeline">
+          <li>
+            <div class="timeline__when">2022年 ～ 現在</div>
+            <div>
+              <h3>株式会社スカイコム</h3>
+              <div class="timeline__role">ソフトウェアエンジニア（日本）</div>
+              <p>スカイコムのPDFエンジン SkyPDF のコア開発を担当。C++ / C# を用いたRHEL上での解析・レンダリング・署名検証の実装、署名・レンダリング・変換のためのWebAPI設計、RPMパッケージングとCI/CDパイプラインの構築を担当。APIのボトルネックを解消し、本番環境のスループットを2倍に改善。マイナンバーカード署名の実装は特許 JP 2025-169170 A につながった。</p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline__when">2019年 ～ 2021年</div>
+            <div>
+              <h3>Ferntech Solutions</h3>
+              <div class="timeline__role">ソフトウェアアーキテクト / プロジェクトマネージャー（バングラデシュ）</div>
+              <p>大手銀行5行に導入されたハイパーオートメーション基盤 AIW Core を設計。共通エンジン上に、デスクトップ（Electron）版とWeb版のオートメーションスタジオを構築。5名のチームを率い、要件定義からリリースまでを担当。</p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline__when">2014年 ～ 2017年</div>
+            <div>
+              <h3>Neonsofts</h3>
+              <div class="timeline__role">共同創業者 / リード開発者（バングラデシュ）</div>
+              <p>BRAC University在学中に起業。顧客向けのERPシステムとUnity3Dゲームのプロトタイプを開発。</p>
+            </div>
+          </li>
+        </ol>
+
+        <dl class="stack">
+          <div><dt>言語</dt><dd>C++、C# / .NET、Python、TypeScript</dd></div>
+          <div><dt>インフラ</dt><dd>RHEL / Linux、RPMパッケージング、Docker、CI/CD</dd></div>
+          <div><dt>AI・自動化</dt><dd>エージェントシステム、MCP、Playwright、FastAPI、PyTorch / TensorFlow</dd></div>
+        </dl>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-h">
+        <h2 id="projects-h">プロジェクト</h2>
+        <p class="lede">SkyPDFは非公開のため、以下はすべてご自身で確認できる成果物です。</p>
+
+        <div class="featured">
+          <article class="project">
+            <h3>Agentic Stealth Browser</h3>
+            <div class="project__meta">Python / Playwright、PyPIでv3.0.0を公開、MITライセンス</div>
+            <p>ボット検知に耐えるAIエージェント向けのブラウザ自動化ライブラリ。TLS・navigator・WebGL・Canvasにわたる一貫したフィンガープリント、人間らしい操作、ブロック検知と復旧、エージェントから直接操作できるMCPサーバーを備える。</p>
+            <div class="links">
+              <a href="https://github.com/shanewas/agentic-stealth-browser" rel="noopener">GitHubのソース</a>
+              <a href="https://pypi.org/project/agentic-stealth-browser/" rel="noopener">PyPIパッケージ</a>
+            </div>
+          </article>
+          <article class="project">
+            <h3>Edge Agent Bridge</h3>
+            <div class="project__meta">Python / ブラウザ拡張機能、PyPIでv2.5.0を公開、MITライセンス</div>
+            <p>すでに開いているEdgeのタブを、スクリプトやAIエージェントからそのまま操作できるライブラリ。ログイン状態やVPNセッションを維持したまま自動化できる。ローカルWebSocketの往復は中央値9 ms、50アクションのバッチ実行は逐次実行の7.9倍高速。テレメトリなし、Python 3.10以外の依存なし。</p>
+            <div class="links">
+              <a href="https://github.com/shanewas/edge-agent-bridge" rel="noopener">GitHubのソース</a>
+              <a href="https://pypi.org/project/edge-agent-bridge/" rel="noopener">PyPIパッケージ</a>
+            </div>
+          </article>
+          <article class="project">
+            <h3>GhostScrape</h3>
+            <div class="project__meta">FastAPI / PostgreSQL、運用中のSaaS</div>
+            <p>上記のステルスエンジンを基盤とするスクレイピングAPI。APIキー認証、利用量計測、クォータ課金、ローテーティングプロキシ層を備え、開発から運用まで一人で担当。</p>
+            <div class="links">
+              <a href="https://ghostscrape.online/" rel="noopener">ghostscrape.online</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="more">
+          <h3>小さなライブラリとツール</h3>
+          <ul>
+            <li>
+              <span class="more__name">Doppelhand</span>
+              <span class="more__what">AIエージェントにWindowsのスクリーンショットとマウス・キーボード操作を提供。常駐ローカルサーバーで1アクション6 ms。PyPIでv1.4.0を公開。</span>
+              <span class="links"><a href="https://github.com/shanewas/doppelhand" rel="noopener">GitHub</a><a href="https://pypi.org/project/doppelhand/" rel="noopener">PyPI</a></span>
+            </li>
+            <li>
+              <span class="more__name">Shanewas.PosixIpc</span>
+              <span class="more__what">Linux上の.NET向けSystem V共有メモリ・セマフォライブラリ。ネイティブバイナリなしでP/Invokeのみ。NuGetでv1.0.1を公開。</span>
+              <span class="links"><a href="https://github.com/shanewas/posix-ipc-dotnet" rel="noopener">GitHub</a><a href="https://www.nuget.org/packages/Shanewas.PosixIpc/" rel="noopener">NuGet</a></span>
+            </li>
+            <li>
+              <span class="more__name">Engram</span>
+              <span class="more__what">コーディングエージェントの記憶をマシン間で同期。非公開のgitリポジトリに確認可能なコミットとして保存。</span>
+              <span class="links"><a href="https://github.com/shanewas/engram" rel="noopener">GitHub</a></span>
+            </li>
+            <li>
+              <span class="more__name">@shanewas/form-validation</span>
+              <span class="more__what">Nodeとブラウザで同じように動く、ルールベースのフォーム検証エンジン。npmでv1.3.3を公開。</span>
+              <span class="links"><a href="https://github.com/shanewas/ValidationEngine" rel="noopener">GitHub</a><a href="https://www.npmjs.com/package/@shanewas/form-validation" rel="noopener">npm</a></span>
+            </li>
+            <li>
+              <span class="more__name">ATS Resume Analyzer</span>
+              <span class="more__what">応募者追跡システム（ATS）と同じ観点で履歴書を評価し、改善案を提示。</span>
+              <span class="links"><a href="https://github.com/shanewas/ats-resume-analyzer" rel="noopener">GitHub</a></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="research" aria-labelledby="research-h">
+        <h2 id="research-h">研究・特許・学歴</h2>
+        <ul class="record">
+          <li>
+            <h3>日本特許 JP 2025-169170 A</h3>
+            <p>マイナンバーカードを用いた電子署名システム。2025年、株式会社スカイコムと共同出願。<a href="https://www.j-platpat.inpit.go.jp/" rel="noopener">J-PlatPatで検索</a></p>
+          </li>
+          <li>
+            <h3>深層学習によるアルツハイマー病の予測</h3>
+            <p>IEEE、2019年。<a href="https://ieeexplore.ieee.org/document/9306649" rel="noopener">IEEE Xploreで読む</a></p>
+          </li>
+          <li>
+            <h3>Arduinoを用いた作物・肥料推薦システム</h3>
+            <p>East West University Journal、2018年。</p>
+          </li>
+          <li>
+            <h3>コンピュータサイエンス学士</h3>
+            <p>BRAC University（ダッカ）、2013年～2019年。</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="roles" aria-labelledby="roles-h">
+        <h2 id="roles-h">希望する役割</h2>
+        <p>東京またはリモートでのシニア職（ハイブリッド・出社どちらも可）。日本での就労資格があり、英語と日本語で業務ができます。</p>
+        <ul class="roles">
+          <li>シニアバックエンド / システムエンジニア<span>C++、.NET、Linux、本番システム</span></li>
+          <li>AIプラットフォームエンジニア<span>エージェントシステム、自動化</span></li>
+          <li>ドキュメント・ワークフロー基盤<span>PDF、電子署名、エンタープライズ自動化</span></li>
+        </ul>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-h">
+        <h2 id="contact-h">お問い合わせ</h2>
+        <p>ご連絡はメールが一番確実です。求人のご相談も、上記プロジェクトについてのご質問も歓迎します。</p>
+        <div class="contact__actions">
+          <button class="button" type="button" data-email data-subject="shanewas.com からのお問い合わせ" hidden>メールする</button>
+          <a class="button button--quiet" href="https://linkedin.com/in/ahmedshanewas" rel="noopener">LinkedIn</a>
+        </div>
+        <p class="contact__note" data-email-fallback>メール：shanewasahmed at gmail dot com</p>
+        <div class="elsewhere">
+          <a href="https://github.com/shanewas" rel="noopener">GitHub</a>
+          <a href="https://x.com/S_A_Nabil" rel="noopener">X</a>
+        </div>
+      </section>
+
+      <footer>
+        <p>Shanewas Ahmed, 2026. <a href="./" hreflang="en" lang="en">English version</a></p>
+      </footer>
+    </main>
   </div>
-
-  <!-- About -->
-  <div id="about" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="grid md:grid-cols-12 gap-x-12 gap-y-8">
-      <div class="md:col-span-3">
-        <div class="section-header mb-3">自己紹介</div>
-        <h2 class="text-3xl font-semibold tracking-tight">信頼性の高いシステムを構築するエンジニア</h2>
-      </div>
-      <div class="md:col-span-9 text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
-        バングラデシュと日本で7年以上の経験を持つシニアバックエンドシステムエンジニア。
-        現在は株式会社スカイコムでC++ / C#を用いた低レベルPDFライブラリと暗号署名基盤（SkyPDF）の開発を担当。
-        特許保有者であり、IEEE論文著者。銀行・エンタープライズ領域で本番環境での実績多数。
-      </div>
-    </div>
-  </div>
-
-  <!-- Highlights -->
-  <div id="highlights" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">実績</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">実際に届けた成果</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="border border-[#27251f] rounded-3xl p-8">
-        <div class="text-6xl font-semibold tracking-tighter stat-number">5</div>
-        <div class="mt-2 text-[#a1a1aa]">主要銀行で稼働する本番システム</div>
-      </div>
-      <div class="border border-[#27251f] rounded-3xl p-8">
-        <div class="text-6xl font-semibold tracking-tighter stat-number">2×</div>
-        <div class="mt-2 text-[#a1a1aa]">SkyPDF APIのスループット改善</div>
-      </div>
-      <div class="border border-[#27251f] rounded-3xl p-8">
-        <div class="text-6xl font-semibold tracking-tighter stat-number">1</div>
-        <div class="mt-2 text-[#a1a1aa]">日本特許（JP 2025-169170 A）<br>マイナンバーカード電子署名</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Skills -->
-  <div id="skills" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="flex items-end justify-between mb-8">
-      <div>
-        <div class="section-header mb-1">スキル</div>
-        <h2 class="text-3xl font-semibold tracking-tight">本番環境で使用している技術</h2>
-      </div>
-    </div>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">プログラミング言語</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">C++</span>
-          <span class="tech-pill">C# / .NET</span>
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">TypeScript</span>
-        </div>
-      </div>
-      
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">インフラ・DevOps</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">RHEL / Linux</span>
-          <span class="tech-pill">RPMパッケージング</span>
-          <span class="tech-pill">CI/CD</span>
-        </div>
-      </div>
-      
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">AI・最新ツール</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">自律型エージェント</span>
-          <span class="tech-pill">Playwright</span>
-          <span class="tech-pill">MCP</span>
-          <span class="tech-pill">TensorFlow / PyTorch</span>
-          <span class="tech-pill">FastAPI</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Experience -->
-  <div id="experience" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">経歴</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">これまでの実績</h2>
-    
-    <div class="space-y-12">
-      <div class="flex flex-col md:flex-row md:gap-x-12">
-        <div class="md:w-64 flex-shrink-0">
-          <div class="font-semibold">株式会社スカイコム</div>
-          <div class="text-xs text-[#64748b]">R&amp;D センター宮崎</div>
-          <div class="text-sm text-[#a1a1aa] mt-1">ソフトウェアエンジニア（SE Iに昇進）</div>
-          <div class="text-xs text-[#64748b] mt-1">2022年4月 ～ 現在 · 宮崎県</div>
-        </div>
-        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          <strong>SkyPDF</strong>（低レベルPDFライブラリおよび暗号署名基盤）のコア開発を担当。
-          C++ / C# を用いたRHEL上での開発、ドキュメント署名・レンダリング・変換のためのWebAPI設計、
-          RPMパッケージングとCI/CDパイプラインの構築を担当。
-          重要なAPIボトルネックを解決し、<strong>2倍のスループット改善</strong>を実現。
-          マイナンバーカードを用いた電子署名システムに関する特許（JP 2025-169170 A）を出願。
-        </div>
-      </div>
-
-      <div class="flex flex-col md:flex-row md:gap-x-12">
-        <div class="md:w-64 flex-shrink-0">
-          <div class="font-semibold">Ferntech Solutions</div>
-          <div class="text-sm text-[#a1a1aa] mt-1">ソフトウェアアーキテクト / プロジェクトマネージャー</div>
-          <div class="text-xs text-[#64748b] mt-1">2019年 ～ 2021年 · バングラデシュ</div>
-        </div>
-        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          大手銀行に導入されたハイパーオートメーション基盤<strong>AIW Core</strong>を設計。
-          共通のコアエンジン上に、デスクトップ（Electron）版とWeb版のオートメーションスタジオを構築。
-          5名体制のチームをリードし、要件定義からリリースまでの全工程を担当。
-        </div>
-      </div>
-
-      <div class="flex flex-col md:flex-row md:gap-x-12">
-        <div class="md:w-64 flex-shrink-0">
-          <div class="font-semibold">Neonsofts</div>
-          <div class="text-sm text-[#a1a1aa] mt-1">共同創業者 / リード開発者</div>
-          <div class="text-xs text-[#64748b] mt-1">2014年 ～ 2017年 · バングラデシュ</div>
-        </div>
-        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          BRAC University在学中に起業。顧客向けのERPシステムとUnity3Dゲームプロトタイプを開発。
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Projects -->
-  <div id="projects" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="mb-8">
-      <div class="section-header mb-1">主要プロジェクト</div>
-      <h2 class="text-3xl font-semibold tracking-tight">本番環境で稼働しているシステム</h2>
-      <p class="text-[#64748b] mt-2 max-w-2xl">業務でのエンタープライズ向けドキュメント基盤に加え、PyPI / npm / NuGet で公開しているOSSパッケージ、および自ら運用しているSaaS。</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">SkyPDF — 低レベルPDF基盤</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">スカイコムのドキュメント製品を支えるPDFエンジン。バイトレベルでの解析・レンダリング・署名検証を担い、RPMパッケージとして提供。この中のマイナンバーカード署名の実装が特許 JP 2025-169170 A につながった。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">C++</span>
-          <span class="tech-pill">C#</span>
-          <span class="tech-pill">RHEL</span>
-          <span class="tech-pill">RPM</span>
-          <span class="tech-pill">WebAPI</span>
-        </div>
-        <span class="text-sm text-[#64748b]">株式会社スカイコムでの現在進行中の本番プロジェクト（非公開）</span>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Agentic Stealth Browser</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">自律型エージェント向けのオープンソース・ステルスブラウザ自動化ライブラリ（Playwrightベース）。TLS・navigator・WebGL・Canvasにわたる一貫したフィンガープリント、人間らしい操作の再現、ブロック検知と復旧、AIエージェントから直接操作できるMCPサーバーを実装。<strong>PyPIでv3.0.0を公開</strong>、MITライセンス、pytest / ruff / mypy / CodeQL / Dockerスモークテストの全CIグリーン。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">Playwright</span>
-          <span class="tech-pill">MCP</span>
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">PyPI</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/agentic-stealth-browser" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://pypi.org/project/agentic-stealth-browser/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">PyPI &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Edge Agent Bridge</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">すでに開いているMicrosoft Edgeのタブを、PythonスクリプトやAIエージェントからそのまま操作するためのライブラリ。ログイン済みセッション、社内VPN、保存済み認証情報を維持したまま自動化できる。CDPイベントをローカルのRFC&nbsp;6455 WebSocket経由で送信し、往復レイテンシはP50で9.09&nbsp;ms、50アクションのバッチ実行は逐次実行比7.9&times;高速。通信は<span class="mono">127.0.0.1:18999</span>のみにバインドし、テレメトリも外部送信もなく、Python&nbsp;3.10以外の依存を持たない。<strong>PyPIでv2.0.2を公開</strong>、MITライセンス。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">CDP</span>
-          <span class="tech-pill">WebSocket</span>
-          <span class="tech-pill">Edge拡張機能</span>
-          <span class="tech-pill">PyPI</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/edge-agent-bridge" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://pypi.org/project/edge-agent-bridge/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">PyPI &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Doppelhand — Windowsデスクトップ上の手</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">利用中のAIエージェントにWindowsデスクトップ上の目と手を与えるライブラリ。スクリーンショットに加え、実際のマウス・キーボード操作をコマンドごとの単一JSONで実行し、APIキーは不要。DXGI Desktop Duplicationでディスプレイを開き続ける常駐ループバックサーバーにより、プロセス起動ごとの約300&nbsp;msに対し、アクション6&nbsp;ms・スクリーンショット30&nbsp;msを実現。Claude Code / opencode / AGY向けのエージェントスキルも自動導入。<strong>PyPIでv1.3.1を公開</strong>、MITライセンス、依存はPillowのみ。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">Windows</span>
-          <span class="tech-pill">DXGI</span>
-          <span class="tech-pill">エージェントスキル</span>
-          <span class="tech-pill">PyPI</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/doppelhand" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://pypi.org/project/doppelhand/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">PyPI &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">GhostScrape — スクレイピングAPI（SaaS）</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">上記ステルスエンジンを基盤とする本番SaaS。APIキー認証・利用量計測・クォータ課金を備えたFastAPIサービスで、PostgreSQL 16とAlembicによるマイグレーション、ローテーティングプロキシ層を実装。Cloudflare Tunnel経由で公開し、systemdによるリソース制限と専用サービスユーザーで堅牢化したLinux上に配置。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">FastAPI</span>
-          <span class="tech-pill">PostgreSQL</span>
-          <span class="tech-pill">Alembic</span>
-          <span class="tech-pill">Cloudflare</span>
-          <span class="tech-pill">systemd</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://ghostscrape.online/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">ghostscrape.online &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Shanewas.PosixIpc</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">Linux（x64・glibc）上のSystem&nbsp;V共有メモリとセマフォを扱う軽量な.NETライブラリ。ネイティブバイナリを同梱せず<span class="mono">shmget</span>・<span class="mono">semget</span>への P/Invoke のみで実装し、同一ホスト上のプロセス間で低レイテンシなIPCを実現。<strong>NuGetでv1.0.1を公開</strong>、.NET&nbsp;6・8対応、MITライセンス。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">C#</span>
-          <span class="tech-pill">.NET</span>
-          <span class="tech-pill">Linux</span>
-          <span class="tech-pill">P/Invoke</span>
-          <span class="tech-pill">NuGet</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/posix-ipc-dotnet" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://www.nuget.org/packages/Shanewas.PosixIpc/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">NuGet &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Engram — マシン横断エージェントメモリ</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">コーディングエージェント向けの永続メモリ。プライベートGitリポジトリそのものを保存先兼監査ログとし、すべての事実を作成者・時刻付きでコミットとして記録、<span class="mono">git revert</span>で取り消し可能。データベースもサービスも不要。セッションフックがマシン間の同期を自動化し、同期対象はパス許可リストで限定。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">Git</span>
-          <span class="tech-pill">Claude Code</span>
-          <span class="tech-pill">自動化</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/engram" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">@shanewas/form-validation</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">ルール定義ベースのフォームバリデーションエンジン。Node.jsとブラウザで同一の挙動を保ち、フィールド間の依存関係、条件付きルール、カスタムバリデータ、フィールド単位のエラー報告に対応。PDFフォームの雑多な入力データを扱うために設計。<strong>npmでv1.3.3を公開</strong>、GPL-3.0ライセンス。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">JavaScript</span>
-          <span class="tech-pill">Node.js</span>
-          <span class="tech-pill">フォーム</span>
-          <span class="tech-pill">npm</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/ValidationEngine" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://www.npmjs.com/package/@shanewas/form-validation" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">npm &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">ATS Resume Analyzer</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">採用管理システム（ATS）と同じ観点で履歴書を評価するパイプライン。キーワードマッチング、スキルギャップ検出、具体的な書き換え提案を生成。</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">NLP</span>
-          <span class="tech-pill">自動化</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/ats-resume-analyzer" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Open to Opportunities -->
-  <div id="opportunities" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">希望する役割</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-6">次に目指しているポジション</h2>
-    
-    <div class="max-w-2xl text-[#a1a1aa] text-lg mb-8">
-      <strong>シニアバックエンドシステムエンジニア</strong>、<strong>プラットフォームエンジニア</strong>、または<strong>ML/自動化エンジニア</strong>のポジションを希望。
-      東京またはリモートでのシニア/リード役割をターゲットにしています。希望年収：700万円以上。
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="border border-[#27251f] rounded-2xl px-5 py-4 text-sm">
-        <div class="font-medium text-white mb-1">シニアバックエンド / システムエンジニア</div>
-        <div class="text-[#64748b]">C++、.NET、Linux、本番システム</div>
-      </div>
-      <div class="border border-[#27251f] rounded-2xl px-5 py-4 text-sm">
-        <div class="font-medium text-white mb-1">ML / AIプラットフォームエンジニア</div>
-        <div class="text-[#64748b]">自律型エージェント、自動化</div>
-      </div>
-      <div class="border border-[#27251f] rounded-2xl px-5 py-4 text-sm">
-        <div class="font-medium text-white mb-1">ドキュメント・ワークフロー基盤</div>
-        <div class="text-[#64748b]">PDF、電子署名、エンタープライズ自動化</div>
-      </div>
-    </div>
-    
-    <div class="mt-6 text-sm text-[#64748b]">
-      宮崎県在住（技術・人文知識・国際業務ビザ保有）。東京でのハイブリッドまたはオンサイトを希望。
-    </div>
-  </div>
-
-  <!-- Research & Patents -->
-  <div id="research" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">研究・特許</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">公式な評価</h2>
-    
-    <div class="space-y-8 text-[#a1a1aa]">
-      <div>
-        <div class="font-semibold text-white">日本特許 JP 2025-169170 A</div>
-        <div>マイナンバーカードを用いた電子署名システム</div>
-        <div class="text-xs mt-1">日本特許庁 &middot; 株式会社スカイコムとの共同発明 &middot; 2025年出願</div>
-        <a href="https://www.j-platpat.inpit.go.jp/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline inline-block mt-2">J-PlatPatで確認 &rarr;</a>
-      </div>
-      <div>
-        <div class="font-semibold text-white">IEEE論文</div>
-        <div>深層学習によるアルツハイマー病予測</div>
-        <div class="text-xs mt-1">IEEE Xplore &middot; 2019年</div>
-        <a href="https://ieeexplore.ieee.org/document/9306649" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline inline-block mt-2">IEEE Xploreで読む &rarr;</a>
-      </div>
-      <div>
-        <div class="font-semibold text-white">学術誌論文</div>
-        <div>Arduinoによる作物・肥料推奨システム</div>
-        <div class="text-xs mt-1">East West University Journal &middot; 2018年</div>
-      </div>
-      <div>
-        <div class="font-semibold text-white">学士（コンピュータサイエンス）</div>
-        <div>BRAC University（ダッカ） • 2013–2019年</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact -->
-  <div id="contact" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="max-w-md">
-      <div class="section-header mb-3">お問い合わせ</div>
-      <h2 class="text-3xl font-semibold tracking-tight mb-8">機会についてお話しましょう</h2>
-      
-      <form id="contact-form" class="space-y-5" novalidate>
-        <input type="text" id="cf-name" name="name" placeholder="お名前" required autocomplete="name"
-               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
-        <input type="email" id="cf-email" name="email" placeholder="メールアドレス" required autocomplete="email"
-               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
-        <textarea id="cf-message" name="message" rows="5" placeholder="ご用件・求人内容など" required
-                  class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-3xl px-5 py-4 text-sm placeholder:text-[#64748b] outline-none resize-y"></textarea>
-
-        <button type="submit"
-                class="w-full py-3.5 rounded-2xl bg-white text-black font-medium hover:bg-[#ededed] active:bg-[#d1d5db] transition-colors">
-          メールを作成
-        </button>
-      </form>
-
-      <p class="mt-3 text-xs text-[#64748b]">
-        メーラーが起動し、内容が入力された状態で開きます。 直接送る場合はこちら：
-        <a href="mailto:shanewasahmed@gmail.com" class="grok-accent hover:underline">shanewasahmed@gmail.com</a>
-      </p>
-      
-      <div class="mt-10 text-sm flex flex-col gap-y-2 text-[#a1a1aa]">
-        <a href="https://github.com/shanewas" target="_blank" rel="noopener" class="hover:text-white">GitHub &middot; @shanewas</a>
-        <a href="https://linkedin.com/in/ahmedshanewas" target="_blank" rel="noopener" class="hover:text-white">LinkedIn &middot; ahmedshanewas</a>
-        <a href="https://x.com/S_A_Nabil" target="_blank" rel="noopener" class="hover:text-white">X &middot; @S_A_Nabil</a>
-        <a href="mailto:shanewasahmed@gmail.com" class="hover:text-white">shanewasahmed@gmail.com</a>
-      </div>
-    </div>
-  </div>
-
-  <footer class="max-w-[1100px] mx-auto px-6 py-12 text-xs text-[#64748b]">
-    宮崎県在住 • シニア/リードバックエンド・プラットフォーム・MLエンジニアを希望 • 700万円以上
-  </footer>
-
-  <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
-        
-        if (mobileMenu.classList.contains('open')) {
-          menuBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6h12v12" />
-            </svg>
-          `;
-        } else {
-          menuBtn.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          `;
-        }
-      });
-    }
-
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const value = (id) => (document.getElementById(id).value || '').trim();
-        const name = value('cf-name');
-        const email = value('cf-email');
-        const message = value('cf-message');
-        const subject = name ? `Portfolio enquiry from ${name}` : 'Portfolio enquiry';
-        const body = `${message}\n\n---\n${name}\n${email}`;
-        window.location.href = 'mailto:shanewasahmed@gmail.com'
-          + '?subject=' + encodeURIComponent(subject)
-          + '&body=' + encodeURIComponent(body);
-      });
-    }
-  </script>
 </body>
 </html>

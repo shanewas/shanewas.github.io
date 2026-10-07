@@ -1,619 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shanewas Ahmed — Senior Backend Systems Engineer | Japan</title>
-  <meta name="description" content="Senior Backend Systems Engineer in Miyazaki, Japan. Low-level PDF and cryptographic signing infrastructure (SkyPDF) in C++ and C# at SkyCom Japan. Japan Patent holder (JP 2025-169170 A), IEEE author, and author of open-source packages on PyPI, npm and NuGet. Open to Senior/Lead roles in Tokyo or remote." />
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shanewas Ahmed, backend systems engineer in Japan</title>
+  <meta name="description" content="Backend systems engineer in Japan building PDF and digital-signature infrastructure in C++ and C#. Japan patent JP 2025-169170 A, IEEE author, open-source packages on PyPI, npm and NuGet.">
   <link rel="canonical" href="https://shanewas.com/">
   <link rel="alternate" hreflang="en" href="https://shanewas.com/">
   <link rel="alternate" hreflang="ja" href="https://shanewas.com/index_ja.html">
   <link rel="alternate" hreflang="x-default" href="https://shanewas.com/">
-  <meta name="author" content="Shanewas Ahmed" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="author" content="Shanewas Ahmed">
+  <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121a23" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <meta property="og:type" content="profile" />
-  <meta property="og:site_name" content="Shanewas Ahmed" />
-  <meta property="og:url" content="https://shanewas.com/" />
-  <meta property="og:title" content="Shanewas Ahmed — Senior Backend Systems Engineer | Japan" />
-  <meta property="og:description" content="Senior Backend Systems Engineer in Miyazaki, Japan. Low-level PDF and cryptographic signing infrastructure (SkyPDF) in C++ and C# at SkyCom Japan. Japan Patent holder (JP 2025-169170 A), IEEE author, and author of open-source packages on PyPI, npm and NuGet. Open to Senior/Lead roles in Tokyo or remote." />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:locale:alternate" content="ja_JP" />
-  <meta property="og:image" content="https://shanewas.com/assets/img/og-cover.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Shanewas Ahmed — Backend Systems Engineer, Miyazaki, Japan" />
-  <meta property="profile:first_name" content="Shanewas" />
-  <meta property="profile:last_name" content="Ahmed" />
-  <meta property="profile:username" content="shanewas" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@S_A_Nabil" />
-  <meta name="twitter:creator" content="@S_A_Nabil" />
-  <meta name="twitter:title" content="Shanewas Ahmed — Senior Backend Systems Engineer | Japan" />
-  <meta name="twitter:description" content="Senior Backend Systems Engineer in Miyazaki, Japan. Low-level PDF and cryptographic signing infrastructure (SkyPDF) in C++ and C# at SkyCom Japan. Japan Patent holder (JP 2025-169170 A), IEEE author, and author of open-source packages on PyPI, npm and NuGet. Open to Senior/Lead roles in Tokyo or remote." />
-  <meta name="twitter:image" content="https://shanewas.com/assets/img/og-cover.png" />
-  <meta name="twitter:image:alt" content="Shanewas Ahmed — Backend Systems Engineer, Miyazaki, Japan" />
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Shanewas Ahmed">
+  <meta property="og:url" content="https://shanewas.com/">
+  <meta property="og:title" content="Shanewas Ahmed, backend systems engineer in Japan">
+  <meta property="og:description" content="PDF and digital-signature infrastructure in C++ and C#. Japan patent holder, IEEE author, open-source packages on PyPI, npm and NuGet.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ja_JP">
+  <meta property="og:image" content="https://shanewas.com/assets/img/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Shanewas Ahmed, backend systems engineer in Japan">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@S_A_Nabil">
 
   <link rel="icon" href="assets/img/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/plex-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-    .section-header {
-      font-size: 0.75rem; letter-spacing: 0.125em; text-transform: uppercase;
-      font-weight: 600; color: #64748b;
-    }
-    .nav-link { transition: color 0.1s ease; }
-    .nav-link:hover { color: #e0f2fe; }
-    .project-card {
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                  box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1),
-                  border-color 0.2s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-      border-color: #334155;
-    }
-    .skill-card { transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1); }
-    .skill-card:hover { background-color: #1f2937; transform: translateY(-1px); }
-    .stat-number { font-feature-settings: "tnum"; }
-    .tech-pill {
-      background-color: #1f2937; color: #94a3b8; font-size: 0.75rem;
-      padding: 1px 10px; border-radius: 9999px; font-weight: 500;
-    }
-    .grok-accent { color: #0ea5e9; }
-
-    .mobile-menu { display: none; }
-    .mobile-menu.open { display: block; }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Shanewas Ahmed",
-    "alternateName": "Shanewas Ahmed Nabil",
     "url": "https://shanewas.com/",
-    "image": "https://shanewas.com/assets/img/og-cover.png",
-    "email": "mailto:shanewasahmed@gmail.com",
     "jobTitle": "Backend Systems Engineer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "SkyCom Corporation",
-      "alternateName": "\u682a\u5f0f\u4f1a\u793e\u30b9\u30ab\u30a4\u30b3\u30e0"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Miyazaki",
-      "addressCountry": "JP"
-    },
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "BRAC University"
-    },
+    "worksFor": { "@type": "Organization", "name": "SkyCom Corporation" },
+    "address": { "@type": "PostalAddress", "addressCountry": "JP" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "BRAC University" },
     "knowsLanguage": ["en", "ja", "bn"],
-    "knowsAbout": [
-      "C++", "C#", ".NET", "Linux", "RHEL", "PDF", "Digital Signatures",
-      "Cryptography", "Distributed Systems", "Browser Automation", "AI Agents"
-    ],
     "sameAs": [
       "https://github.com/shanewas",
       "https://linkedin.com/in/ahmedshanewas",
       "https://x.com/S_A_Nabil",
-      "https://pypi.org/project/agentic-stealth-browser/",
-      "https://pypi.org/project/edge-agent-bridge/",
-      "https://www.npmjs.com/package/@shanewas/form-validation",
-      "https://www.nuget.org/packages/Shanewas.PosixIpc/",
       "https://ieeexplore.ieee.org/document/9306649"
     ]
   }
   </script>
 </head>
-<body class="bg-[#0a0a0a] text-[#ededed] antialiased">
-  <a href="#about" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-full focus:bg-white focus:text-black focus:text-sm">Skip to content</a>
-  <!-- Top Navigation -->
-  <nav class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#27251f]">
-    <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-14">
-      <div class="flex items-center gap-x-3">
-        <span class="font-semibold tracking-tight text-xl">shanewas</span>
-        <span class="hidden 2xl:inline-block px-2 py-0.5 text-[10px] rounded-full border border-[#27251f] text-[#64748b]">Japan</span>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="shell layout">
+    <header class="rail">
+      <a class="rail__name" href="#top">Shanewas Ahmed</a>
+      <nav class="rail__index" aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#roles">Roles</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="rail__actions">
+        <a class="lang" href="index_ja.html" hreflang="ja" lang="ja">日本語</a>
+        <button class="button" type="button" data-email data-subject="Hello from shanewas.com" hidden>Email me</button>
+        <a class="button" href="#contact" data-email-fallback>Contact</a>
       </div>
+    </header>
 
-      <div class="hidden lg:flex items-center gap-x-6 xl:gap-x-8 text-sm lg:ml-10">
-        <a href="#about" class="nav-link text-[#a1a1aa] hover:text-white">About</a>
-        <a href="#highlights" class="nav-link text-[#a1a1aa] hover:text-white">Highlights</a>
-        <a href="#skills" class="nav-link text-[#a1a1aa] hover:text-white">Skills</a>
-        <a href="#experience" class="nav-link text-[#a1a1aa] hover:text-white">Experience</a>
-        <a href="#projects" class="nav-link text-[#a1a1aa] hover:text-white">Projects</a>
-        <a href="#research" class="nav-link text-[#a1a1aa] hover:text-white">Research</a>
-        <a href="#opportunities" class="nav-link text-[#a1a1aa] hover:text-white">Opportunities</a>
-      </div>
+    <main id="main" class="doc">
+      <div class="hero" id="top">
+        <h1>Shanewas Ahmed</h1>
+        <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Name seal: シャネワス">
+          <rect x="5" y="5" width="90" height="90" rx="9" fill="none" stroke="currentColor" stroke-width="5"/>
+          <line x1="50" y1="14" x2="50" y2="86" stroke="currentColor" stroke-width="2"/>
+          <text x="70" y="36" font-size="25" text-anchor="middle">シ</text>
+          <text x="72" y="56" font-size="17" text-anchor="middle">ャ</text>
+          <text x="70" y="82" font-size="25" text-anchor="middle">ネ</text>
+          <text x="30" y="45" font-size="27" text-anchor="middle">ワ</text>
+          <text x="30" y="77" font-size="27" text-anchor="middle">ス</text>
+        </svg>
+        <p class="hero__role">Backend systems engineer in Japan. I build PDF and digital-signature infrastructure, software that has to be right down to the byte.</p>
 
-      <div class="flex items-center gap-x-2 lg:ml-6">
-        <div class="hidden lg:flex items-center rounded-full border border-[#27251f] p-0.5 text-xs">
-          <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">EN</a>
-          <a href="index_ja.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">JP</a>
-        </div>
+        <ul class="proof">
+          <li><strong>Japan patent JP 2025-169170 A</strong> for electronic signatures with the My Number Card</li>
+          <li><strong>AIW Core</strong>, an automation platform I architected, ran in production at five major banks</li>
+          <li><strong>Five open-source packages</strong> on PyPI, npm and NuGet</li>
+        </ul>
 
-        <a href="https://github.com/shanewas" target="_blank" 
-           class="hidden xl:block whitespace-nowrap text-xs px-4 py-1.5 rounded-full border border-[#27251f] hover:bg-[#1f2937] transition-colors text-[#a1a1aa] hover:text-white">
-          GitHub
-        </a>
-        
-        <a href="#contact" 
-           class="hidden lg:block whitespace-nowrap text-xs px-5 py-1.5 rounded-full bg-white text-black font-medium hover:bg-[#ededed] transition-colors">
-          Get in touch
-        </a>
+        <p class="lede hero__status">Open to senior backend and platform roles in Tokyo or remote. Authorized to work in Japan.</p>
 
-        <!-- Mobile Hamburger -->
-        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 text-[#a1a1aa] hover:text-white"
-                aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu lg:hidden border-t border-[#27251f] bg-[#0a0a0a]">
-      <div class="px-6 py-6 space-y-4 text-sm">
-        <a href="#about" class="block py-2 text-[#a1a1aa] hover:text-white">About</a>
-        <a href="#highlights" class="block py-2 text-[#a1a1aa] hover:text-white">Highlights</a>
-        <a href="#skills" class="block py-2 text-[#a1a1aa] hover:text-white">Skills</a>
-        <a href="#experience" class="block py-2 text-[#a1a1aa] hover:text-white">Experience</a>
-        <a href="#projects" class="block py-2 text-[#a1a1aa] hover:text-white">Projects</a>
-        <a href="#research" class="block py-2 text-[#a1a1aa] hover:text-white">Research</a>
-        <a href="#opportunities" class="block py-2 text-[#a1a1aa] hover:text-white">Opportunities</a>
-        
-        <div class="pt-4 border-t border-[#27251f]">
-          <div class="flex items-center gap-x-3 mb-4">
-            <a href="#" class="px-3 py-1 rounded-full bg-[#1f2937] text-white text-xs font-medium">EN</a>
-            <a href="index_ja.html" class="px-3 py-1 text-[#a1a1aa] hover:text-white text-xs font-medium">JP</a>
-          </div>
-          <div class="flex flex-col gap-y-3">
-            <a href="https://github.com/shanewas" target="_blank" class="text-sm px-4 py-2.5 rounded-full border border-[#27251f] text-center text-[#a1a1aa] hover:text-white">GitHub</a>
-            <a href="#contact" class="text-sm px-4 py-2.5 rounded-full bg-white text-black font-medium text-center">Get in touch</a>
-          </div>
+        <div class="hero__actions">
+          <button class="button" type="button" data-email data-subject="Hello from shanewas.com" hidden>Email me</button>
+          <a class="button" href="#contact" data-email-fallback>Contact</a>
+          <a class="button button--quiet" href="https://github.com/shanewas" rel="noopener">GitHub</a>
         </div>
       </div>
-    </div>
-  </nav>
 
-  <!-- Hero -->
-  <div class="max-w-[1100px] mx-auto px-6 pt-20 pb-16">
-    <div class="max-w-2xl">
-      <div class="inline-flex items-center gap-x-2 px-3 py-1 rounded-full border border-[#27251f] mb-6">
-        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-        <span class="text-sm text-[#a1a1aa]">Miyazaki, Japan — Engineer Visa</span>
-      </div>
-      
-      <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none mb-4">
-        Shanewas Ahmed
-      </h1>
-      
-      <p class="text-2xl text-[#a1a1aa] tracking-tight mb-2">
-        I build production systems that don't break.
-      </p>
-      <p class="text-lg text-[#64748b] mb-8">
-        Backend Systems Engineer at SkyCom Japan. Japan Patent holder, IEEE author, and author of open-source packages on PyPI, npm and NuGet.
-      </p>
-      
-      <div class="flex items-center gap-x-4">
-        <a href="https://github.com/shanewas" target="_blank"
-           class="inline-flex items-center px-6 py-3 rounded-full border border-[#27251f] hover:bg-[#111] transition-all text-sm font-medium">
-          View GitHub
-        </a>
-        <a href="#opportunities"
-           class="inline-flex items-center px-6 py-3 rounded-full bg-white text-black hover:bg-[#ededed] font-medium text-sm transition-all">
-          Open to Senior/Lead roles
-        </a>
-      </div>
-    </div>
+      <section id="work" aria-labelledby="work-h">
+        <h2 id="work-h">Work</h2>
+        <ol class="timeline">
+          <li>
+            <div class="timeline__when">2022 – now</div>
+            <div>
+              <h3>SkyCom Corporation</h3>
+              <div class="timeline__role">Software engineer, Japan</div>
+              <p>Core developer on SkyPDF, SkyCom’s PDF engine: parsing, rendering and signature validation in C++ and C# on RHEL. I designed its WebAPI for signing, rendering and conversion, built the RPM packaging and CI/CD pipeline, and removed an API bottleneck that doubled production throughput. The My Number Card signing work became patent JP 2025-169170 A.</p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline__when">2019 – 2021</div>
+            <div>
+              <h3>Ferntech Solutions</h3>
+              <div class="timeline__role">Software architect and project manager, Bangladesh</div>
+              <p>Architected AIW Core, a hyper-automation platform deployed to five major banks, and the automation studio on top of it for desktop (Electron) and web, sharing one engine. Led a team of five from requirements to release.</p>
+            </div>
+          </li>
+          <li>
+            <div class="timeline__when">2014 – 2017</div>
+            <div>
+              <h3>Neonsofts</h3>
+              <div class="timeline__role">Co-founder and lead developer, Bangladesh</div>
+              <p>Started while at BRAC University. ERP systems and Unity3D game prototypes for clients.</p>
+            </div>
+          </li>
+        </ol>
+
+        <dl class="stack">
+          <div><dt>Languages</dt><dd>C++, C# and .NET, Python, TypeScript</dd></div>
+          <div><dt>Infrastructure</dt><dd>RHEL and Linux, RPM packaging, Docker, CI/CD</dd></div>
+          <div><dt>AI and automation</dt><dd>Agent systems, MCP, Playwright, FastAPI, PyTorch and TensorFlow</dd></div>
+        </dl>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-h">
+        <h2 id="projects-h">Projects</h2>
+        <p class="lede">SkyPDF is proprietary, so everything below is work you can inspect yourself.</p>
+
+        <div class="featured">
+          <article class="project">
+            <h3>Agentic Stealth Browser</h3>
+            <div class="project__meta">Python and Playwright, v3.0.0 on PyPI, MIT</div>
+            <p>Browser automation for AI agents that holds up against bot detection: consistent fingerprints across TLS, navigator, WebGL and Canvas, human-like input, block detection with recovery, and an MCP server so agents can drive it directly.</p>
+            <div class="links">
+              <a href="https://github.com/shanewas/agentic-stealth-browser" rel="noopener">Source on GitHub</a>
+              <a href="https://pypi.org/project/agentic-stealth-browser/" rel="noopener">PyPI package</a>
+            </div>
+          </article>
+          <article class="project">
+            <h3>Edge Agent Bridge</h3>
+            <div class="project__meta">Python and a browser extension, v2.5.0 on PyPI, MIT</div>
+            <p>Lets a script or an AI agent drive the Edge tab you already have open, so logins and VPN sessions survive. Commands travel over a local WebSocket with a 9 ms median round trip, and batching 50 actions runs 7.9 times faster than sending them one by one. No telemetry and no dependencies beyond Python 3.10.</p>
+            <div class="links">
+              <a href="https://github.com/shanewas/edge-agent-bridge" rel="noopener">Source on GitHub</a>
+              <a href="https://pypi.org/project/edge-agent-bridge/" rel="noopener">PyPI package</a>
+            </div>
+          </article>
+          <article class="project">
+            <h3>GhostScrape</h3>
+            <div class="project__meta">FastAPI and PostgreSQL, live SaaS</div>
+            <p>A hosted scraping API built on the stealth engine above, with API keys, usage metering, quota billing and a rotating proxy layer. I build and operate it end to end.</p>
+            <div class="links">
+              <a href="https://ghostscrape.online/" rel="noopener">ghostscrape.online</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="more">
+          <h3>Smaller libraries and tools</h3>
+          <ul>
+            <li>
+              <span class="more__name">Doppelhand</span>
+              <span class="more__what">Screenshots, mouse and keyboard on Windows for any AI agent, with 6 ms actions through a warm local server. v1.4.0 on PyPI.</span>
+              <span class="links"><a href="https://github.com/shanewas/doppelhand" rel="noopener">GitHub</a><a href="https://pypi.org/project/doppelhand/" rel="noopener">PyPI</a></span>
+            </li>
+            <li>
+              <span class="more__name">Shanewas.PosixIpc</span>
+              <span class="more__what">System V shared memory and semaphores for .NET on Linux, through P/Invoke with no native payload. v1.0.1 on NuGet.</span>
+              <span class="links"><a href="https://github.com/shanewas/posix-ipc-dotnet" rel="noopener">GitHub</a><a href="https://www.nuget.org/packages/Shanewas.PosixIpc/" rel="noopener">NuGet</a></span>
+            </li>
+            <li>
+              <span class="more__name">Engram</span>
+              <span class="more__what">Memory for coding agents that syncs between machines, kept as reviewable commits in a private git repo.</span>
+              <span class="links"><a href="https://github.com/shanewas/engram" rel="noopener">GitHub</a></span>
+            </li>
+            <li>
+              <span class="more__name">@shanewas/form-validation</span>
+              <span class="more__what">Rule-driven form validation that behaves the same in Node and in the browser. v1.3.3 on npm.</span>
+              <span class="links"><a href="https://github.com/shanewas/ValidationEngine" rel="noopener">GitHub</a><a href="https://www.npmjs.com/package/@shanewas/form-validation" rel="noopener">npm</a></span>
+            </li>
+            <li>
+              <span class="more__name">ATS Resume Analyzer</span>
+              <span class="more__what">Scores a resume the way an applicant tracking system would and suggests targeted rewrites.</span>
+              <span class="links"><a href="https://github.com/shanewas/ats-resume-analyzer" rel="noopener">GitHub</a></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="research" aria-labelledby="research-h">
+        <h2 id="research-h">Research and education</h2>
+        <ul class="record">
+          <li>
+            <h3>Japan patent JP 2025-169170 A</h3>
+            <p>Electronic signature system using the My Number Card. Filed in 2025 with SkyCom Corporation. <a href="https://www.j-platpat.inpit.go.jp/" rel="noopener">Search it on J-PlatPat</a></p>
+          </li>
+          <li>
+            <h3>Alzheimer’s prediction using deep learning</h3>
+            <p>IEEE, 2019. <a href="https://ieeexplore.ieee.org/document/9306649" rel="noopener">Read it on IEEE Xplore</a></p>
+          </li>
+          <li>
+            <h3>Arduino crop and fertilizer recommendation system</h3>
+            <p>East West University Journal, 2018.</p>
+          </li>
+          <li>
+            <h3>BSc in Computer Science</h3>
+            <p>BRAC University, Dhaka, 2013–2019.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="roles" aria-labelledby="roles-h">
+        <h2 id="roles-h">What I’m looking for</h2>
+        <p>Senior roles in Tokyo or remote, hybrid or on-site. I’m authorized to work in Japan and work in English and Japanese.</p>
+        <ul class="roles">
+          <li>Senior backend or systems engineer<span>C++, .NET, Linux, production systems</span></li>
+          <li>AI platform engineer<span>Agent systems and automation</span></li>
+          <li>Document and workflow infrastructure<span>PDF, digital signatures, enterprise automation</span></li>
+        </ul>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-h">
+        <h2 id="contact-h">Contact</h2>
+        <p>Email is the quickest way to reach me, about a role or about any of the projects above.</p>
+        <div class="contact__actions">
+          <button class="button" type="button" data-email data-subject="Hello from shanewas.com" hidden>Email me</button>
+          <a class="button button--quiet" href="https://linkedin.com/in/ahmedshanewas" rel="noopener">LinkedIn</a>
+        </div>
+        <p class="contact__note" data-email-fallback>Email: shanewasahmed at gmail dot com</p>
+        <div class="elsewhere">
+          <a href="https://github.com/shanewas" rel="noopener">GitHub</a>
+          <a href="https://x.com/S_A_Nabil" rel="noopener">X</a>
+        </div>
+      </section>
+
+      <footer>
+        <p>Shanewas Ahmed, 2026. <a href="index_ja.html" hreflang="ja" lang="ja">日本語版</a></p>
+      </footer>
+    </main>
   </div>
-
-  <!-- About -->
-  <div id="about" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="grid md:grid-cols-12 gap-x-12 gap-y-8">
-      <div class="md:col-span-3">
-        <div class="section-header mb-3">About</div>
-        <h2 class="text-3xl font-semibold tracking-tight">Building reliable systems at scale</h2>
-      </div>
-      <div class="md:col-span-9 text-lg text-[#a1a1aa] leading-relaxed max-w-3xl">
-        Senior Backend Systems Engineer with 7+ years of experience. Currently developing low-level PDF infrastructure and cryptographic signing systems (SkyPDF) in C++ and C# on RHEL at SkyCom Japan. 
-        Patent holder and IEEE author with proven production impact. Strong focus on agentic workflows, AI automation, and design-driven development.
-      </div>
-    </div>
-  </div>
-
-  <!-- Highlights -->
-  <div id="highlights" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">Track Record</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">What actually shipped</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="border border-[#27251f] rounded-3xl p-8">
-        <div class="text-6xl font-semibold tracking-tighter stat-number">5</div>
-        <div class="mt-2 text-[#a1a1aa]">Major banks running production systems I built</div>
-      </div>
-      <div class="border border-[#27251f] rounded-3xl p-8">
-        <div class="text-6xl font-semibold tracking-tighter stat-number">2×</div>
-        <div class="mt-2 text-[#a1a1aa]">Throughput improvement on critical SkyPDF API</div>
-      </div>
-      <div class="border border-[#27251f] rounded-3xl p-8">
-        <div class="text-6xl font-semibold tracking-tighter stat-number">1</div>
-        <div class="mt-2 text-[#a1a1aa]">Japan Patent (JP 2025-169170 A) — My Number Card e-Signature</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Skills -->
-  <div id="skills" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="flex items-end justify-between mb-8">
-      <div>
-        <div class="section-header mb-1">Skills</div>
-        <h2 class="text-3xl font-semibold tracking-tight">Production technologies</h2>
-      </div>
-    </div>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">Languages</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">C++</span>
-          <span class="tech-pill">C# / .NET</span>
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">TypeScript</span>
-        </div>
-      </div>
-      
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">Infrastructure &amp; DevOps</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">RHEL / Linux</span>
-          <span class="tech-pill">RPM packaging</span>
-          <span class="tech-pill">CI/CD</span>
-        </div>
-      </div>
-      
-      <div class="skill-card border border-[#27251f] rounded-2xl p-6">
-        <div class="font-semibold mb-4">AI &amp; Automation</div>
-        <div class="flex flex-wrap gap-2 text-sm">
-          <span class="tech-pill">Autonomous Agents</span>
-          <span class="tech-pill">Multi-agent Systems</span>
-          <span class="tech-pill">Playwright</span>
-          <span class="tech-pill">MCP</span>
-          <span class="tech-pill">TensorFlow / PyTorch</span>
-          <span class="tech-pill">FastAPI</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Experience -->
-  <div id="experience" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">Experience</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">Where I've shipped</h2>
-    
-    <div class="space-y-12">
-      <div class="flex flex-col md:flex-row md:gap-x-12">
-        <div class="md:w-64 flex-shrink-0">
-          <div class="font-semibold">SkyCom Corporation</div>
-          <div class="text-xs text-[#64748b]">株式会社スカイコム · R&amp;D センター宮崎</div>
-          <div class="text-sm text-[#a1a1aa] mt-1">Software Engineer (Promoted to SE I)</div>
-          <div class="text-xs text-[#64748b] mt-1">Apr 2022 – Present · Miyazaki, Japan</div>
-        </div>
-        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          Core developer on <strong>SkyPDF</strong>: low-level PDF libraries and cryptographic signing infrastructure in C++ and C# on RHEL.
-          Designed WebAPI interfaces for document signing, rendering, and conversion. Built RPM packaging and CI/CD pipelines.
-          Resolved critical API bottleneck delivering <strong>2× throughput improvement</strong> in production.
-          Filed patent JP 2025-169170 A on electronic signature using My Number Card.
-        </div>
-      </div>
-
-      <div class="flex flex-col md:flex-row md:gap-x-12">
-        <div class="md:w-64 flex-shrink-0">
-          <div class="font-semibold">Ferntech Solutions</div>
-          <div class="text-sm text-[#a1a1aa] mt-1">Software Architect &amp; Project Manager</div>
-          <div class="text-xs text-[#64748b] mt-1">2019 – 2021 · Bangladesh</div>
-        </div>
-        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          Architected <strong>AIW Core</strong>, a hyper-automation platform deployed to major banks, and built the
-          automation studio on top of it for both desktop (Electron) and web against a shared core engine.
-          Led a five-person team through the full delivery lifecycle.
-        </div>
-      </div>
-
-      <div class="flex flex-col md:flex-row md:gap-x-12">
-        <div class="md:w-64 flex-shrink-0">
-          <div class="font-semibold">Neonsofts</div>
-          <div class="text-sm text-[#a1a1aa] mt-1">Co-founder &amp; Lead Developer</div>
-          <div class="text-xs text-[#64748b] mt-1">2014 – 2017 · Bangladesh</div>
-        </div>
-        <div class="flex-1 mt-3 md:mt-0 text-[#a1a1aa]">
-          Started it while at BRAC University. ERP systems and Unity3D game prototypes for clients.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Projects -->
-  <div id="projects" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="mb-8">
-      <div class="section-header mb-1">Selected Projects</div>
-      <h2 class="text-3xl font-semibold tracking-tight">Systems that run in production</h2>
-      <p class="text-[#64748b] mt-2 max-w-2xl">Enterprise document infrastructure at work, plus open-source packages on PyPI, npm and NuGet, and a SaaS I run myself.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">SkyPDF — Low-level PDF Infrastructure</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">The PDF engine behind SkyCom&rsquo;s document products: parsing, rendering and signature validation at the byte level, shipped as RPM packages. The My Number Card signing work inside it became patent JP 2025-169170 A.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">C++</span>
-          <span class="tech-pill">C#</span>
-          <span class="tech-pill">RHEL</span>
-          <span class="tech-pill">RPM</span>
-          <span class="tech-pill">WebAPI</span>
-        </div>
-        <span class="text-sm text-[#64748b]">Current production project at SkyCom Japan &middot; proprietary</span>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Agentic Stealth Browser</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">Open-source stealth browser automation for autonomous agents, built on Playwright. Coherent fingerprinting across TLS, navigator, WebGL and Canvas, human behaviour simulation, block-detection with recovery, and an MCP server so AI agents can drive it directly. <strong>v3.0.0 on PyPI</strong>, MIT licensed, CI green across pytest, ruff, mypy, CodeQL and a Docker smoke test.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">Playwright</span>
-          <span class="tech-pill">MCP</span>
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">PyPI</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/agentic-stealth-browser" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://pypi.org/project/agentic-stealth-browser/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">PyPI &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Edge Agent Bridge</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">Lets a Python script or an AI agent drive the Microsoft Edge tab you already have open, so logged-in sessions, enterprise VPNs and saved credentials survive. CDP events travel over a local RFC&nbsp;6455 WebSocket at a 9.09&nbsp;ms P50 round trip, and batching 50 actions runs 7.9&times; faster than firing them one by one. It binds to <span class="mono">127.0.0.1:18999</span> and nothing else: no telemetry, no outbound calls, no dependencies past Python&nbsp;3.10. <strong>v2.0.2 on PyPI</strong>, MIT licensed.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">CDP</span>
-          <span class="tech-pill">WebSocket</span>
-          <span class="tech-pill">Edge Extension</span>
-          <span class="tech-pill">PyPI</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/edge-agent-bridge" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://pypi.org/project/edge-agent-bridge/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">PyPI &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Doppelhand — Hands on the Windows Desktop</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">Eyes and hands on a Windows desktop for whichever agent you already run: screenshots plus real mouse and keyboard, one JSON object per command, no API key. A warm loopback server holds the display open through DXGI Desktop Duplication &mdash; 6&nbsp;ms actions and 30&nbsp;ms screenshots against roughly 300&nbsp;ms per spawned process &mdash; and it installs its own agent skill into Claude Code, opencode or AGY. <strong>v1.3.1 on PyPI</strong>, MIT licensed, Pillow the only dependency.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">Windows</span>
-          <span class="tech-pill">DXGI</span>
-          <span class="tech-pill">Agent Skills</span>
-          <span class="tech-pill">PyPI</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/doppelhand" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://pypi.org/project/doppelhand/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">PyPI &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">GhostScrape — Hosted Scraping API</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">Production SaaS built on top of the stealth engine above: a FastAPI service with API-key auth, usage metering and quota billing, PostgreSQL 16 with Alembic migrations, and a rotating-proxy layer. Deployed behind Cloudflare Tunnel on hardened Linux with systemd, resource caps and a dedicated service user.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">FastAPI</span>
-          <span class="tech-pill">PostgreSQL</span>
-          <span class="tech-pill">Alembic</span>
-          <span class="tech-pill">Cloudflare</span>
-          <span class="tech-pill">systemd</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://ghostscrape.online/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">ghostscrape.online &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Shanewas.PosixIpc</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">A lightweight .NET library for System&nbsp;V shared memory and semaphores on Linux (x64, glibc). No native payloads, just P/Invoke to <span class="mono">libc</span> through <span class="mono">shmget</span> and <span class="mono">semget</span>, built for low-latency same-host IPC between processes. <strong>v1.0.1 on NuGet</strong> targeting .NET&nbsp;6 and 8, MIT licensed.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">C#</span>
-          <span class="tech-pill">.NET</span>
-          <span class="tech-pill">Linux</span>
-          <span class="tech-pill">P/Invoke</span>
-          <span class="tech-pill">NuGet</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/posix-ipc-dotnet" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://www.nuget.org/packages/Shanewas.PosixIpc/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">NuGet &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">Engram — Cross-machine Agent Memory</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">Durable memory for coding agents, where a private git repo <em>is</em> the store and the audit log: every fact is an attributed, timestamped, revertible commit; no database, no service. Session hooks sync it between machines automatically, bounded by an explicit path allowlist.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">Git</span>
-          <span class="tech-pill">Claude Code</span>
-          <span class="tech-pill">Automation</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/engram" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">@shanewas/form-validation</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">A rule-driven validation engine for forms, running the same way in Node and in the browser. Cross-field dependencies, conditional rules, custom validators and per-field error reporting, written originally against messy PDF form data. <strong>v1.3.3 on npm</strong>, GPL-3.0.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">JavaScript</span>
-          <span class="tech-pill">Node.js</span>
-          <span class="tech-pill">Forms</span>
-          <span class="tech-pill">npm</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/ValidationEngine" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-          <a href="https://www.npmjs.com/package/@shanewas/form-validation" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">npm &rarr;</a>
-        </div>
-      </div>
-      <div class="project-card border border-[#27251f] rounded-3xl p-7 flex flex-col">
-        <h3 class="font-semibold text-xl tracking-tight">ATS Resume Analyzer</h3>
-        <p class="text-sm text-[#a1a1aa] mt-1 mb-5 flex-1">Resume analysis pipeline that scores documents the way an applicant tracking system does: keyword matching, skill-gap detection, targeted rewrites.</p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">NLP</span>
-          <span class="tech-pill">Automation</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <a href="https://github.com/shanewas/ats-resume-analyzer" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline">GitHub &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Open to Opportunities -->
-  <div id="opportunities" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">Open to Opportunities</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-6">Target Roles</h2>
-    
-    <div class="max-w-2xl text-[#a1a1aa] text-lg mb-8">
-      Open to <strong>Senior Backend Systems Engineer</strong>, <strong>Platform Engineer</strong>, or <strong>ML/Automation Engineer</strong> roles in Tokyo or remote. 
-      Target compensation: 7M+ JPY. Strong preference for work involving low-level systems, document infrastructure, or AI tooling.
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="border border-[#27251f] rounded-2xl px-5 py-4 text-sm">
-        <div class="font-medium text-white mb-1">Senior Backend / Systems Engineer</div>
-        <div class="text-[#64748b]">C++, .NET, Linux, production systems</div>
-      </div>
-      <div class="border border-[#27251f] rounded-2xl px-5 py-4 text-sm">
-        <div class="font-medium text-white mb-1">ML / AI Platform Engineer</div>
-        <div class="text-[#64748b]">Autonomous agents, automation</div>
-      </div>
-      <div class="border border-[#27251f] rounded-2xl px-5 py-4 text-sm">
-        <div class="font-medium text-white mb-1">Document &amp; Workflow Infrastructure</div>
-        <div class="text-[#64748b]">PDF, signing, enterprise automation</div>
-      </div>
-    </div>
-    
-    <div class="mt-6 text-sm text-[#64748b]">
-      Based in Miyazaki with full Engineer Visa. Open to hybrid or on-site roles in Japan (Tokyo preferred).
-    </div>
-  </div>
-
-  <!-- Research & Patents -->
-  <div id="research" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="section-header mb-3">Research &amp; Patents</div>
-    <h2 class="text-3xl font-semibold tracking-tight mb-10">Formal recognition</h2>
-    
-    <div class="space-y-8 text-[#a1a1aa]">
-      <div>
-        <div class="font-semibold text-white">Japan Patent JP 2025-169170 A</div>
-        <div>Electronic Signature System Using My Number Card</div>
-        <div class="text-xs mt-1">Japan Patent Office &middot; co-invented with SkyCom Corporation &middot; Filed 2025</div>
-        <a href="https://www.j-platpat.inpit.go.jp/" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline inline-block mt-2">Look up on J-PlatPat &rarr;</a>
-      </div>
-      <div>
-        <div class="font-semibold text-white">IEEE Publication</div>
-        <div>Alzheimer&rsquo;s Prediction using Deep Learning</div>
-        <div class="text-xs mt-1">IEEE Xplore &middot; 2019</div>
-        <a href="https://ieeexplore.ieee.org/document/9306649" target="_blank" rel="noopener" class="text-sm grok-accent hover:underline inline-block mt-2">Read on IEEE Xplore &rarr;</a>
-      </div>
-      <div>
-        <div class="font-semibold text-white">Journal Publication</div>
-        <div>Arduino Crop and Fertilizer Recommendation System</div>
-        <div class="text-xs mt-1">East West University Journal &middot; 2018</div>
-      </div>
-      <div>
-        <div class="font-semibold text-white">BSc Computer Science</div>
-        <div>BRAC University, Dhaka • 2013–2019</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact -->
-  <div id="contact" class="max-w-[1100px] mx-auto px-6 py-16 border-t border-[#27251f]">
-    <div class="max-w-md">
-      <div class="section-header mb-3">Contact</div>
-      <h2 class="text-3xl font-semibold tracking-tight mb-8">Let's discuss opportunities</h2>
-      
-      <form id="contact-form" class="space-y-5" novalidate>
-        <input type="text" id="cf-name" name="name" placeholder="Your Name" required autocomplete="name"
-               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
-        <input type="email" id="cf-email" name="email" placeholder="Email Address" required autocomplete="email"
-               class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-2xl px-5 py-3 text-sm placeholder:text-[#64748b] outline-none">
-        <textarea id="cf-message" name="message" rows="5" placeholder="Message or opportunity details" required
-                  class="w-full bg-[#111] border border-[#27251f] focus:border-[#0ea5e9] rounded-3xl px-5 py-4 text-sm placeholder:text-[#64748b] outline-none resize-y"></textarea>
-
-        <button type="submit"
-                class="w-full py-3.5 rounded-2xl bg-white text-black font-medium hover:bg-[#ededed] active:bg-[#d1d5db] transition-colors">
-          Send Message
-        </button>
-      </form>
-
-      <p class="mt-3 text-xs text-[#64748b]">
-        Opens your mail app with the message prefilled. Prefer to write directly?
-        <a href="mailto:shanewasahmed@gmail.com" class="grok-accent hover:underline">shanewasahmed@gmail.com</a>
-      </p>
-      
-      <div class="mt-10 text-sm flex flex-col gap-y-2 text-[#a1a1aa]">
-        <a href="https://github.com/shanewas" target="_blank" rel="noopener" class="hover:text-white">GitHub &middot; @shanewas</a>
-        <a href="https://linkedin.com/in/ahmedshanewas" target="_blank" rel="noopener" class="hover:text-white">LinkedIn &middot; ahmedshanewas</a>
-        <a href="https://x.com/S_A_Nabil" target="_blank" rel="noopener" class="hover:text-white">X &middot; @S_A_Nabil</a>
-        <a href="mailto:shanewasahmed@gmail.com" class="hover:text-white">shanewasahmed@gmail.com</a>
-      </div>
-    </div>
-  </div>
-
-  <footer class="max-w-[1100px] mx-auto px-6 py-12 text-xs text-[#64748b]">
-    Based in Miyazaki, Japan • Targeting Senior/Lead Backend, Platform, or ML roles • 7M+ JPY
-  </footer>
-
-  <script>
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
-        if (mobileMenu.classList.contains('open')) {
-          menuBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6h12v12" /></svg>`;
-        } else {
-          menuBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>`;
-        }
-      });
-    }
-
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const value = (id) => (document.getElementById(id).value || '').trim();
-        const name = value('cf-name');
-        const email = value('cf-email');
-        const message = value('cf-message');
-        const subject = name ? `Portfolio enquiry from ${name}` : 'Portfolio enquiry';
-        const body = `${message}\n\n---\n${name}\n${email}`;
-        window.location.href = 'mailto:shanewasahmed@gmail.com'
-          + '?subject=' + encodeURIComponent(subject)
-          + '&body=' + encodeURIComponent(body);
-      });
-    }
-  </script>
 </body>
 </html>
