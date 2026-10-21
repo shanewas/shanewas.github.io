@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy, Agent Browser Bridge</title>
+  <meta name="description" content="Agent Browser Bridge collects no data. All communication stays on your machine between the extension and a local daemon.">
+  <link rel="canonical" href="https://shanewas.com/agent-browser-bridge/privacy.html">
+  <meta name="author" content="Shanewas Ahmed">
+  <meta name="color-scheme" content="light dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="/assets/img/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <main class="shell doc notfound">
+    <p><a href="/agent-browser-bridge/">Agent Browser Bridge</a></p>
+    <h1>Privacy policy</h1>
+    <p><strong>Last updated:</strong> October 21, 2026</p>
+    <p>Agent Browser Bridge, published in the extension stores as Edge Agent Bridge ("the Extension"), is an open-source browser automation bridge for developers running local AI agents. This policy explains how information is handled by the Extension and by the local daemon it talks to.</p>
+
+    <h2>1. Zero data collection</h2>
+    <ul>
+      <li>The Extension does not collect, store, track, or transmit any personally identifiable information, browsing history, web credentials, cookies, or telemetry.</li>
+      <li>No analytics or third-party tracking libraries are included.</li>
+    </ul>
+
+    <h2>2. Localhost-only communication</h2>
+    <ul>
+      <li>All communication happens on your own machine (<code>127.0.0.1:18999</code>) between the Extension and the locally executed Python daemon (<code>edge-bridge</code>).</li>
+      <li>No data is transmitted to external servers, cloud services, or third parties.</li>
+      <li>The daemon binds only to <code>127.0.0.1</code>, rejects requests whose <code>Host</code> header is not the local address, and requires a token stored in your user profile for every command it forwards to the Extension.</li>
+    </ul>
+
+    <h2>3. What the Extension does on a page when asked</h2>
+    <p>Every action below happens only in response to a command from your local agent through the daemon; the Extension never acts on its own.</p>
+    <ul>
+      <li>Reads the structure of the page (roles, labels, current form values) to produce a snapshot for the agent. Password field values are masked in that snapshot.</li>
+      <li>Dispatches mouse and keyboard input, selects options, and sets files on file inputs the agent names.</li>
+      <li>Captures a screenshot of the tab when the agent asks for one. The image goes to the local agent only.</li>
+      <li>Records recent console messages, uncaught errors, and native dialogs of the tab in memory (and in the browser's session storage, which is cleared when the browser closes) so the agent can read them.</li>
+      <li>Draws a short-lived highlight ring and cursor overlay on the page so you can see what the agent is about to act on. This can be turned off per command.</li>
+      <li>Optionally opens new tabs in a tab group named by the agent (default "Agent") so you can tell them apart from your own.</li>
+    </ul>
+
+    <h2>4. Purpose of requested permissions</h2>
+    <ul>
+      <li><strong>debugger</strong>: dispatch native DevTools Protocol input events, capture screenshots, set files on file inputs, and receive console, network and dialog events for the tabs the agent works in.</li>
+      <li><strong>&lt;all_urls&gt;, tabs, activeTab</strong>: locate and interact with the tabs the agent is asked to automate.</li>
+      <li><strong>scripting</strong>: read page structure for snapshots and render the visual overlay.</li>
+      <li><strong>storage</strong>: persist the last log line, the optional pairing token, and per-tab console buffers inside your local browser profile.</li>
+      <li><strong>alarms</strong>: periodically re-check the connection to the local daemon.</li>
+      <li><strong>tabGroups</strong>: place agent-opened tabs in a named group.</li>
+    </ul>
+
+    <h2>5. Google account access used by the release pipeline</h2>
+    <p>The project's release automation uses a Google OAuth client with the Chrome Web Store scope solely to upload new extension versions to the author's own store listing. It touches no end-user data and is never used by the Extension itself.</p>
+
+    <h2>6. Open source</h2>
+    <p>The complete source code is open source under the MIT License and available for independent audit at <a href="https://github.com/shanewas/agent-browser-bridge">github.com/shanewas/agent-browser-bridge</a>.</p>
+
+    <h2>7. Contact</h2>
+    <p>Questions about this policy: open an issue at <a href="https://github.com/shanewas/agent-browser-bridge/issues">github.com/shanewas/agent-browser-bridge/issues</a> or <a href="/#contact">contact the author</a>.</p>
+  </main>
+</body>
+</html>

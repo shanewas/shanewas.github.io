@@ -10,4 +10,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shanewas.com/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://shanewas.com/index_ja.html"/>
   </url>
+  <url><loc>https://shanewas.com/agent-browser-bridge/</loc></url>
+  <url><loc>https://shanewas.com/agent-browser-bridge/privacy.html</loc></url>
+  <url><loc>https://shanewas.com/agent-browser-bridge/terms.html</loc></url>
 </urlset>
